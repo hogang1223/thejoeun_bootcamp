@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Title</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>Hello</h1>
-	<h1>대한민국</h1>
-
+	<form action="Hell" method="get">
+		<input type="submit" value="OK">
+	
+	</form>
 </body>
 </html>
