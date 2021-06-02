@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+<!--    main-->
+    <LinearLayout
+        android:id="@+id/linearMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="20dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/healthy"
+                android:tint="#70ffffff"
+                tools:ignore="UseAppTint"
+                />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:text="건강 지킴이"
+            android:textColor="@color/healthy"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_c1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingTop="10dp"
+            android:text="세상엔 맛있는게 너무 많아...\n맛있는걸 다 먹으면서 건강할 수는 없을까?\n건강 지킴이만 있다면 걱정없이 마음껏 먹을 수 있어!"
+            android:textSize="15dp"
+            android:lineSpacingMultiplier="1.3"
+            />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:paddingTop="40dp"
+            android:gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="나의 건강 상태 확인하러 가기"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:paddingRight="20dp"
+                />
+
+            <Button
+                android:id="@+id/btnMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GO"
+                android:backgroundTint="@color/healthy"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+<!--    End main-->
+
+<!--    기본 사항 입력-->
+    <LinearLayout
+        android:id="@+id/linearInsert"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:visibility="invisible"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="내 정보 입력하기"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            />
+        <ProgressBar
+            android:id="@+id/pbInsert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="4"
+            android:progressTint="@color/healthy"
+            />
+
+        <FrameLayout
+            android:id="@+id/frameName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/linearName"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이름을 알려주세요"
+                    android:textColor="@color/healthy"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="150dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <EditText
+                    android:id="@+id/editName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:hint="이름을 입력하세요"
+                    android:layout_marginBottom="30dp"
+                    />
+                <Button
+                    android:id="@+id/btnName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NEXT"
+                    android:backgroundTint="@color/healthy"
+                    android:layout_gravity="right"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearHeight"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="키를 알려주세요 (cm)"
+                    android:textColor="@color/healthy"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="150dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <EditText
+                    android:id="@+id/editHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:hint="키를 입력하세요"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:layout_marginBottom="30dp"
+                    />
+                <Button
+                    android:id="@+id/btnHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NEXT"
+                    android:backgroundTint="@color/healthy"
+                    android:layout_gravity="right"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearWeight"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="몸무게를 알려주세요 (kg)"
+                    android:textColor="#4CAF50"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="150dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <EditText
+                    android:id="@+id/editWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:hint="몸무게를 입력하세요"
+
+                    android:layout_marginBottom="30dp"
+                    />
+                <Button
+                    android:id="@+id/btnWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="결과보기"
+                    android:backgroundTint="@color/healthy"
+                    android:layout_gravity="right"
+                    />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+    <!--End Insert myInfo-->
+
+<!-- Result view -->
+    <LinearLayout
+        android:id="@+id/linearResult"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="50dp"
+        android:visibility="invisible"
+        >
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="홍길동 님의 건강 점수는"
+            android:textColor="@color/healthy"
+            android:textStyle="bold"
+            />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90"
+                android:textSize="80dp"
+                android:textStyle="bold"
+                android:textColor="@color/healthy"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="점"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:textColor="@color/healthy"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="입니다."
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/healthy"
+            />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/healthy"
+                android:text="이름"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:letterSpacing="0.3"
+                />
+            <TextView
+                android:id="@+id/textName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="홍길동"
+                android:letterSpacing="0.3"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/healthy"
+                android:text="키"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:letterSpacing="0.3"
+                />
+            <TextView
+                android:id="@+id/textHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="182 cm"
+                android:letterSpacing="0.3"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/healthy"
+                android:text="몸무게"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:letterSpacing="0.3"
+                />
+            <TextView
+                android:id="@+id/textWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="72 kg"
+                android:letterSpacing="0.3"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/healthy"
+                android:text="체질량\n지수"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:letterSpacing="0.3"
+                />
+            <TextView
+                android:id="@+id/textBmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="21.74"
+                android:letterSpacing="0.3"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="정상체중"
+                android:paddingLeft="30dp"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="50dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="건강 점수 올리는 법 확인하기"
+                android:textStyle="bold"
+                android:textSize="17dp"
+                android:paddingRight="10dp"
+                />
+
+            <Button
+                android:id="@+id/btnExercise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GO"
+                android:backgroundTint="@color/healthy"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+<!--end result view -->
+
+
+</FrameLayout>
