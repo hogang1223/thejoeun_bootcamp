@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:format="예약에 걸린 시간 %s"
             android:gravity="center"
-            android:text="20dp"
+            android:textSize="15dp"
             />
         <Button
             android:id="@+id/btnStart"
