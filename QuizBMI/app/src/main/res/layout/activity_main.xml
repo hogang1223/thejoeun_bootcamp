@@ -11,7 +11,8 @@
         android:id="@+id/linearMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <androidx.cardview.widget.CardView
             android:layout_width="350dp"
@@ -243,6 +244,7 @@
             android:text="홍길동 님의 건강 점수는"
             android:textColor="@color/healthy"
             android:textStyle="bold"
+            android:layout_marginTop="30dp"
             />
         <LinearLayout
             android:orientation="horizontal"
@@ -374,6 +376,7 @@
                 android:layout_gravity="center_vertical"
                 />
             <TextView
+                android:id="@+id/textStatus"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="정상체중"
@@ -399,7 +402,7 @@
                 />
 
             <Button
-                android:id="@+id/btnExercise"
+                android:id="@+id/btnSport"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GO"
@@ -409,6 +412,49 @@
 
     </LinearLayout>
 <!--end result view -->
+<!--sport view-->
+    <LinearLayout
+        android:id="@+id/linearSport"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:visibility="invisible"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="세상에 공짜는\n없다구!"
+            android:textColor="@color/healthy"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="맛있는걸 먹기 위해선 꾸준한 운동은 필수!\n하루에 30분씩만 운동해 보는건 어떨까?"
+            android:textColor="@color/healthy"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:paddingTop="10dp"
+            android:paddingBottom="30dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="운동별 30분간 소모칼로리"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:paddingBottom="10dp"
+            />
+        <ListView
+            android:id="@+id/listSport"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
 
 
+    </LinearLayout>
 </FrameLayout>

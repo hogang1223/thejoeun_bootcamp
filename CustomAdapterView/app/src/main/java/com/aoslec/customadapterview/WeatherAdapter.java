@@ -18,7 +18,7 @@ public class WeatherAdapter extends BaseAdapter {
     private LayoutInflater inflater = null;
 
     public WeatherAdapter(Context mContext, int layout, ArrayList<Weather> data) {
-        this.mContext = mContext;
+        this.mContext = mContext; // activity라고 당분간 생각
         this.layout = layout;
         this.data = data;
         this.inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

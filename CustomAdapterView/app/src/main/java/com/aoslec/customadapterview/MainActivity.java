@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         // data 만들기
         data = new ArrayList<Weather>();
+//        Weather weather = new Weather ("월", R.drawable.w1, "맑음");
+//        data.add(weather);
         data.add(new Weather("월",R.drawable.w1, "맑음"));
         data.add(new Weather("화",R.drawable.w2, "비"));
         data.add(new Weather("수",R.drawable.w3, "맑음뒤 비"));
