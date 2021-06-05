@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID와 Password를 입력하세요!"
+        android:textSize="23dp"
+        android:textColor="#673AB7"
+        android:textStyle="bold"
+        android:padding="27dp"
+        />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="ID : "
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <EditText
+            android:id="@+id/editID_main"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="아이디를 입력하세요"
+            android:textSize="17dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="PW : "
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <EditText
+            android:id="@+id/editPW_main"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="패스워드를 입력하세요"
+            android:textSize="17dp"
+            />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnLogin_Main"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="Login"
+        android:layout_margin="30dp"
+        />
+
+
+</LinearLayout>
