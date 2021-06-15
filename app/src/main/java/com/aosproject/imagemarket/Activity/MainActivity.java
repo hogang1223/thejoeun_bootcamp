@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+        bottomNavigationView.setSelectedItemId(R.id.item_fragment1);
     }
 
     private void BottomNavigate(int id) {
