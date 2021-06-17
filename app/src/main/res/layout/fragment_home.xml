@@ -8,6 +8,7 @@
     >
 
     <ImageView
+        android:id="@+id/main_img_banner"
         android:layout_width="match_parent"
         android:layout_height="190dp"
         />
@@ -20,7 +21,7 @@
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/main_f_btn"
+        android:id="@+id/main_fab_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -29,16 +30,15 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="27dp"
         android:layout_marginRight="27dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginBottom="83dp"
         android:adjustViewBounds="false"
-        android:src="@drawable/outline_expand_less_24"
+        android:src="@drawable/ic_baseline_arrow_upward_24"
         android:backgroundTint="#00ff0000"
         android:outlineSpotShadowColor="#00ff0000"
         />
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/main_f_btn1"
+        android:id="@+id/main_fab_plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -47,8 +47,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="27dp"
         android:layout_marginRight="27dp"
-        android:layout_marginBottom="103dp"
+        android:layout_marginBottom="13dp"
         android:adjustViewBounds="false"
+        android:src="@drawable/ic_baseline_add_24"
         android:backgroundTint="#00ff0000"
         android:outlineSpotShadowColor="#00ff0000"
         />
