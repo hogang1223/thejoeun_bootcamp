@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.aosproject.imagemarket.Activity.ImageAddNameActivity;
 import com.aosproject.imagemarket.Activity.ImageDetailActivity;
 import com.aosproject.imagemarket.Adapter.ImageAdapterhj;
 import com.aosproject.imagemarket.Bean.Imagehj;
@@ -56,12 +57,13 @@ public class HomeFragment extends Fragment {
             fabPlus = getView().findViewById(R.id.main_fab_plus);
             recyclerView = getView().findViewById(R.id.recyclerView);
 
-            layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+            layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
 
             fabUp.setColorFilter(0xff845EC2);
             fabPlus.setColorFilter(0xff845EC2);
 
+            fabPlus.setOnClickListener(onClickListener);
             setFloatingActionButton(recyclerView);
 
 //            fabUp.setOnClickListener(onClickListener);
@@ -93,8 +95,16 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), ImageAddNameActivity.class);
+            startActivity(intent);
+        }
+    };
+
     public void setFloatingActionButton(final View view) {
-        fabPlus.setOnClickListener(new View.OnClickListener() {
+        fabUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "up", Toast.LENGTH_SHORT).show();

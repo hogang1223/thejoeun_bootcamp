@@ -17,7 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageMarket">
-        <activity android:name=".Activity.ImageDetailActivity"></activity>
+        <activity android:name=".Activity.ImageAddLocationActivity"></activity>
+        <activity android:name=".Activity.ImageAddPriceActivity" />
+        <activity android:name=".Activity.ImageAddTagActivity" />
+        <activity android:name=".Activity.ImageAddCategoryActivity" />
+        <activity android:name=".Activity.ImageAddFormatActivity" />
+        <activity android:name=".Activity.ImageAddContentActivity" />
+        <activity android:name=".Activity.ImageAddNameActivity" />
+        <activity android:name=".Activity.ImageAddImageActivity" />
+        <activity android:name=".Activity.ImageDetailActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
