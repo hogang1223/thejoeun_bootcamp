@@ -124,14 +124,14 @@
                 >
 
                 <Button
-                    android:id="@+id/sign_in_name_btn_next"
+                    android:id="@+id/add_image_btn_next"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="다음"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:backgroundTint="#C5C5C5"
-                    android:layout_margin="20dp"
+                    android:layout_margin="19dp"
                     />
 
 

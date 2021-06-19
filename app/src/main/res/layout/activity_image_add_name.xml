@@ -98,7 +98,7 @@
                     />
 
                 <EditText
-                    android:id="@+id/sign_in_name_edit"
+                    android:id="@+id/add_name_edit"
                     android:layout_margin="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -113,11 +113,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="170dp"
                 >
 
                 <Button
-                    android:id="@+id/sign_in_name_btn_next"
+                    android:id="@+id/add_name_btn_next"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="다음"
