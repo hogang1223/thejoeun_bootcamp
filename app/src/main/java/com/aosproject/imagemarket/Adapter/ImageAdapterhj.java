@@ -1,5 +1,6 @@
 package com.aosproject.imagemarket.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aosproject.imagemarket.Bean.Imagehj;
 import com.aosproject.imagemarket.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
 import java.util.ArrayList;
 
@@ -27,12 +31,18 @@ public class ImageAdapterhj extends RecyclerView.Adapter<ImageAdapterhj.ViewHold
     private OnItemLongClickListener mLongListener = null;
     private ArrayList<Imagehj> unFilteredlist;
     private ArrayList<Imagehj> filteredList;
+    private Activity activity;
 
-    public ImageAdapterhj(Context mContext, int layout, ArrayList<Imagehj> images){
-        this.mContext = mContext;
-        this.layout = layout;
+//    public ImageAdapterhj(Context mContext, int layout, ArrayList<Imagehj> images){
+//        this.mContext = mContext;
+//        this.layout = layout;
+//        this.images = images;
+//        this.inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//    }
+
+    public ImageAdapterhj(Activity activity, ArrayList<Imagehj> images){
+        this.activity = activity;
         this.images = images;
-        this.inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public void  filterList(ArrayList<Imagehj> filteredList) {
@@ -62,11 +72,11 @@ public class ImageAdapterhj extends RecyclerView.Adapter<ImageAdapterhj.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView img;
+        public ImageView img;
 
         public ViewHolder(View itemView){
             super(itemView);
-            img = itemView.findViewById(R.id.main_img_random);
+            img = itemView.findViewById(R.id.main_imageview);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -91,8 +101,9 @@ public class ImageAdapterhj extends RecyclerView.Adapter<ImageAdapterhj.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ImageAdapterhj.ViewHolder holder, int position) {
+        Imagehj data = images.get(position);
 
-        holder.img.setText(images.get(position).getFilepath());
+        Glide.with(activity).load(data.getFilepath()).transform(new FitCenter(), new RoundedCorners(25)).into(holder.img);
 
 //        ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
 //        layoutParams.height = (int) ((position + 1) / 5.0 * 500);

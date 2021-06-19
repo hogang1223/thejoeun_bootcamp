@@ -1,5 +1,6 @@
 package com.aosproject.imagemarket.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -56,7 +57,7 @@ public class HomeFragment extends Fragment {
 
             fabUp = getView().findViewById(R.id.main_fab_up);
             fabPlus = getView().findViewById(R.id.main_fab_plus);
-            recyclerView = getView().findViewById(R.id.recyclerView);
+            recyclerView = getView().findViewById(R.id.main_recyclerView);
 
             layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
@@ -77,7 +78,11 @@ public class HomeFragment extends Fragment {
             Object obj = networkTask.execute().get();
             images = (ArrayList<Imagehj>) obj;
 
-            adapter = new ImageAdapterhj(getActivity(), R.layout.main_custom_layout, images);
+            //adapter = new ImageAdapterhj(getActivity(), R.layout.main_custom_layout, images);
+            adapter = new ImageAdapterhj(getActivity(), this.images);
+            
+            getData();
+            
             recyclerView.setAdapter(adapter);
 
             adapter.setOnItemClickListener(new ImageAdapterhj.OnItemClickListener() {
@@ -96,10 +101,16 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private void getData() {
+
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
+
+    }
+
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), ImageAddFormatActivity.class);
+            Intent intent = new Intent(getActivity(), ImageDetailActivity.class);
             startActivity(intent);
         }
     };

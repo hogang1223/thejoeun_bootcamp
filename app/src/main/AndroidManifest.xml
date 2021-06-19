@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageMarket">
-        <activity android:name=".Activity.ImageAddLocationActivity"></activity>
+        <activity android:name=".Activity.ImageEditDeleteActivity"></activity>
+        <activity android:name=".Activity.ImageEditActivity" />
+        <activity android:name=".Activity.ImageAddLocationActivity" />
         <activity android:name=".Activity.ImageAddPriceActivity" />
         <activity android:name=".Activity.ImageAddTagActivity" />
         <activity android:name=".Activity.ImageAddCategoryActivity" />

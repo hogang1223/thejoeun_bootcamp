@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ImageDetailActivity">
+    tools:context=".Activity.ImageEditDeleteActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="70dp"
             >
             <TextView
-                android:id="@+id/detail_textview_name"
+                android:id="@+id/edit_delete_textview_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="사진 이름"
@@ -60,7 +60,7 @@
                 >
 
                 <ImageView
-                    android:id="@+id/detail_image"
+                    android:id="@+id/edit_delete_image"
                     android:layout_width="370dp"
                     android:layout_height="300dp"
                     />
@@ -76,7 +76,7 @@
                 >
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/detail_chip_group"
+                    android:id="@+id/edit_delete_chip_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:singleLine="true"
@@ -86,63 +86,63 @@
                     >
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/detail_chip_01"
+                        android:id="@+id/edit_delete_chip_01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/detail_chip_02"
+                        android:id="@+id/edit_delete_chip_02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/detail_chip_03"
+                        android:id="@+id/edit_delete_chip_03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/detail_chip_04"
+                        android:id="@+id/edit_delete_chip_04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/detail_chip_05"
+                        android:id="@+id/edit_delete_chip_05"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/detail_chip_06"
+                        android:id="@+id/edit_delete_chip_06"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/detail_chip_07"
+                        android:id="@+id/edit_delete_chip_07"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/detail_chip_08"
+                        android:id="@+id/edit_delete_chip_08"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/detail_chip_09"
+                        android:id="@+id/edit_delete_chip_09"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
@@ -169,7 +169,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/detail_textview_recommend"
+                    android:id="@+id/edit_delete_textview_recommend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="명이 추천합니다"
@@ -189,7 +189,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/detail_textview_price"
+                    android:id="@+id/edit_delete_textview_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1000원"
@@ -209,10 +209,10 @@
                 >
 
                 <Button
-                    android:id="@+id/detail_btn_cart"
+                    android:id="@+id/edit_delete_btn_delete"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
-                    android:text="장바구니"
+                    android:text="삭제"
                     android:textColor="#845EC2"
                     android:textStyle="bold"
                     android:backgroundTint="#FFFFFF"
@@ -220,10 +220,10 @@
                     />
 
                 <Button
-                    android:id="@+id/detail_btn_buy"
+                    android:id="@+id/edit_delete_btn_edit"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
-                    android:text="바로 구매"
+                    android:text="수정"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:backgroundTint="#845EC2"
@@ -236,67 +236,4 @@
 
     </LinearLayout>
 
-    <SlidingDrawer
-        android:id="@+id/detail_sliding_drawer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:content="@+id/content"
-        android:handle="@+id/handle"
-        >
-
-        <Button
-            android:id="@+id/handle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="button"
-            />
-
-        <ScrollView
-            android:content="@+id/content"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_marginTop="40dp"
-                    >
-
-                    <Button
-                        android:id="@+id/detail_btn_cart_slide"
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:text="장바구니"
-                        android:textColor="#845EC2"
-                        android:textStyle="bold"
-                        android:backgroundTint="#FFFFFF"
-                        android:layout_margin="10dp"
-                        />
-
-                    <Button
-                        android:id="@+id/detail_btn_buy_slide"
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:text="바로 구매"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        android:backgroundTint="#845EC2"
-                        android:layout_margin="10dp"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-    </SlidingDrawer>
-
-</RelativeLayout>
+</LinearLayout>

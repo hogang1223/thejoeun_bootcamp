@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:orientation="vertical"
+<RelativeLayout android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
         android:id="@+id/main_img_banner"
@@ -14,10 +13,11 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/main_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="480dp"
         android:layout_marginTop="210dp"
+        tools:listitem="@layout/main_custom_layout"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
