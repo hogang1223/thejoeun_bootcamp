@@ -2,13 +2,14 @@ package com.aosproject.imagemarket.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.aosproject.imagemarket.R;
 
-public class ImageAddCategoryActivity extends AppCompatActivity {
+public class ImageAddCategoryActivity extends Activity {
 
     ArrayAdapter<CharSequence> adapter = null;
     Spinner spinner = null;

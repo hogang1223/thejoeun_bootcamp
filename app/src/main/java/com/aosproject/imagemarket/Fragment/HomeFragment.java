@@ -1,28 +1,22 @@
 package com.aosproject.imagemarket.Fragment;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.aosproject.imagemarket.Activity.ImageAddFormatActivity;
-import com.aosproject.imagemarket.Activity.ImageAddNameActivity;
 import com.aosproject.imagemarket.Activity.ImageDetailActivity;
-import com.aosproject.imagemarket.Adapter.ImageAdapterhj;
-import com.aosproject.imagemarket.Bean.Imagehj;
-import com.aosproject.imagemarket.NetworkTask.NetworkTaskImagehj;
+import com.aosproject.imagemarket.Adapter.ImageAdapterHJ;
+import com.aosproject.imagemarket.Bean.ImageHJ;
+import com.aosproject.imagemarket.NetworkTask.NetworkTaskImageHJ;
 import com.aosproject.imagemarket.R;
 import com.aosproject.imagemarket.Util.ShareVar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,12 +25,12 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    String urlAddr = null;
+    String urlAddr, urlAddr2 = null;
     FloatingActionButton fabUp, fabPlus = null;
     RecyclerView recyclerView = null;
     RecyclerView.LayoutManager layoutManager = null;
-    ArrayList<Imagehj> images = null;
-    ImageAdapterhj adapter = null;
+    ArrayList<ImageHJ> images = null;
+    ImageAdapterHJ adapter = null;
 
     @Nullable
     @Override
@@ -68,30 +62,22 @@ public class HomeFragment extends Fragment {
             fabPlus.setOnClickListener(onClickListener);
             setFloatingActionButton(recyclerView);
 
-//            fabUp.setOnClickListener(onClickListener);
-//            fabPlus.setOnClickListener(onClickListener);
-
             urlAddr = ShareVar.macIP + "jsp/mainImageSelect.jsp";
             Log.v("Message", urlAddr);
 
-            NetworkTaskImagehj networkTask = new NetworkTaskImagehj(getActivity(), urlAddr, "mainSelect");
+            NetworkTaskImageHJ networkTask = new NetworkTaskImageHJ(getActivity(), urlAddr, "mainSelect");
             Object obj = networkTask.execute().get();
-            images = (ArrayList<Imagehj>) obj;
+            images = (ArrayList<ImageHJ>) obj;
 
-            //adapter = new ImageAdapterhj(getActivity(), R.layout.main_custom_layout, images);
-            adapter = new ImageAdapterhj(getActivity(), this.images);
-            
-            getData();
-            
+            adapter = new ImageAdapterHJ(getActivity(), R.layout.main_custom_layout, images);
             recyclerView.setAdapter(adapter);
 
-            adapter.setOnItemClickListener(new ImageAdapterhj.OnItemClickListener() {
+            adapter.setOnItemClickListener(new ImageAdapterHJ.OnItemClickListener() {
                 @Override
                 public void onItemClick(View v, int pos) {
                     Intent intent = null;
                     intent = new Intent(getActivity(), ImageDetailActivity.class);
                     intent.putExtra("code", images.get(pos).getCode());
-                    intent.putExtra("filePath", images.get(pos).getFilepath());
                     startActivity(intent);
                 }
             });
@@ -101,15 +87,10 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private void getData() {
-
-        ProgressDialog progressDialog = new ProgressDialog(getActivity());
-
-    }
-
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
             Intent intent = new Intent(getActivity(), ImageDetailActivity.class);
             startActivity(intent);
         }
@@ -119,12 +100,12 @@ public class HomeFragment extends Fragment {
         fabUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "up", Toast.LENGTH_SHORT).show();
-                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                StaggeredGridLayoutManager layoutManager = (StaggeredGridLayoutManager) recyclerView.getLayoutManager();
                 layoutManager.scrollToPositionWithOffset(0, 0);
             }
         });
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

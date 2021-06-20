@@ -2,50 +2,43 @@ package com.aosproject.imagemarket.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aosproject.imagemarket.Bean.Imagehj;
+import com.aosproject.imagemarket.Bean.ImageHJ;
 import com.aosproject.imagemarket.R;
+import com.aosproject.imagemarket.Util.ShareVar;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
 import java.util.ArrayList;
 
-public class ImageAdapterhj extends RecyclerView.Adapter<ImageAdapterhj.ViewHolder> {
+public class ImageAdapterHJ extends RecyclerView.Adapter<ImageAdapterHJ.ViewHolder> {
 
     private Context mContext = null;
     private int layout = 0;
-    private ArrayList<Imagehj> images = null;
+    private ArrayList<ImageHJ> images = null;
     private LayoutInflater inflater = null;
     private OnItemClickListener mListener = null;
     private OnItemLongClickListener mLongListener = null;
-    private ArrayList<Imagehj> unFilteredlist;
-    private ArrayList<Imagehj> filteredList;
+    private ArrayList<ImageHJ> unFilteredlist;
+    private ArrayList<ImageHJ> filteredList;
     private Activity activity;
 
-//    public ImageAdapterhj(Context mContext, int layout, ArrayList<Imagehj> images){
-//        this.mContext = mContext;
-//        this.layout = layout;
-//        this.images = images;
-//        this.inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//    }
-
-    public ImageAdapterhj(Activity activity, ArrayList<Imagehj> images){
-        this.activity = activity;
+    public ImageAdapterHJ(Context mContext, int layout, ArrayList<ImageHJ> images){
+        this.mContext = mContext;
+        this.layout = layout;
         this.images = images;
+        this.inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void  filterList(ArrayList<Imagehj> filteredList) {
+    public void  filterList(ArrayList<ImageHJ> filteredList) {
         images = filteredList;
         notifyDataSetChanged();
     }
@@ -100,16 +93,10 @@ public class ImageAdapterhj extends RecyclerView.Adapter<ImageAdapterhj.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ImageAdapterhj.ViewHolder holder, int position) {
-        Imagehj data = images.get(position);
+    public void onBindViewHolder(@NonNull ImageAdapterHJ.ViewHolder holder, int position) {
+        ImageHJ data = images.get(position);
 
-        Glide.with(activity).load(data.getFilepath()).transform(new FitCenter(), new RoundedCorners(25)).into(holder.img);
-
-//        ViewGroup.LayoutParams layoutParams = holder.itemView.getLayoutParams();
-//        layoutParams.height = (int) ((position + 1) / 5.0 * 500);
-//        holder.itemView.setLayoutParams(layoutParams);
-//        holder.itemView.layout(0,0,0,0)
-//        Glide.with(context).load(url).placeholder(R.color.gray).dontTransform().into(imageView);
+        Glide.with(mContext).load(ShareVar.macIP + "image/" + data.getFilepath()).transform(new FitCenter(), new RoundedCorners(25)).into(holder.img);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.aosproject.imagemarket.Bean;
 
-public class Imagehj {
+public class ImageHJ {
 
     int code;
     String filepath;
@@ -12,17 +12,28 @@ public class Imagehj {
     int price;
     String location;
 
-    public Imagehj(int code) {
+    public ImageHJ(int code) {
         this.code = code;
     }
 
-    public Imagehj(int code, String filepath) {
+    public ImageHJ(int code, String filepath) {
         this.code = code;
         this.filepath = filepath;
     }
 
-    public Imagehj(int code, String filepath, String title, String detail, String fileformat, int category, String tag, int price, String location) {
+    public ImageHJ(int code, String filepath, String title, String detail, String fileformat, int category, String tag, int price, String location) {
         this.code = code;
+        this.filepath = filepath;
+        this.title = title;
+        this.detail = detail;
+        this.fileformat = fileformat;
+        this.category = category;
+        this.tag = tag;
+        this.price = price;
+        this.location = location;
+    }
+
+    public ImageHJ(String filepath, String title, String detail, String fileformat, int category, String tag, int price, String location) {
         this.filepath = filepath;
         this.title = title;
         this.detail = detail;

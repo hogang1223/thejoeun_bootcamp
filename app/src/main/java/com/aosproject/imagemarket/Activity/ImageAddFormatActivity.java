@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 
 import com.aosproject.imagemarket.R;
 
-public class ImageAddFormatActivity extends AppCompatActivity {
+public class ImageAddFormatActivity extends Activity {
 
     ArrayAdapter<CharSequence> adapter = null;
     Spinner spinner = null;

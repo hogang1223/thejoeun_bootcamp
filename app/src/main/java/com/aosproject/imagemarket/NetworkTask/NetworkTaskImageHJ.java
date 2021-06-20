@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.aosproject.imagemarket.Bean.Imagehj;
+import com.aosproject.imagemarket.Bean.ImageHJ;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,19 +17,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class NetworkTaskImagehj extends AsyncTask<Integer, String, Object> {
+public class NetworkTaskImageHJ extends AsyncTask<Integer, String, Object> {
 
     Context context = null;
     String mAddr = null;
     ProgressDialog progressDialog = null;
-    ArrayList<Imagehj> images = null;
+    ArrayList<ImageHJ> images = null;
     String where = null;
 
-    public NetworkTaskImagehj(Context context, String mAddr, String where){
+    public NetworkTaskImageHJ(Context context, String mAddr, String where){
         this.context = context;
         this.mAddr = mAddr;
         this.images = images;
-        this.images = new ArrayList<Imagehj>();
+        this.images = new ArrayList<ImageHJ>();
         this.where = where;
     }
 
@@ -88,8 +88,8 @@ public class NetworkTaskImagehj extends AsyncTask<Integer, String, Object> {
                 }
                 if (where.equals("mainSelect")) {
                     parserSelect(stringBuffer.toString());
-                } else if(where.equals("delete")){
-                    result = parserAction(stringBuffer.toString());
+                } else if(where.equals("detailSelect")){
+                    parserSelect2(stringBuffer.toString());
                 }else if(where.equals("update")){
                     result = parserAction(stringBuffer.toString());
                 }else {
@@ -109,8 +109,8 @@ public class NetworkTaskImagehj extends AsyncTask<Integer, String, Object> {
         }
         if(where.equals("mainSelect")){
             return images;
-        }else if(where.equals("delete")){
-            return result;
+        }else if(where.equals("detailSelect")){
+            return images;
         }else if(where.equals("update")){
             return result;
         }else if (where.equals("select")){
@@ -144,7 +144,32 @@ public class NetworkTaskImagehj extends AsyncTask<Integer, String, Object> {
                 int code = jsonObject1.getInt("code");
                 String filepath = jsonObject1.getString("filepath");
 
-                Imagehj image = new Imagehj(code, filepath);
+                ImageHJ image = new ImageHJ(code, filepath);
+                images.add(image);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void parserSelect2(String str){
+        try {
+            JSONObject jsonObject = new JSONObject(str);
+            JSONArray jsonArray = new JSONArray(jsonObject.getString("images_info"));
+            images.clear();
+
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                int category = jsonObject1.getInt("category");
+                int price = jsonObject1.getInt("price");
+                String tag = jsonObject1.getString("tag");
+                String detail = jsonObject1.getString("detail");
+                String title = jsonObject1.getString("title");
+                String filepath = jsonObject1.getString("filepath");
+                String location = jsonObject1.getString("location");
+                String fileformat = jsonObject1.getString("fileformat");
+
+                ImageHJ image = new ImageHJ(filepath, title, detail, fileformat, category, tag, price, location);
                 images.add(image);
             }
         }catch (Exception e){
