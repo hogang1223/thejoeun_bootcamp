@@ -87,14 +87,13 @@
                     android:textStyle="bold"
                     />
 
-                <Spinner
-                    android:id="@+id/add_spinner_format"
+                <EditText
+                    android:id="@+id/add_tag_edit"
+                    android:layout_margin="40dp"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/spinner_background"
-                    android:layout_margin="20dp"
-                    android:theme="@style/SpinnerDivideStyle"
-                    android:spinnerMode="dropdown"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="태그를 검색 후, 선택해주세요"
                     />
 
             </LinearLayout>
@@ -104,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_marginTop="210dp"
+                android:layout_marginTop="170dp"
                 >
 
                 <Button

@@ -92,7 +92,6 @@
                     android:layout_margin="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
                     android:hint="최대 150자 이내로 입력해주세요"
                     android:scrollbars="vertical"
                     android:maxLines="5"

@@ -23,8 +23,8 @@ public class ImageDetailActivity extends Activity {
 
     String urlAddr = null;
     int code = 0;
-    TextView detailImageName, detailImageRecommend, detailImagePrice = null;
-    ImageView imageView;
+    TextView detailImageName, detailImageRecommend, detailImagePrice, detailImageFormat, detailImageDetail, detailImageCategory = null;
+    ImageView imageView, iv1, iv2, iv3;
     ArrayList<ImageHJ> images = null;
     Chip c0, c1, c2, c3, c4, c5, c6, c7, c8;
 
@@ -49,6 +49,9 @@ public class ImageDetailActivity extends Activity {
         detailImageName = findViewById(R.id.detail_textview_name);
         detailImageRecommend = findViewById(R.id.detail_textview_recommend);
         detailImagePrice = findViewById(R.id.detail_textview_price);
+        detailImageFormat = findViewById(R.id.detail_textview_format);
+        detailImageDetail = findViewById(R.id.detail_textview_detail);
+        detailImageCategory = findViewById(R.id.detail_textview_category);
         imageView = findViewById(R.id.detail_image);
         c0 = findViewById(R.id.detail_chip_0);
         c1 = findViewById(R.id.detail_chip_1);
@@ -71,6 +74,15 @@ public class ImageDetailActivity extends Activity {
         for(int i=0; i<parserData.length; i++){
             chip[i].setText(parserData[i]);
             chip[i].setVisibility(View.VISIBLE);
+        }
+        detailImageFormat.setText(images.get(0).getFileformat());
+        detailImageDetail.setText(images.get(0).getDetail());
+        if(images.get(0).getCategory()==1){
+            detailImageCategory.setText("사진");
+        }else if(images.get(0).getCategory()==2){
+            detailImageCategory.setText("일러스트");
+        }else if(images.get(0).getCategory()==2){
+            detailImageCategory.setText("캘리그라피");
         }
     }
 }

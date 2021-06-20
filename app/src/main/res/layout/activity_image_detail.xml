@@ -38,6 +38,12 @@
 
         </FrameLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#A8A8A8"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,24 +56,27 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:gravity="center"
                 >
 
                 <ImageView
                     android:id="@+id/detail_image"
                     android:layout_width="370dp"
-                    android:layout_height="370dp"
+                    android:layout_height="430dp"
                     android:src="@mipmap/ic_launcher"
                     />
 
             </LinearLayout>
 
-            <LinearLayout
+            <HorizontalScrollView
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:overScrollMode="never"
+                android:scrollbars="none"
                 >
 
                 <com.google.android.material.chip.ChipGroup
@@ -154,7 +163,7 @@
 
                 </com.google.android.material.chip.ChipGroup>
 
-            </LinearLayout>
+            </HorizontalScrollView>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -214,24 +223,24 @@
 
                 <Button
                     android:id="@+id/detail_btn_cart"
-                    android:layout_width="170dp"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:text="장바구니"
                     android:textColor="#845EC2"
                     android:textStyle="bold"
                     android:backgroundTint="#FFFFFF"
-                    android:layout_margin="10dp"
+                    android:layout_marginRight="10dp"
                     />
 
                 <Button
                     android:id="@+id/detail_btn_buy"
-                    android:layout_width="170dp"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:text="바로 구매"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:backgroundTint="#845EC2"
-                    android:layout_margin="10dp"
+                    android:layout_marginLeft="10dp"
                     />
 
             </LinearLayout>
@@ -280,23 +289,81 @@
 
                 <Button
                     android:id="@+id/detail_btn_cart_slide"
-                    android:layout_width="170dp"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="#FFFFFF"
                     android:text="장바구니"
                     android:textColor="#845EC2"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFFFFF"
+                    android:layout_marginRight="10dp"
+                    />
 
                 <Button
                     android:id="@+id/detail_btn_buy_slide"
-                    android:layout_width="170dp"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:backgroundTint="#845EC2"
                     android:text="바로 구매"
                     android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:backgroundTint="#845EC2"
+                    android:layout_marginLeft="10dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                >
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="카테고리"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="파일형식"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="20dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/detail_textview_category"
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="카테고리"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/detail_textview_format"
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="파일형식"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="20dp"
+                    />
 
             </LinearLayout>
 
@@ -304,14 +371,77 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginTop="30dp"
                 >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="여기는 서랍 안입니다."
+                    android:text="설명"
                     android:textSize="20dp"
+                    android:layout_marginLeft="20dp"
                     />
+
+                <TextView
+                    android:id="@+id/detail_textview_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="설명"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:visibility="invisible"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="위치"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/detail_textview_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="위치"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="작가의 다른 이미지"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    />
+
 
             </LinearLayout>
 

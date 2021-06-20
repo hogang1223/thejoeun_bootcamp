@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.aosproject.imagemarket.Activity.ImageAddContentActivity;
+import com.aosproject.imagemarket.Activity.ImageAddImageActivity;
 import com.aosproject.imagemarket.Activity.ImageDetailActivity;
 import com.aosproject.imagemarket.Adapter.ImageAdapterHJ;
 import com.aosproject.imagemarket.Bean.ImageHJ;
@@ -90,8 +92,7 @@ public class HomeFragment extends Fragment {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            Intent intent = new Intent(getActivity(), ImageDetailActivity.class);
+            Intent intent = new Intent(getActivity(), ImageAddImageActivity.class);
             startActivity(intent);
         }
     };
