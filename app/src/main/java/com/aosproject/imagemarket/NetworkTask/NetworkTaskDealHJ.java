@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.aosproject.imagemarket.Bean.UserHJ;
+import com.aosproject.imagemarket.Bean.DealHJ;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,21 +17,22 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class NetworkTaskUserHJ extends AsyncTask<Integer, String, Object> {
+public class NetworkTaskDealHJ extends AsyncTask<Integer, String, Object> {
 
     Context context = null;
     String mAddr = null;
     ProgressDialog progressDialog = null;
-    ArrayList<UserHJ> users = null;
+    ArrayList<DealHJ> deals = null;
     String where = null;
 
-    public NetworkTaskUserHJ(Context context, String mAddr, String where){
+    public NetworkTaskDealHJ(Context context, String mAddr, String where){
         this.context = context;
         this.mAddr = mAddr;
-        this.users = users;
-        this.users = new ArrayList<UserHJ>();
+        this.deals = deals;
+        this.deals = new ArrayList<DealHJ>();
         this.where = where;
     }
+
 
     @Override
     protected void onPreExecute() {
@@ -86,7 +87,7 @@ public class NetworkTaskUserHJ extends AsyncTask<Integer, String, Object> {
                     if(strLine == null) break;
                     stringBuffer.append(strLine + "\n");
                 }
-                if (where.equals("mainSelect")) {
+                if (where.equals("recommendSelect")) {
                     parserSelect(stringBuffer.toString());
                 } else if(where.equals("detailSelect")){
                     parserSelect(stringBuffer.toString());
@@ -109,16 +110,16 @@ public class NetworkTaskUserHJ extends AsyncTask<Integer, String, Object> {
                 e.printStackTrace();
             }
         }
-        if(where.equals("mainSelect")){
-            return users;
+        if(where.equals("recommendSelect")){
+            return deals;
         }else if(where.equals("detailSelect")){
-            return users;
+            return deals;
         }else if(where.equals("update")){
             return result;
         }else if (where.equals("select")){
-            return users;
+            return deals;
         }else if(where.equals("accountSelect")){
-            return users;
+            return deals;
         }else {
             return result;
         }
@@ -140,15 +141,15 @@ public class NetworkTaskUserHJ extends AsyncTask<Integer, String, Object> {
     private void parserSelect(String str){
         try {
             JSONObject jsonObject = new JSONObject(str);
-            JSONArray jsonArray = new JSONArray(jsonObject.getString("account_info"));
-            users.clear();
+            JSONArray jsonArray = new JSONArray(jsonObject.getString("recommend_info"));
+            deals.clear();
 
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
-                String account_bank = jsonObject1.getString("account_bank");
+                int recommend = jsonObject1.getInt("recommend");
 
-                UserHJ user = new UserHJ(account_bank);
-                users.add(user);
+                DealHJ deal = new DealHJ(recommend);
+                deals.add(deal);
             }
         }catch (Exception e){
             e.printStackTrace();

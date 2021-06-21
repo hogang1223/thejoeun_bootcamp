@@ -1,11 +1,14 @@
 package com.aosproject.imagemarket.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,10 +18,13 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.aosproject.imagemarket.Activity.ImageAddContentActivity;
 import com.aosproject.imagemarket.Activity.ImageAddImageActivity;
+import com.aosproject.imagemarket.Activity.ImageAddLocationActivity;
 import com.aosproject.imagemarket.Activity.ImageDetailActivity;
 import com.aosproject.imagemarket.Adapter.ImageAdapterHJ;
 import com.aosproject.imagemarket.Bean.ImageHJ;
+import com.aosproject.imagemarket.Bean.UserHJ;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskImageHJ;
+import com.aosproject.imagemarket.NetworkTask.NetworkTaskUserHJ;
 import com.aosproject.imagemarket.R;
 import com.aosproject.imagemarket.Util.ShareVar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +38,7 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView = null;
     RecyclerView.LayoutManager layoutManager = null;
     ArrayList<ImageHJ> images = null;
+    ArrayList<UserHJ> users = null;
     ImageAdapterHJ adapter = null;
 
     @Nullable
@@ -92,8 +99,47 @@ public class HomeFragment extends Fragment {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), ImageAddImageActivity.class);
-            startActivity(intent);
+            new AlertDialog.Builder(getActivity())
+                    .setMessage("이미지를 판매 등록을 진행하시겠습니까?")
+                    .setCancelable(false)
+                    .setNegativeButton("Cancel", null)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            urlAddr2 = ShareVar.macIP + "jsp/userAccountConfirm.jsp?email=" + ShareVar.loginEmail;
+
+                            try {
+                                NetworkTaskUserHJ networkTask = new NetworkTaskUserHJ(getActivity(), urlAddr2, "accountSelect");
+                                Object obj = networkTask.execute().get();
+                                users = (ArrayList<UserHJ>) obj;
+                                if(users.get(0).getAccount_bank().equals("none")){
+                                    new AlertDialog.Builder(getActivity())
+                                            .setMessage("계좌 정보가 없습니다.\n계좌 정보 등록 후, 판매 등록을 진행해주세요!")
+                                            .setCancelable(false)
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    // *************************** 도희님 개인정보 페이지 연결 ****************************
+                                                    Intent intent = new Intent(getActivity(), ImageAddLocationActivity.class);                                                    // *************************** 도희님 개인정보 페이지 연결 ****************************
+                                                    // *************************** 도희님 개인정보 페이지 연결 ****************************
+                                                    startActivity(intent);
+                                                }
+                                            })
+                                            .setNegativeButton("Cancel", null)
+                                            .show();
+                                }else {
+                                    Intent intent = new Intent(getActivity(), ImageAddImageActivity.class);
+                                    startActivity(intent);
+                                }
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+                        }
+                    })
+                    .show();
+
         }
     };
 

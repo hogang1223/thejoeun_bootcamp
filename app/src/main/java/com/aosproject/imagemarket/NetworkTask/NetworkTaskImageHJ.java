@@ -91,8 +91,10 @@ public class NetworkTaskImageHJ extends AsyncTask<Integer, String, Object> {
                     parserSelect(stringBuffer.toString());
                 } else if(where.equals("detailSelect")){
                     parserSelect2(stringBuffer.toString());
-                }else if(where.equals("update")){
+                }else if(where.equals("insert")){
                     result = parserAction(stringBuffer.toString());
+                }else if(where.equals("insertSelect")){
+                    parserSelect3(stringBuffer.toString());
                 }else {
                     result = parserAction(stringBuffer.toString());
                 }
@@ -112,9 +114,11 @@ public class NetworkTaskImageHJ extends AsyncTask<Integer, String, Object> {
             return images;
         }else if(where.equals("detailSelect")){
             return images;
-        }else if(where.equals("update")){
+        }else if(where.equals("insert")){
             return result;
         }else if (where.equals("select")){
+            return images;
+        }else if (where.equals("insertSelect")){
             return images;
         }else {
             return result;
@@ -144,8 +148,10 @@ public class NetworkTaskImageHJ extends AsyncTask<Integer, String, Object> {
                 JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
                 int code = jsonObject1.getInt("code");
                 String filepath = jsonObject1.getString("filepath");
+                String title = jsonObject1.getString("title");
+                int price = jsonObject1.getInt("price");
 
-                ImageHJ image = new ImageHJ(code, filepath);
+                ImageHJ image = new ImageHJ(code, filepath, title, price);
                 images.add(image);
             }
         }catch (Exception e){
@@ -178,4 +184,22 @@ public class NetworkTaskImageHJ extends AsyncTask<Integer, String, Object> {
         }
     }
 
+    private void parserSelect3(String str){
+        try {
+            Log.v("Message", "parserSelect3");
+            JSONObject jsonObject = new JSONObject(str);
+            JSONArray jsonArray = new JSONArray(jsonObject.getString("code_info"));
+            images.clear();
+
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                int code = jsonObject1.getInt("code");
+
+                ImageHJ image = new ImageHJ(code);
+                images.add(image);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

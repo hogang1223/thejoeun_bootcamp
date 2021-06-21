@@ -2,15 +2,19 @@ package com.aosproject.imagemarket.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aosproject.imagemarket.Bean.ImageHJ;
+import com.aosproject.imagemarket.Fragment.HomeFragment;
 import com.aosproject.imagemarket.R;
 import com.aosproject.imagemarket.Util.ShareVar;
 import com.bumptech.glide.Glide;
@@ -27,9 +31,6 @@ public class ImageAdapterHJ extends RecyclerView.Adapter<ImageAdapterHJ.ViewHold
     private LayoutInflater inflater = null;
     private OnItemClickListener mListener = null;
     private OnItemLongClickListener mLongListener = null;
-    private ArrayList<ImageHJ> unFilteredlist;
-    private ArrayList<ImageHJ> filteredList;
-    private Activity activity;
 
     public ImageAdapterHJ(Context mContext, int layout, ArrayList<ImageHJ> images){
         this.mContext = mContext;
@@ -66,21 +67,36 @@ public class ImageAdapterHJ extends RecyclerView.Adapter<ImageAdapterHJ.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public ImageView img;
+        public TextView tv;
 
         public ViewHolder(View itemView){
             super(itemView);
             img = itemView.findViewById(R.id.main_imageview);
+            tv = itemView.findViewById(R.id.main_textview_name_price);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
 
+                    Log.v("Message", "onClick : " + position);
                     if(position != RecyclerView.NO_POSITION){
                         mListener.onItemClick(v, position);
                     }
                 }
 
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    int position = getAdapterPosition();
+                    Log.v("Message", "longClick : " + position);
+                    img.setAlpha(80);
+                    tv.setVisibility(View.VISIBLE);
+                    tv.setText(images.get(position).getTitle()+"\n"+images.get(position).getPrice() + " 원");
+                    return true;
+                }
             });
         }
     }

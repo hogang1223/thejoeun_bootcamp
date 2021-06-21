@@ -16,9 +16,11 @@ public class ImageHJ {
         this.code = code;
     }
 
-    public ImageHJ(int code, String filepath) {
+    public ImageHJ(int code, String filepath, String title, int price) {
         this.code = code;
         this.filepath = filepath;
+        this.title = title;
+        this.price = price;
     }
 
     public ImageHJ(int code, String filepath, String title, String detail, String fileformat, int category, String tag, int price, String location) {

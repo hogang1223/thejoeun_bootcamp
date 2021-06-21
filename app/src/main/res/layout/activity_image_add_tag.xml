@@ -21,13 +21,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="태그 선택"
+                android:text="태그 입력"
                 android:gravity="center"
                 android:textSize="20dp"
                 android:layout_gravity="center"
                 android:textColor="@color/black"
                 />
             <ImageView
+                android:id="@+id/add_tag_ivbtn_back"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24"
@@ -81,20 +82,41 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="이미지의 태그를 선택해주세요"
+                    android:text="이미지의 태그를 입력해주세요"
                     android:textSize="25dp"
                     android:gravity="center"
                     android:textStyle="bold"
                     />
-
-                <EditText
-                    android:id="@+id/add_tag_edit"
-                    android:layout_margin="40dp"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="태그를 검색 후, 선택해주세요"
+                    android:text="(최대 9개까지 입력 가능)"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
                     />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/add_tag_layout"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:errorEnabled="true"
+                    android:layout_marginTop="20dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/add_tag_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="ex) 강,바다,풍경,산,방학,여행,물,"
+                        android:maxLength="100"
+                        android:inputType="text"
+                        android:scrollbars="horizontal"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 

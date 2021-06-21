@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aosproject.imagemarket.Bean.DealHJ;
 import com.aosproject.imagemarket.Bean.ImageHJ;
+import com.aosproject.imagemarket.NetworkTask.NetworkTaskDealHJ;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskImageHJ;
 import com.aosproject.imagemarket.R;
 import com.aosproject.imagemarket.Util.ShareVar;
@@ -21,11 +23,12 @@ import java.util.ArrayList;
 
 public class ImageDetailActivity extends Activity {
 
-    String urlAddr = null;
-    int code = 0;
+    String urlAddr, urlAddr2 = null;
+    int code, recommend = 0;
     TextView detailImageName, detailImageRecommend, detailImagePrice, detailImageFormat, detailImageDetail, detailImageCategory = null;
-    ImageView imageView, iv1, iv2, iv3;
+    ImageView imageView, iv1, iv2, iv3, back;
     ArrayList<ImageHJ> images = null;
+    ArrayList<DealHJ> deals = null;
     Chip c0, c1, c2, c3, c4, c5, c6, c7, c8;
 
     @Override
@@ -53,6 +56,7 @@ public class ImageDetailActivity extends Activity {
         detailImageDetail = findViewById(R.id.detail_textview_detail);
         detailImageCategory = findViewById(R.id.detail_textview_category);
         imageView = findViewById(R.id.detail_image);
+        back = findViewById(R.id.detail_ivbtn_back);
         c0 = findViewById(R.id.detail_chip_0);
         c1 = findViewById(R.id.detail_chip_1);
         c2 = findViewById(R.id.detail_chip_2);
@@ -75,6 +79,23 @@ public class ImageDetailActivity extends Activity {
             chip[i].setText(parserData[i]);
             chip[i].setVisibility(View.VISIBLE);
         }
+
+        urlAddr2 = ShareVar.macIP + "jsp/imageRecommend.jsp?code=" + code;
+        Log.v("Message", urlAddr2);
+        try {
+            Log.v("Message", "network");
+            NetworkTaskDealHJ networkTask = new NetworkTaskDealHJ(ImageDetailActivity.this, urlAddr2, "recommendSelect");
+            Object obj = networkTask.execute().get();
+            deals = (ArrayList<DealHJ>) obj;
+            recommend = deals.get(0).getRecommend();
+            Log.v("Message", deals.get(0).getRecommend() + "log");
+            detailImageRecommend.setText(recommend + " 명이 추천합니다");
+        }catch (Exception e){
+            Log.v("Message", "error");
+            detailImageRecommend.setText("0 명이 추천합니다");
+            e.printStackTrace();
+        }
+
         detailImageFormat.setText(images.get(0).getFileformat());
         detailImageDetail.setText(images.get(0).getDetail());
         if(images.get(0).getCategory()==1){
@@ -84,5 +105,19 @@ public class ImageDetailActivity extends Activity {
         }else if(images.get(0).getCategory()==2){
             detailImageCategory.setText("캘리그라피");
         }
+
+        back.setOnClickListener(onClickListener);
+
     }
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.detail_ivbtn_back:
+                    finish();
+                    break;
+            }
+        }
+    };
 }

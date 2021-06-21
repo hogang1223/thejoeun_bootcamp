@@ -38,6 +38,7 @@
                 android:textColor="@color/black"
                 />
             <ImageView
+                android:id="@+id/add_price_ivbtn_back"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24"
@@ -45,6 +46,7 @@
                 android:layout_marginLeft="30dp"
                 app:tint="@color/black"
                 />
+
         </FrameLayout>
         <!--밑줄 선-->
         <TextView
@@ -97,14 +99,25 @@
                     android:textStyle="bold"
                     />
 
-                <EditText
-                    android:id="@+id/add_price_edit"
-                    android:layout_margin="40dp"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/add_price_layout"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:hint="숫자로만 입력해주세요"
-                    />
+                    app:boxBackgroundColor="@android:color/white"
+                    app:errorEnabled="true"
+                    android:layout_marginTop="20dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/add_price_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="숫자로만 입력해주세요"
+                        android:maxLength="100"
+                        android:inputType="number"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
@@ -113,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_marginTop="170dp"
+                android:layout_marginTop="190dp"
                 >
 
                 <Button

@@ -33,7 +33,7 @@ import java.util.Date;
 public class ImageAddImageActivity extends Activity {
 
     String imageName = null;
-    ImageView uploadImg = null;
+    ImageView uploadImg, imageView = null;
     Button button = null;
     private final int REQ_CODE_SELECT_IMAGE = 300; // Gallery Return Code
     private String img_path = null; // 최종 file name
@@ -53,9 +53,11 @@ public class ImageAddImageActivity extends Activity {
 
         uploadImg = findViewById(R.id.image_upload);
         button = findViewById(R.id.add_image_btn_next);
+        imageView = findViewById(R.id.add_image_ivbtn_back);
 
         uploadImg.setOnClickListener(onClickListener);
         button.setOnClickListener(onClickListener);
+        imageView.setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -93,6 +95,9 @@ public class ImageAddImageActivity extends Activity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    break;
+                case R.id.add_image_ivbtn_back:
+                    finish();
                     break;
             }
         }
