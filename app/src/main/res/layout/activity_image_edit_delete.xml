@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -29,6 +29,7 @@
                 android:textColor="@color/black"
                 />
             <ImageView
+                android:id="@+id/edit_delete_ivbtn_back"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24"
@@ -48,31 +49,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             >
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:gravity="center"
                 >
 
                 <ImageView
                     android:id="@+id/edit_delete_image"
                     android:layout_width="370dp"
-                    android:layout_height="300dp"
+                    android:layout_height="420dp"
+                    android:src="@mipmap/ic_launcher"
                     />
 
             </LinearLayout>
 
-
-            <LinearLayout
+            <HorizontalScrollView
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:overScrollMode="never"
+                android:scrollbars="none"
                 >
 
                 <com.google.android.material.chip.ChipGroup
@@ -86,69 +91,98 @@
                     >
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/edit_delete_chip_01"
+                        android:id="@+id/edit_delete_chip_0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
+                        android:visibility="invisible"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/edit_delete_chip_02"
+                        android:id="@+id/edit_delete_chip_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
+                        android:visibility="invisible"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/edit_delete_chip_03"
+                        android:id="@+id/edit_delete_chip_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
+                        android:visibility="invisible"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/edit_delete_chip_04"
+                        android:id="@+id/edit_delete_chip_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
+                        android:visibility="invisible"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/edit_delete_chip_05"
+                        android:id="@+id/edit_delete_chip_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
+                        android:visibility="invisible"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/edit_delete_chip_06"
+                        android:id="@+id/edit_delete_chip_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
+                        android:visibility="invisible"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/edit_delete_chip_07"
+                        android:id="@+id/edit_delete_chip_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
+                        android:visibility="invisible"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/edit_delete_chip_08"
+                        android:id="@+id/edit_delete_chip_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
+                        android:visibility="invisible"
                         />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/edit_delete_chip_09"
+                        android:id="@+id/edit_delete_chip_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
+                        android:visibility="invisible"
                         />
 
                 </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="right"
+                android:layout_marginTop="16dp"
+                >
+
+                <TextView
+                    android:id="@+id/edit_delete_textview_seller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="작가"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:gravity="right"
+                    />
 
             </LinearLayout>
 
@@ -157,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="right"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 >
 
                 <ImageView
@@ -185,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="right"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 >
 
                 <TextView
@@ -205,29 +239,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="16dp"
                 >
 
                 <Button
                     android:id="@+id/edit_delete_btn_delete"
-                    android:layout_width="170dp"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:text="삭제"
                     android:textColor="#845EC2"
                     android:textStyle="bold"
                     android:backgroundTint="#FFFFFF"
-                    android:layout_margin="10dp"
+                    android:layout_marginRight="10dp"
                     />
 
                 <Button
                     android:id="@+id/edit_delete_btn_edit"
-                    android:layout_width="170dp"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:text="수정"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:backgroundTint="#845EC2"
-                    android:layout_margin="10dp"
+                    android:layout_marginLeft="10dp"
                     />
 
             </LinearLayout>
@@ -236,4 +270,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

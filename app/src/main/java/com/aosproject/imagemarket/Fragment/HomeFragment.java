@@ -20,6 +20,8 @@ import com.aosproject.imagemarket.Activity.ImageAddContentActivity;
 import com.aosproject.imagemarket.Activity.ImageAddImageActivity;
 import com.aosproject.imagemarket.Activity.ImageAddLocationActivity;
 import com.aosproject.imagemarket.Activity.ImageDetailActivity;
+import com.aosproject.imagemarket.Activity.ImageEditActivity;
+import com.aosproject.imagemarket.Activity.ImageEditDeleteActivity;
 import com.aosproject.imagemarket.Adapter.ImageAdapterHJ;
 import com.aosproject.imagemarket.Bean.ImageHJ;
 import com.aosproject.imagemarket.Bean.UserHJ;
@@ -121,7 +123,7 @@ public class HomeFragment extends Fragment {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     // *************************** 도희님 개인정보 페이지 연결 ****************************
-                                                    Intent intent = new Intent(getActivity(), ImageAddLocationActivity.class);                                                    // *************************** 도희님 개인정보 페이지 연결 ****************************
+                                                    Intent intent = new Intent(getActivity(), ImageEditDeleteActivity.class);
                                                     // *************************** 도희님 개인정보 페이지 연결 ****************************
                                                     startActivity(intent);
                                                 }

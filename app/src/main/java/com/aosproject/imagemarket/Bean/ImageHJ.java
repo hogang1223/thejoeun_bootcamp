@@ -12,6 +12,11 @@ public class ImageHJ {
     int price;
     String location;
     String user_email;
+    String myname;
+
+    public ImageHJ(String myname) {
+        this.myname = myname;
+    }
 
     public ImageHJ(int code) {
         this.code = code;
@@ -137,5 +142,13 @@ public class ImageHJ {
 
     public void setUser_email(String user_email) {
         this.user_email = user_email;
+    }
+
+    public String getMyname() {
+        return myname;
+    }
+
+    public void setMyname(String myname) {
+        this.myname = myname;
     }
 }

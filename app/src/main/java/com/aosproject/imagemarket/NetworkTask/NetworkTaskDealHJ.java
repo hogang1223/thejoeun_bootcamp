@@ -92,11 +92,11 @@ public class NetworkTaskDealHJ extends AsyncTask<Integer, String, Object> {
                 } else if(where.equals("detailSelect")){
                     parserSelect(stringBuffer.toString());
                 }else if(where.equals("update")){
-                    result = parserAction(stringBuffer.toString());
+                    //result = parserAction(stringBuffer.toString());
                 }else if(where.equals("accountSelect")){
                     parserSelect(stringBuffer.toString());
                 } else {
-                    result = parserAction(stringBuffer.toString());
+                    //result = parserAction(stringBuffer.toString());
                 }
             }
         }catch (Exception e){
@@ -125,18 +125,18 @@ public class NetworkTaskDealHJ extends AsyncTask<Integer, String, Object> {
         }
     }
 
-    private String parserAction(String str){
-        String returnValue = null;
-        try {
-            JSONObject jsonObject = new JSONObject(str);
-            returnValue = jsonObject.getString("result");
-            Log.v("Message", returnValue);
-            // {"result" : "ok"} 이런걸 서버에서 받아온다는 것임
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return returnValue;
-    }
+//    private String parserAction(String str){
+//        String returnValue = null;
+//        try {
+//            JSONObject jsonObject = new JSONObject(str);
+//            returnValue = jsonObject.getString("result");
+//            Log.v("Message", returnValue);
+//            // {"result" : "ok"} 이런걸 서버에서 받아온다는 것임
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return returnValue;
+//    }
 
     private void parserSelect(String str){
         try {

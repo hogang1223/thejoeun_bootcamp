@@ -100,17 +100,18 @@ public class ImageAddLocationActivity extends Activity {
                                                 Log.v("Message", "제발!!!" + result2);
                                                 if (result2.equals("1")){
                                                     Log.v("Message", "한 번 더!!!" + result2);
-                                                    Toast.makeText(ImageAddLocationActivity.this, "이미지가 추가되었습니다", Toast.LENGTH_SHORT).show();
-                                                    intent = new Intent(ImageAddLocationActivity.this, ImageEditDeleteActivity.class);
-                                                    intent.putExtra("filepath", filepath);
-                                                    intent.putExtra("title", title);
-                                                    intent.putExtra("detail", detail);
-                                                    intent.putExtra("fileformat", fileformat);
-                                                    intent.putExtra("category", category);
-                                                    intent.putExtra("tag", tag);
-                                                    intent.putExtra("price", price);
-                                                    intent.putExtra("location", "none");
-                                                    startActivity(intent);
+                                                    new AlertDialog.Builder(ImageAddLocationActivity.this)
+                                                            .setMessage("이미지 등록이 완료되었습니다!")
+                                                            .setCancelable(false)
+                                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                    Intent intent = new Intent(ImageAddLocationActivity.this, ImageEditDeleteActivity.class);
+                                                                    intent.putExtra("code", image_code);
+                                                                    startActivity(intent);
+                                                                }
+                                                            })
+                                                            .show();
                                                 }else {
                                                     Toast.makeText(ImageAddLocationActivity.this, "입력이 실패 되었습니다", Toast.LENGTH_SHORT).show();
                                                 }
@@ -128,7 +129,6 @@ public class ImageAddLocationActivity extends Activity {
                                         //String result3 = connectInsertData3();
 
                                         if (result.equals("1")){
-                                            Toast.makeText(ImageAddLocationActivity.this, "이미지가 추가되었습니다", Toast.LENGTH_SHORT).show();
                                             try {
                                                 urlAddr3 = ShareVar.macIP + "jsp/imageSelect.jsp";
                                                 Log.v("Message", urlAddr3);
@@ -144,17 +144,18 @@ public class ImageAddLocationActivity extends Activity {
                                                 Log.v("Message", "제발!!!" + result2);
                                                 if (result2.equals("1")){
                                                     Log.v("Message", "한 번 더!!!" + result2);
-                                                    Toast.makeText(ImageAddLocationActivity.this, "이미지가 추가되었습니다", Toast.LENGTH_SHORT).show();
-                                                    intent = new Intent(ImageAddLocationActivity.this, ImageEditDeleteActivity.class);
-                                                    intent.putExtra("filepath", filepath);
-                                                    intent.putExtra("title", title);
-                                                    intent.putExtra("detail", detail);
-                                                    intent.putExtra("fileformat", fileformat);
-                                                    intent.putExtra("category", category);
-                                                    intent.putExtra("tag", tag);
-                                                    intent.putExtra("price", price);
-                                                    intent.putExtra("location", editText.getText().toString());
-                                                    startActivity(intent);
+                                                    new AlertDialog.Builder(ImageAddLocationActivity.this)
+                                                            .setMessage("이미지 등록이 완료되었습니다!")
+                                                            .setCancelable(false)
+                                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                    Intent intent = new Intent(ImageAddLocationActivity.this, ImageEditDeleteActivity.class);
+                                                                    intent.putExtra("code", image_code);
+                                                                    startActivity(intent);
+                                                                }
+                                                            })
+                                                            .show();
                                                 }else {
                                                     Toast.makeText(ImageAddLocationActivity.this, "입력이 실패 되었습니다", Toast.LENGTH_SHORT).show();
                                                 }

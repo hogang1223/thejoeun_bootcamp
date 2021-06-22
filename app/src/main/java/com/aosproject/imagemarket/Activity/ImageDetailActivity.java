@@ -1,18 +1,28 @@
 package com.aosproject.imagemarket.Activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.aosproject.imagemarket.Adapter.ImageAdapterHJ;
 import com.aosproject.imagemarket.Bean.DealHJ;
 import com.aosproject.imagemarket.Bean.ImageHJ;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskDealHJ;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskImageHJ;
 import com.aosproject.imagemarket.R;
+import com.aosproject.imagemarket.Util.MyListDecoration;
 import com.aosproject.imagemarket.Util.ShareVar;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
@@ -23,13 +33,18 @@ import java.util.ArrayList;
 
 public class ImageDetailActivity extends Activity {
 
-    String urlAddr, urlAddr2, urlAddr3, user_email, filepath = null;
+    String urlAddr, urlAddr2, urlAddr3, urlAddr4, user_email, filepath = null;
     int code, recommend = 0;
-    TextView detailImageName, detailImageRecommend, detailImagePrice, detailImageFormat, detailImageDetail, detailImageCategory = null;
-    ImageView imageView, iv1, iv2, iv3, back;
+    TextView detailImageName, detailImageRecommend, detailImagePrice, detailImageFormat, detailImageDetail, detailImageCategory, detailImageLocation, detailImageSeller = null;
+    ImageView imageView, back;
     ArrayList<ImageHJ> images = null;
     ArrayList<DealHJ> deals = null;
     Chip c0, c1, c2, c3, c4, c5, c6, c7, c8;
+    RecyclerView recyclerView = null;
+    RecyclerView.LayoutManager layoutManager = null;
+    ImageAdapterHJ adapter = null;
+    LinearLayout linearLayout = null;
+    Button buy1, buy2, cart1, cart2 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +70,8 @@ public class ImageDetailActivity extends Activity {
         detailImageFormat = findViewById(R.id.detail_textview_format);
         detailImageDetail = findViewById(R.id.detail_textview_detail);
         detailImageCategory = findViewById(R.id.detail_textview_category);
+        detailImageLocation = findViewById(R.id.detail_textview_location);
+        detailImageSeller = findViewById(R.id.detail_textview_seller);
         imageView = findViewById(R.id.detail_image);
         back = findViewById(R.id.detail_ivbtn_back);
         c0 = findViewById(R.id.detail_chip_0);
@@ -66,6 +83,15 @@ public class ImageDetailActivity extends Activity {
         c6 = findViewById(R.id.detail_chip_6);
         c7 = findViewById(R.id.detail_chip_7);
         c8 = findViewById(R.id.detail_chip_8);
+        recyclerView = findViewById(R.id.detail_recyclerView);
+        linearLayout = findViewById(R.id.detail_layout);
+        buy1 = findViewById(R.id.detail_btn_buy);
+        buy2 = findViewById(R.id.detail_btn_buy_slide);
+        cart1 = findViewById(R.id.detail_btn_cart);
+        cart2 = findViewById(R.id.detail_btn_cart_slide);
+
+        layoutManager = new LinearLayoutManager(ImageDetailActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
 
         Chip[] chip = new Chip[9];
         chip = new Chip[]{c0, c1, c2, c3, c4, c5, c6, c7, c8};
@@ -105,23 +131,60 @@ public class ImageDetailActivity extends Activity {
         }else if(images.get(0).getCategory()==2){
             detailImageCategory.setText("캘리그라피");
         }
+        if(images.get(0).getLocation().equals("none")){
+            linearLayout.setVisibility(View.INVISIBLE);
+        }else {
+            linearLayout.setVisibility(View.VISIBLE);
+            detailImageLocation.setText(images.get(0).getLocation());
+        }
 
         user_email = images.get(0).getUser_email();
         urlAddr3 = ShareVar.macIP + "jsp/otherImagesSelect.jsp?user_email=" + user_email;
         Log.v("Message", urlAddr3);
         try {
             Log.v("Message", "network");
-            NetworkTaskDealHJ networkTask = new NetworkTaskDealHJ(ImageDetailActivity.this, urlAddr2, "imageSelect");
+            NetworkTaskImageHJ networkTask = new NetworkTaskImageHJ(ImageDetailActivity.this, urlAddr3, "imageSelect");
             Object obj = networkTask.execute().get();
             images = (ArrayList<ImageHJ>) obj;
             filepath = images.get(0).getFilepath();
             Log.v("Message", images.get(0).getFilepath() + "log");
+
+            adapter = new ImageAdapterHJ(ImageDetailActivity.this, R.layout.detail_custom_layout, images);
+            recyclerView.setAdapter(adapter);
+
+//            MyListDecoration decoration = new MyListDecoration();
+//            recyclerView.addItemDecoration(decoration);
+
+            adapter.setOnItemClickListener(new ImageAdapterHJ.OnItemClickListener() {
+                @Override
+                public void onItemClick(View v, int pos) {
+                    Intent intent1 = new Intent(ImageDetailActivity.this, ImageDetailActivity.class);
+                    intent1.putExtra("code", 1);
+                    //Log.v("Message", "code 확인 : " + images.get(pos).getCode());
+                    startActivity(intent1);
+                }
+            });
         }catch (Exception e){
             Log.v("Message", "error");
             e.printStackTrace();
         }
 
+        urlAddr4 = ShareVar.macIP + "jsp/sellerNameSelect.jsp?user_email=" + user_email;
+        Log.v("Message", urlAddr4);
+        try {
+            NetworkTaskImageHJ networkTask = new NetworkTaskImageHJ(ImageDetailActivity.this, urlAddr4, "nameSelect");
+            Object obj = networkTask.execute().get();
+            images = (ArrayList<ImageHJ>) obj;
+            detailImageSeller.setText(images.get(0).getMyname() + " 작가");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         back.setOnClickListener(onClickListener);
+        buy1.setOnClickListener(onClickListener);
+        buy2.setOnClickListener(onClickListener);
+        cart1.setOnClickListener(onClickListener);
+        cart2.setOnClickListener(onClickListener);
 
     }
 
@@ -131,6 +194,74 @@ public class ImageDetailActivity extends Activity {
             switch (v.getId()){
                 case R.id.detail_ivbtn_back:
                     finish();
+                    break;
+                case R.id.detail_btn_buy:
+                    new AlertDialog.Builder(ImageDetailActivity.this)
+                            .setMessage("해당 이미지를 구매하시겠습니까?")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // *************************** 효경님 구매 페이지 연결 ****************************
+                                    Intent intent = new Intent(ImageDetailActivity.this, ImageAddNameActivity.class);
+                                    // *************************** 효경님 구매 페이지 연결 ****************************
+                                    intent.putExtra("code", code);
+                                    startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton("Cancel", null)
+                            .show();
+                    break;
+                case R.id.detail_btn_buy_slide:
+                    new AlertDialog.Builder(ImageDetailActivity.this)
+                            .setMessage("해당 이미지를 구매하시겠습니까?")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // *************************** 효경님 구매 페이지 연결 ****************************
+                                    Intent intent = new Intent(ImageDetailActivity.this, ImageAddTagActivity.class);
+                                    // *************************** 효경님 구매 페이지 연결 ****************************
+                                    intent.putExtra("code", code);
+                                    startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton("Cancel", null)
+                            .show();
+                    break;
+                case R.id.detail_btn_cart:
+                    new AlertDialog.Builder(ImageDetailActivity.this)
+                            .setMessage("해당 이미지를 장바구니에 담으시겠습니까?")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                    Intent intent = new Intent(ImageDetailActivity.this, ImageAddNameActivity.class);
+                                    // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                    intent.putExtra("code", code);
+                                    startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton("Cancel", null)
+                            .show();
+                    break;
+                case R.id.detail_btn_cart_slide:
+                    new AlertDialog.Builder(ImageDetailActivity.this)
+                            .setMessage("해당 이미지를 장바구니에 담으시겠습니까?")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                    Intent intent = new Intent(ImageDetailActivity.this, ImageAddTagActivity.class);
+                                    // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                    intent.putExtra("code", code);
+                                    startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton("Cancel", null)
+                            .show();
                     break;
             }
         }

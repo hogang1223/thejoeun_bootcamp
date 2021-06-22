@@ -103,22 +103,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="최대 150자 이내로 입력해주세요"
-                        android:maxLength="100"
+                        android:maxLength="150"
                         android:scrollbars="vertical"
                         android:maxLines="5"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
-<!--                <EditText-->
-<!--                    android:id="@+id/add_content_edit"-->
-<!--                    android:layout_margin="40dp"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:hint="최대 150자 이내로 입력해주세요"-->
-<!--                    android:scrollbars="vertical"-->
-<!--                    android:maxLines="5"-->
-<!--                    />-->
 
             </LinearLayout>
 

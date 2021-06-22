@@ -80,7 +80,6 @@ public class ImageAddImageActivity extends Activity {
                         switch (result) {
                             case 1:
                                 //connectInsertData(imageName);
-                                Toast.makeText(ImageAddImageActivity.this, "Success!", Toast.LENGTH_SHORT).show();
                                 File file = new File(img_path);
                                 file.delete();
                                 intent = new Intent(ImageAddImageActivity.this, ImageAddNameActivity.class);

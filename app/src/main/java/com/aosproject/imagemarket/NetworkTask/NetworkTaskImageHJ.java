@@ -89,13 +89,17 @@ public class NetworkTaskImageHJ extends AsyncTask<Integer, String, Object> {
                 }
                 if (where.equals("mainSelect")) {
                     parserSelect(stringBuffer.toString());
+                } else if(where.equals("imageSelect")){
+                    parserSelect(stringBuffer.toString());
                 } else if(where.equals("detailSelect")){
                     parserSelect2(stringBuffer.toString());
-                }else if(where.equals("insert")){
+                } else if(where.equals("insert")){
                     result = parserAction(stringBuffer.toString());
-                }else if(where.equals("insertSelect")){
+                } else if(where.equals("insertSelect")){
                     parserSelect3(stringBuffer.toString());
-                }else {
+                }  else if(where.equals("nameSelect")){
+                    parserSelect4(stringBuffer.toString());
+                } else {
                     result = parserAction(stringBuffer.toString());
                 }
             }
@@ -120,7 +124,11 @@ public class NetworkTaskImageHJ extends AsyncTask<Integer, String, Object> {
             return images;
         }else if (where.equals("insertSelect")){
             return images;
-        }else {
+        }else if (where.equals("imageSelect")){
+            return images;
+        }else if (where.equals("nameSelect")){
+            return images;
+        } else {
             return result;
         }
     }
@@ -203,4 +211,22 @@ public class NetworkTaskImageHJ extends AsyncTask<Integer, String, Object> {
             e.printStackTrace();
         }
     }
-}
+
+    private void parserSelect4(String str){
+        try {
+            Log.v("Message", "parserSelect4");
+            JSONObject jsonObject = new JSONObject(str);
+            JSONArray jsonArray = new JSONArray(jsonObject.getString("name_info"));
+            images.clear();
+
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                String myname = jsonObject1.getString("myname");
+
+                ImageHJ image = new ImageHJ(myname);
+                images.add(image);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }}
