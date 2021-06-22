@@ -393,7 +393,7 @@
                         />
 
                     <Button
-                        android:id="@+id/edit_delete_ok"
+                        android:id="@+id/edit_btn_ok"
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:text="수정"
