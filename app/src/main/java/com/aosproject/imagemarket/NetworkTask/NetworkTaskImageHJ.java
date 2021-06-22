@@ -175,8 +175,9 @@ public class NetworkTaskImageHJ extends AsyncTask<Integer, String, Object> {
                 String filepath = jsonObject1.getString("filepath");
                 String location = jsonObject1.getString("location");
                 String fileformat = jsonObject1.getString("fileformat");
+                String user_email = jsonObject1.getString("user_email");
 
-                ImageHJ image = new ImageHJ(filepath, title, detail, fileformat, category, tag, price, location);
+                ImageHJ image = new ImageHJ(filepath, title, detail, fileformat, category, tag, price, location, user_email);
                 images.add(image);
             }
         }catch (Exception e){

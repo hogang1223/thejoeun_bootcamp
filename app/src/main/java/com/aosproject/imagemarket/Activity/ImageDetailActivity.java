@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class ImageDetailActivity extends Activity {
 
-    String urlAddr, urlAddr2 = null;
+    String urlAddr, urlAddr2, urlAddr3, user_email, filepath = null;
     int code, recommend = 0;
     TextView detailImageName, detailImageRecommend, detailImagePrice, detailImageFormat, detailImageDetail, detailImageCategory = null;
     ImageView imageView, iv1, iv2, iv3, back;
@@ -104,6 +104,21 @@ public class ImageDetailActivity extends Activity {
             detailImageCategory.setText("일러스트");
         }else if(images.get(0).getCategory()==2){
             detailImageCategory.setText("캘리그라피");
+        }
+
+        user_email = images.get(0).getUser_email();
+        urlAddr3 = ShareVar.macIP + "jsp/otherImagesSelect.jsp?user_email=" + user_email;
+        Log.v("Message", urlAddr3);
+        try {
+            Log.v("Message", "network");
+            NetworkTaskDealHJ networkTask = new NetworkTaskDealHJ(ImageDetailActivity.this, urlAddr2, "imageSelect");
+            Object obj = networkTask.execute().get();
+            images = (ArrayList<ImageHJ>) obj;
+            filepath = images.get(0).getFilepath();
+            Log.v("Message", images.get(0).getFilepath() + "log");
+        }catch (Exception e){
+            Log.v("Message", "error");
+            e.printStackTrace();
         }
 
         back.setOnClickListener(onClickListener);

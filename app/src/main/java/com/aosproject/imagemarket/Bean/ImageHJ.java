@@ -11,6 +11,7 @@ public class ImageHJ {
     String tag;
     int price;
     String location;
+    String user_email;
 
     public ImageHJ(int code) {
         this.code = code;
@@ -44,6 +45,18 @@ public class ImageHJ {
         this.tag = tag;
         this.price = price;
         this.location = location;
+    }
+
+    public ImageHJ(String filepath, String title, String detail, String fileformat, int category, String tag, int price, String location, String user_email) {
+        this.filepath = filepath;
+        this.title = title;
+        this.detail = detail;
+        this.fileformat = fileformat;
+        this.category = category;
+        this.tag = tag;
+        this.price = price;
+        this.location = location;
+        this.user_email = user_email;
     }
 
     public int getCode() {
@@ -116,5 +129,13 @@ public class ImageHJ {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getUser_email() {
+        return user_email;
+    }
+
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
     }
 }
