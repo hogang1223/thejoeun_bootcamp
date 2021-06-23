@@ -37,10 +37,10 @@ public class ImageDetailActivity extends Activity {
     String urlAddr, urlAddr2, urlAddr3, urlAddr4, user_email, filepath = null;
     int code, recommend = 0;
     TextView detailImageName, detailImageRecommend, detailImagePrice, detailImageFormat, detailImageDetail, detailImageCategory, detailImageLocation, detailImageSeller = null;
-    ImageView imageView, back;
+    ImageView imageView, back, recommendOff, recommendOn = null;
     ArrayList<ImageHJ> images = null;
     ArrayList<DealHJ> deals = null;
-    Chip c0, c1, c2, c3, c4, c5, c6, c7, c8;
+    Chip c0, c1, c2, c3, c4, c5, c6, c7, c8 = null;
     RecyclerView recyclerView = null;
     RecyclerView.LayoutManager layoutManager = null;
     ImageDetailAdapterHJ adapter = null;
@@ -90,6 +90,8 @@ public class ImageDetailActivity extends Activity {
         buy2 = findViewById(R.id.detail_btn_buy_slide);
         cart1 = findViewById(R.id.detail_btn_cart);
         cart2 = findViewById(R.id.detail_btn_cart_slide);
+        recommendOff = findViewById(R.id.detail_iv_recommend_off);
+        recommendOn = findViewById(R.id.detail_iv_recommend);
 
         layoutManager = new LinearLayoutManager(ImageDetailActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -125,11 +127,14 @@ public class ImageDetailActivity extends Activity {
 
         detailImageFormat.setText(images.get(0).getFileformat());
         detailImageDetail.setText(images.get(0).getDetail());
+
+        Log.v("Message", "카테고리 확인!!!" + images.get(0).getCategory());
+
         if(images.get(0).getCategory()==1){
             detailImageCategory.setText("사진");
         }else if(images.get(0).getCategory()==2){
             detailImageCategory.setText("일러스트");
-        }else if(images.get(0).getCategory()==2){
+        }else if(images.get(0).getCategory()==3){
             detailImageCategory.setText("캘리그라피");
         }
         if(images.get(0).getLocation().equals("none")){

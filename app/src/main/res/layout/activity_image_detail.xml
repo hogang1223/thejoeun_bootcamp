@@ -208,13 +208,32 @@
                 android:layout_marginTop="16dp"
                 >
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="27dp"
-                    android:layout_gravity="right"
-                    android:src="@drawable/ic_baseline_thumb_up_24"
-                    android:layout_marginRight="10dp"
-                    />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:id="@+id/detail_iv_recommend_off"
+                        android:layout_width="30dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/ic_baseline_thumb_up_off_alt_24"
+                        android:layout_marginRight="10dp"
+                        android:visibility="visible"
+                        />
+
+                    <ImageView
+                        android:id="@+id/detail_iv_recommend"
+                        android:layout_width="30dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/ic_baseline_thumb_up_alt_24"
+                        android:layout_marginRight="10dp"
+                        android:visibility="invisible"
+                        />
+
+                </FrameLayout>
 
                 <TextView
                     android:id="@+id/detail_textview_recommend"
@@ -480,7 +499,7 @@
                                 android:textSize="20dp" />
 
                             <fragment
-                                android:id="@+id/map"
+                                android:id="@+id/detail_map"
                                 android:layout_width="350dp"
                                 android:layout_height="150dp"
                                 android:layout_marginTop="20dp"

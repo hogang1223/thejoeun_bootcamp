@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -90,10 +91,23 @@ public class ImageEditActivity extends Activity {
             Log.v("Message", "실패");
         }
 
+        String[] tags = images.get(0).getTag().split(",");
+        LayoutInflater inflater = LayoutInflater.from(ImageEditActivity.this);
+        for(String text : tags){
+            Chip chip = (Chip) inflater.inflate(R.layout.chip_item, null, false);
+            chip.setText(text);
+            chip.setOnCloseIconClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    chipGroup.removeView(v);
+                }
+            });
+            chipGroup.addView(chip);
+        }
+
         titleEdit.setText(images.get(0).getTitle());
-        contentEdit.setText(images.get(0).getDetail()
-                tagEdit.setText(images.get(0).getTag());
-);
+        contentEdit.setText(images.get(0).getDetail());
+//        tagEdit.setText(images.get(0).getTag());
         priceEdit.setText(Integer.toString(images.get(0).getPrice()));
         if(images.get(0).getLocation().equals("none")){
         }else {
@@ -124,9 +138,17 @@ public class ImageEditActivity extends Activity {
 
         Glide.with(this).load(ShareVar.macIP + "image/" + images.get(0).getFilepath()).transform(new FitCenter(), new RoundedCorners(25)).into(imageView);
 
+        tagEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                plus.setVisibility(View.VISIBLE);
+            }
+        });
+
         back.setOnClickListener(onClickListener);
         backBtn.setOnClickListener(onClickListener);
         okBtn.setOnClickListener(onClickListener);
+        plus.setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -134,6 +156,21 @@ public class ImageEditActivity extends Activity {
         public void onClick(View v) {
             Intent intent = null;
             switch (v.getId()){
+                case R.id.edit_tag_plus:
+                    String[] tags = tagEdit.getText().toString().split(" ");
+                    LayoutInflater inflater = LayoutInflater.from(ImageEditActivity.this);
+                    for(String text : tags){
+                        Chip chip = (Chip) inflater.inflate(R.layout.chip_item, null, false);
+                        chip.setText(text);
+                        chip.setOnCloseIconClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                chipGroup.removeView(v);
+                            }
+                        });
+                        chipGroup.addView(chip);
+                    }
+                    break;
                 case R.id.edit_ivbtn_back:
                     finish();
                     break;
@@ -150,7 +187,7 @@ public class ImageEditActivity extends Activity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     int category = 0;
 
-                                    String[] parserData = tagEdit.getText().toString().split(",");
+//                                    String[] parserData = tagEdit.getText().toString().split(",");
 
                                     if(titleEdit.getText().toString().isEmpty()){
                                         titleLayout.setError("이미지 이름을 입력해주세요!");
@@ -201,8 +238,8 @@ public class ImageEditActivity extends Activity {
                                                 formatSpinner.getSelectedItem().toString() + "&category=" + category + "&tag=" + result.toString() + "&price=" + priceEdit.getText().toString() +
                                                 "&location=" + locationEdit.getText().toString() + "&code=" + code;
                                         Log.v("Message", urlAddr2);
-                                        String result = connectUpdateData();
-                                        if(result.equals("1")) {
+                                        String result2 = connectUpdateData();
+                                        if(result2.equals("1")) {
                                             new AlertDialog.Builder(ImageEditActivity.this)
                                                     .setMessage("이미지 정보가 수정되었습니다!")
                                                     .setCancelable(false)
@@ -224,16 +261,16 @@ public class ImageEditActivity extends Activity {
     };
 
     private String connectUpdateData(){
-        String result = null;
+        String result2 = null;
         try {
             // NetworkTask 로 넘겨줌
             NetworkTaskImageHJ networkTask = new NetworkTaskImageHJ(ImageEditActivity.this, urlAddr2, "update");
             Object obj = networkTask.execute().get();
             // 1이 들어오면 성공한 것, 만약 그 이외의 숫자면 실패한 것
-            result = (String) obj;
+            result2 = (String) obj;
         }catch (Exception e){
             e.printStackTrace();
         }
-        return result;
+        return result2;
     }
 }
