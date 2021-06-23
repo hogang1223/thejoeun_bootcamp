@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ import com.aosproject.imagemarket.Util.ShareVar;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -34,12 +37,14 @@ public class ImageEditActivity extends Activity {
     ArrayAdapter<CharSequence> adapterCategory = null;
     String urlAddr, urlAddr2 = null;
     int code = 0;
-    TextInputLayout titleLayout, contentLayout, tagLayout, priceLayout, locationLayout = null;
-    TextInputEditText titleEdit, contentEdit, tagEdit, priceEdit, locationEdit = null;
+    TextInputLayout titleLayout, contentLayout, priceLayout, locationLayout = null;
+    TextInputEditText titleEdit, contentEdit, priceEdit, locationEdit = null;
     Spinner formatSpinner, categorySpinner = null;
-    ImageView imageView, back = null;
+    ImageView imageView, back, plus = null;
     Button backBtn, okBtn = null;
     ArrayList<ImageHJ> images = null;
+    EditText tagEdit = null;
+    ChipGroup chipGroup = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +59,6 @@ public class ImageEditActivity extends Activity {
 
         titleLayout = findViewById(R.id.edit_name_layout);
         contentLayout = findViewById(R.id.edit_content_layout);
-        tagLayout = findViewById(R.id.edit_tag_layout);
         priceLayout = findViewById(R.id.edit_price_layout);
         locationLayout = findViewById(R.id.edit_location_layout);
         titleEdit = findViewById(R.id.edit_name_edit);
@@ -66,8 +70,10 @@ public class ImageEditActivity extends Activity {
         categorySpinner = findViewById(R.id.edit_spinner_category);
         imageView = findViewById(R.id.edit_image);
         back = findViewById(R.id.edit_ivbtn_back);
+        plus = findViewById(R.id.edit_tag_plus);
         backBtn = findViewById(R.id.edit_btn_back);
         okBtn = findViewById(R.id.edit_btn_ok);
+        chipGroup = findViewById(R.id.edit_tag_chip_group);
 
         formatSpinner.setAdapter(adapterFormat);
         categorySpinner.setAdapter(adapterCategory);
@@ -85,8 +91,9 @@ public class ImageEditActivity extends Activity {
         }
 
         titleEdit.setText(images.get(0).getTitle());
-        contentEdit.setText(images.get(0).getDetail());
-        tagEdit.setText(images.get(0).getTag());
+        contentEdit.setText(images.get(0).getDetail()
+                tagEdit.setText(images.get(0).getTag());
+);
         priceEdit.setText(Integer.toString(images.get(0).getPrice()));
         if(images.get(0).getLocation().equals("none")){
         }else {
@@ -151,10 +158,10 @@ public class ImageEditActivity extends Activity {
                                     if(contentEdit.getText().toString().isEmpty()){
                                         contentLayout.setError("이미지 설명을 입력해주세요!");
                                     }
-                                    if(tagEdit.getText().toString().isEmpty()){
-                                        tagLayout.setError("태그는 1개 이상 입력해주세요!");
-                                    }else if (parserData.length>9){
-                                        tagLayout.setError("태그는 9개 이하로 입력해주세요!");
+                                    if(chipGroup.getChildCount()==0){
+                                        Snackbar.make(v, "태그는 1개 이상 입력해주세요!", Snackbar.LENGTH_SHORT).show();
+                                    }else if (chipGroup.getChildCount()>9){
+                                        Snackbar.make(v, "태그는 9개 이하로 입력해주세요!", Snackbar.LENGTH_SHORT).show();
                                     }
                                     if(priceEdit.getText().toString().isEmpty()){
                                         priceLayout.setError("이미지 가격을 입력해주세요!");
@@ -172,17 +179,26 @@ public class ImageEditActivity extends Activity {
                                         Snackbar.make(v, "이미지 파일 형식을 선택해주세요!", Snackbar.LENGTH_SHORT).show();
                                     }
 
-                                    if(titleEdit.getText().toString().isEmpty()||contentEdit.getText().toString().isEmpty()||tagEdit.getText().toString().isEmpty()
+                                    if(titleEdit.getText().toString().isEmpty()||contentEdit.getText().toString().isEmpty()||chipGroup.getChildCount()==0||chipGroup.getChildCount()>9
                                     ||priceEdit.getText().toString().isEmpty()||categorySpinner.getSelectedItem().equals("이미지 카테고리 선택")
                                     ||formatSpinner.getSelectedItem().equals("이미지 파일 형식 선택")){
                                         new AlertDialog.Builder(ImageEditActivity.this)
-                                                .setMessage("필수적인 이미지 정보 사항을 입력해주세요!")
+                                                .setMessage("필수적 이미지 정보 사항을 입력해주세요!")
                                                 .setCancelable(false)
                                                 .setPositiveButton("OK", null)
                                                 .show();
                                     }else {
+                                        StringBuffer result = new StringBuffer("");
+                                        for(int i=0; i<chipGroup.getChildCount(); i++) {
+                                            Chip chip = (Chip) chipGroup.getChildAt(i);
+                                            if (chip.isChecked())
+                                                if (i < chipGroup.getChildCount() - 1)
+                                                    result.append(chip.getText()).append(",");
+                                                else result.append(chip.getText());
+                                        }
+
                                         urlAddr2 = ShareVar.macIP + "jsp/imageUpdate.jsp?title=" + titleEdit.getText().toString() + "&detail=" + contentEdit.getText().toString() + "&fileformat=" +
-                                                formatSpinner.getSelectedItem().toString() + "&category=" + category + "&tag=" + tagEdit.getText().toString() + "&price=" + priceEdit.getText().toString() +
+                                                formatSpinner.getSelectedItem().toString() + "&category=" + category + "&tag=" + result.toString() + "&price=" + priceEdit.getText().toString() +
                                                 "&location=" + locationEdit.getText().toString() + "&code=" + code;
                                         Log.v("Message", urlAddr2);
                                         String result = connectUpdateData();

@@ -274,37 +274,94 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/edit_card_view"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:paddingHorizontal="40dp"
+                    android:layout_height="50dp"
+                    app:cardBackgroundColor="@color/black"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="40dp"
                     >
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/edit_tag_layout"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:boxBackgroundColor="@android:color/white"
-                        app:errorEnabled="true"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:paddingHorizontal="10dp"
                         >
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <EditText
                             android:id="@+id/edit_tag_edit"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="태그는 9개 이내로 입력해주세요"
-                            android:maxLength="100"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="9"
+                            android:hint="태그 입력 후, 플러스 버튼을 눌러주세요"
+                            android:textSize="16dp"
+                            android:background="@null"
+                            android:layout_marginHorizontal="10dp"
                             android:inputType="text"
-                            android:scrollbars="horizontal"
                             />
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                        <ImageView
+                            android:id="@+id/edit_tag_plus"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_baseline_add_24"
+                            android:visibility="invisible"
+                            />
 
-                </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/edit_tag_chip_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="40dp"
+                    />
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:gravity="center"-->
+<!--                    android:paddingHorizontal="40dp"-->
+<!--                    >-->
+
+<!--                    <com.google.android.material.textfield.TextInputLayout-->
+<!--                        android:id="@+id/edit_tag_layout"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        app:boxBackgroundColor="@android:color/white"-->
+<!--                        app:errorEnabled="true"-->
+<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">-->
+<!--                        >-->
+
+<!--                        <com.google.android.material.textfield.TextInputEditText-->
+<!--                            android:id="@+id/edit_tag_edit"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:hint="태그는 9개 이내로 입력해주세요"-->
+<!--                            android:maxLength="100"-->
+<!--                            android:inputType="text"-->
+<!--                            android:scrollbars="horizontal"-->
+<!--                            />-->
+
+<!--                    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_marginTop="10dp"
