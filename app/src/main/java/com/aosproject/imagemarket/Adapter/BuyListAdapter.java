@@ -1,6 +1,7 @@
 package com.aosproject.imagemarket.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aosproject.imagemarket.Activity.BuyList;
 import com.aosproject.imagemarket.Bean.BuyListBean;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskBuyList;
-import com.aosproject.imagemarket.NetworkTask.NetworkTaskRecommendList;
 import com.aosproject.imagemarket.R;
 
 import java.util.ArrayList;
@@ -106,6 +107,7 @@ public class BuyListAdapter extends BaseAdapter {
                     String result = connectInsertData();
                     if(result.equals("1")) {
                         Toast.makeText(mContext, "추천을 취소했습니다.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(mContext, BuyList.class);
                     }else {
                         Toast.makeText(mContext, "추천 취소를 실패하였습니다.", Toast.LENGTH_SHORT).show();
                     }

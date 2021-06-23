@@ -142,30 +142,30 @@ public class NetworkTaskProfileMain extends AsyncTask<Integer, String, Object> {
     }
 
     private void parserBuyList(String str) {
-        try {
-            JSONObject jsonObject = new JSONObject(str);
-            JSONArray jsonArray = new JSONArray(jsonObject.getString("profile_buylist"));
-            buylist.clear();
-
-            for(int i=0; i<jsonArray.length(); i++) {
-                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
-                int dealNo = jsonObject1.getInt("dealNo");
-                String dealDate = jsonObject1.getString("dealDate");
-                String buyCode = jsonObject1.getString("buyCode");
-                String filepath = jsonObject1.getString("filepath");
-                String myname = jsonObject1.getString("myname");
-                String title = jsonObject1.getString("title");
-                String price = jsonObject1.getString("price");
-                int downloadCount = jsonObject1.getInt("downloadCount");
-                int recommend = jsonObject1.getInt("recommend");
-
-                BuyListBean buy = new BuyListBean(dealNo, dealDate, buyCode, filepath, myname, title, price, downloadCount, recommend);
-                buylist.add(buy);
-            }
-
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            JSONObject jsonObject = new JSONObject(str);
+//            JSONArray jsonArray = new JSONArray(jsonObject.getString("profile_buylist"));
+//            buylist.clear();
+//
+//            for(int i=0; i<jsonArray.length(); i++) {
+//                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+//                int dealNo = jsonObject1.getInt("dealNo");
+//                String dealDate = jsonObject1.getString("dealDate");
+//                String buyCode = jsonObject1.getString("buyCode");
+//                String filepath = jsonObject1.getString("filepath");
+//                String myname = jsonObject1.getString("myname");
+//                String title = jsonObject1.getString("title");
+//                String price = jsonObject1.getString("price");
+//                int downloadCount = jsonObject1.getInt("downloadCount");
+//                int recommend = jsonObject1.getInt("recommend");
+//
+//                BuyListBean buy = new BuyListBean(dealNo, dealDate, buyCode, filepath, myname, title, price, downloadCount, recommend);
+//                buylist.add(buy);
+//            }
+//
+//        }catch(Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
 }

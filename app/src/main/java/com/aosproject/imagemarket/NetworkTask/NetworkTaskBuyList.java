@@ -138,8 +138,12 @@ public class NetworkTaskBuyList extends AsyncTask<Integer, String, Object> {
                 String price = jsonObject1.getString("price");
                 int downloadCount = jsonObject1.getInt("downloadCount");
                 int recommend = jsonObject1.getInt("recommend");
+                String dealCancelDate = jsonObject1.getString("dealCancelDate");
+                String sellEmail = jsonObject1.getString("sellEmail");
+                String image_code = jsonObject1.getString("image_code");
+                String buyEmail = jsonObject1.getString("buyEmail");
 
-                BuyListBean buy = new BuyListBean(dealNo, dealDate, buyCode, filepath, myname, title, price, downloadCount, recommend);
+                BuyListBean buy = new BuyListBean(dealNo, dealDate, buyCode, filepath, myname, title, price, downloadCount, recommend, dealCancelDate, sellEmail, image_code, buyEmail);
                 buylist.add(buy);
             }
             Log.v("Chk", "NetWork_doInBackground_parserBuyList buylist : " + buylist);

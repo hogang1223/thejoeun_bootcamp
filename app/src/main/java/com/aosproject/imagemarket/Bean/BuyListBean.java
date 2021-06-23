@@ -11,8 +11,12 @@ public class BuyListBean {
     private String price;
     private int downloadCount;
     private int recommend;
+    private String dealCancelDate;
+    private String sellEmail;
+    private String image_code;
+    private String buyEmail;
 
-    public BuyListBean(int dealNo, String dealDate, String buyCode, String filepath, String myname, String title, String price, int downloadCount, int recommend) {
+    public BuyListBean(int dealNo, String dealDate, String buyCode, String filepath, String myname, String title, String price, int downloadCount, int recommend, String dealCancelDate, String sellEmail, String image_code, String buyEmail) {
         this.dealNo = dealNo;
         this.dealDate = dealDate;
         this.buyCode = buyCode;
@@ -22,6 +26,10 @@ public class BuyListBean {
         this.price = price;
         this.downloadCount = downloadCount;
         this.recommend = recommend;
+        this.dealCancelDate = dealCancelDate;
+        this.sellEmail = sellEmail;
+        this.image_code = image_code;
+        this.buyEmail = buyEmail;
     }
 
     public int getDealNo() {
@@ -94,5 +102,37 @@ public class BuyListBean {
 
     public void setRecommend(int recommend) {
         this.recommend = recommend;
+    }
+
+    public String getDealCancelDate() {
+        return dealCancelDate;
+    }
+
+    public void setDealCancelDate(String dealCancelDate) {
+        this.dealCancelDate = dealCancelDate;
+    }
+
+    public String getSellEmail() {
+        return sellEmail;
+    }
+
+    public void setSellEmail(String sellEmail) {
+        this.sellEmail = sellEmail;
+    }
+
+    public String getImage_code() {
+        return image_code;
+    }
+
+    public void setImage_code(String image_code) {
+        this.image_code = image_code;
+    }
+
+    public String getBuyEmail() {
+        return buyEmail;
+    }
+
+    public void setBuyEmail(String buyEmail) {
+        this.buyEmail = buyEmail;
     }
 }
