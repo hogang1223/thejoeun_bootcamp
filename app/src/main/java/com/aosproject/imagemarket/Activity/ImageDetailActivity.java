@@ -11,12 +11,13 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SlidingDrawer;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aosproject.imagemarket.Adapter.ImageAdapterHJ;
+import com.aosproject.imagemarket.Adapter.ImageDetailAdapterHJ;
 import com.aosproject.imagemarket.Bean.DealHJ;
 import com.aosproject.imagemarket.Bean.ImageHJ;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskDealHJ;
@@ -42,7 +43,7 @@ public class ImageDetailActivity extends Activity {
     Chip c0, c1, c2, c3, c4, c5, c6, c7, c8;
     RecyclerView recyclerView = null;
     RecyclerView.LayoutManager layoutManager = null;
-    ImageAdapterHJ adapter = null;
+    ImageDetailAdapterHJ adapter = null;
     LinearLayout linearLayout = null;
     Button buy1, buy2, cart1, cart2 = null;
 
@@ -132,14 +133,14 @@ public class ImageDetailActivity extends Activity {
             detailImageCategory.setText("캘리그라피");
         }
         if(images.get(0).getLocation().equals("none")){
-            linearLayout.setVisibility(View.INVISIBLE);
+            linearLayout.setVisibility(View.GONE);
         }else {
             linearLayout.setVisibility(View.VISIBLE);
             detailImageLocation.setText(images.get(0).getLocation());
         }
 
         user_email = images.get(0).getUser_email();
-        urlAddr3 = ShareVar.macIP + "jsp/otherImagesSelect.jsp?user_email=" + user_email;
+        urlAddr3 = ShareVar.macIP + "jsp/otherImagesSelect.jsp?user_email=" + user_email + "&code=" + code;
         Log.v("Message", urlAddr3);
         try {
             Log.v("Message", "network");
@@ -149,21 +150,12 @@ public class ImageDetailActivity extends Activity {
             filepath = images.get(0).getFilepath();
             Log.v("Message", images.get(0).getFilepath() + "log");
 
-            adapter = new ImageAdapterHJ(ImageDetailActivity.this, R.layout.detail_custom_layout, images);
+            adapter = new ImageDetailAdapterHJ(ImageDetailActivity.this, R.layout.detail_custom_layout, images);
             recyclerView.setAdapter(adapter);
 
-//            MyListDecoration decoration = new MyListDecoration();
-//            recyclerView.addItemDecoration(decoration);
+            MyListDecoration decoration = new MyListDecoration();
+            recyclerView.addItemDecoration(decoration);
 
-            adapter.setOnItemClickListener(new ImageAdapterHJ.OnItemClickListener() {
-                @Override
-                public void onItemClick(View v, int pos) {
-                    Intent intent1 = new Intent(ImageDetailActivity.this, ImageDetailActivity.class);
-                    intent1.putExtra("code", 1);
-                    //Log.v("Message", "code 확인 : " + images.get(pos).getCode());
-                    startActivity(intent1);
-                }
-            });
         }catch (Exception e){
             Log.v("Message", "error");
             e.printStackTrace();
@@ -231,7 +223,7 @@ public class ImageDetailActivity extends Activity {
                     break;
                 case R.id.detail_btn_cart:
                     new AlertDialog.Builder(ImageDetailActivity.this)
-                            .setMessage("해당 이미지를 장바구니에 담으시겠습니까?")
+                            .setMessage("해당 이미지를 장바구니에 담았습니다.\n장바구니로 이동하시겠습니까?")
                             .setCancelable(false)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -248,7 +240,7 @@ public class ImageDetailActivity extends Activity {
                     break;
                 case R.id.detail_btn_cart_slide:
                     new AlertDialog.Builder(ImageDetailActivity.this)
-                            .setMessage("해당 이미지를 장바구니에 담으시겠습니까?")
+                            .setMessage("해당 이미지를 장바구니에 담았습니다.\n장바구니로 이동하시겠습니까?")
                             .setCancelable(false)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override

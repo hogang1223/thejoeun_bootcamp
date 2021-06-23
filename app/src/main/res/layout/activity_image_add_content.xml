@@ -106,6 +106,7 @@
                         android:maxLength="150"
                         android:scrollbars="vertical"
                         android:maxLines="5"
+                        android:inputType="textMultiLine"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>

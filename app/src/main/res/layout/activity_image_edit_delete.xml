@@ -49,8 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
+            android:layout_marginHorizontal="40dp"
             >
 
             <LinearLayout
@@ -244,7 +243,8 @@
 
                 <Button
                     android:id="@+id/edit_delete_btn_delete"
-                    android:layout_width="190dp"
+                    android:layout_width="0px"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="삭제"
                     android:textColor="#845EC2"
@@ -255,7 +255,8 @@
 
                 <Button
                     android:id="@+id/edit_delete_btn_edit"
-                    android:layout_width="190dp"
+                    android:layout_width="0px"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="수정"
                     android:textColor="@color/white"

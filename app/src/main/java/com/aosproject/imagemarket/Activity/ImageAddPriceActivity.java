@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,6 +35,9 @@ public class ImageAddPriceActivity extends Activity {
         fileformat = intent.getStringExtra("fileformat");
         category = intent.getIntExtra("category", 0);
         tag = intent.getStringExtra("tag");
+
+        Log.v("Message", "파일 형식 확인!!!" + fileformat);
+
 
         button = findViewById(R.id.add_price_btn_next);
         editText = findViewById(R.id.add_price_edit);

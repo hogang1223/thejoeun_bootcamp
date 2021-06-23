@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,6 +36,9 @@ public class ImageAddTagActivity extends Activity {
         detail = intent.getStringExtra("detail");
         fileformat = intent.getStringExtra("fileformat");
         category = intent.getIntExtra("category", 0);
+
+        Log.v("Message", "파일 형식 확인!!!" + fileformat);
+
 
         button = findViewById(R.id.add_tag_btn_next);
         editText = findViewById(R.id.add_tag_edit);

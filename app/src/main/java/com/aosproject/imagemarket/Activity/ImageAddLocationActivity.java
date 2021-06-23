@@ -47,6 +47,8 @@ public class ImageAddLocationActivity extends Activity {
         tag = intent.getStringExtra("tag");
         price = intent.getIntExtra("price", 0);
 
+        Log.v("Message", "파일 형식 확인!!!" + fileformat);
+
         button = findViewById(R.id.add_location_btn_next);
         editText = findViewById(R.id.add_location_edit);
         layout = findViewById(R.id.add_location_layout);
@@ -79,7 +81,7 @@ public class ImageAddLocationActivity extends Activity {
                                     if(editText.getText().toString().isEmpty()){
                                         urlAddr = urlAddr + "imageInsert2.jsp?filepath=" + filepath + "&title=" + title + "&detail=" + detail + "&fileformat=" + fileformat
                                                 + "&category=" + category + "&tag=" + tag + "&price=" + price;
-                                        Log.v("Message", urlAddr);
+                                        Log.v("Message", "나와라!!!" + urlAddr);
 
                                         String result = connectInsertData();
 

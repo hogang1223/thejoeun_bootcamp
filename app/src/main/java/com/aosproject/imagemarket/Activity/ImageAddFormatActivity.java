@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -107,6 +108,7 @@ public class ImageAddFormatActivity extends Activity {
                         intent.putExtra("title", title);
                         intent.putExtra("detail", detail);
                         intent.putExtra("fileformat", spinner.getSelectedItem().toString());
+                        Log.v("Message", "파일 형식 확인!!! format " + spinner.getSelectedItem().toString());
                         startActivity(intent);
                     }
                     break;

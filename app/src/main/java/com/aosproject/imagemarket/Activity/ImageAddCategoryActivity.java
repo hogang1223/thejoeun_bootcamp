@@ -57,7 +57,7 @@ public class ImageAddCategoryActivity extends Activity {
                         intent.putExtra("filepath", filepath);
                         intent.putExtra("title", title);
                         intent.putExtra("detail", detail);
-                        intent.putExtra("fileformat", filepath);
+                        intent.putExtra("fileformat", fileformat);
                         intent.putExtra("category", 1);
                         startActivity(intent);
                     }else if (spinner.getSelectedItem().toString().equals("일러스트")){
@@ -65,7 +65,7 @@ public class ImageAddCategoryActivity extends Activity {
                         intent.putExtra("filepath", filepath);
                         intent.putExtra("title", title);
                         intent.putExtra("detail", detail);
-                        intent.putExtra("fileformat", filepath);
+                        intent.putExtra("fileformat", fileformat);
                         intent.putExtra("category", 2);
                         startActivity(intent);
                     }else if (spinner.getSelectedItem().toString().equals("캘리그라피")){
@@ -73,7 +73,7 @@ public class ImageAddCategoryActivity extends Activity {
                         intent.putExtra("filepath", filepath);
                         intent.putExtra("title", title);
                         intent.putExtra("detail", detail);
-                        intent.putExtra("fileformat", filepath);
+                        intent.putExtra("fileformat", fileformat);
                         intent.putExtra("category", 3);
                         startActivity(intent);
                     }
