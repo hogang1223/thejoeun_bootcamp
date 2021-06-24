@@ -37,7 +37,7 @@ public class ImgList extends Activity {
         profile_iv_imglist_back = findViewById(R.id.profile_iv_imglist_back);
         profile_lv_imglist_list = findViewById(R.id.profile_lv_imglist_list);
 
-        urlAddr = macIP + "profile_imglist.jsp?loginEmail=" + loginEmail;
+        urlAddr = macIP + "jsp/profile_imglist.jsp?loginEmail=" + loginEmail;
 
         profile_iv_imglist_back.setOnClickListener(onClickListener);
     }

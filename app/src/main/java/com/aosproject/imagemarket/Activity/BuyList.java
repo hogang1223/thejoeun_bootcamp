@@ -39,7 +39,7 @@ public class BuyList extends Activity {
         profile_iv_buylist_back = findViewById(R.id.profile_iv_buylist_back);
         profile_lv_buylist_list = findViewById(R.id.profile_lv_buylist_list);
 
-        urlAddr = macIP + "profile_buylist.jsp?loginEmail=" + loginEmail;
+        urlAddr = macIP + "jsp/profile_buylist.jsp?loginEmail=" + loginEmail;
 
         profile_iv_buylist_back.setOnClickListener(onClickListener);
     }

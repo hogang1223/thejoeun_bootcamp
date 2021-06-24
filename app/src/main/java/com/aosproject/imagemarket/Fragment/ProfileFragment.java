@@ -91,22 +91,22 @@ public class ProfileFragment extends Fragment {
     private void connectGetData() {
         Log.v("Chk", "ProfileFragment_connectGetData");
         try {
-            NetworkTaskProfileMain networkTaskName = new NetworkTaskProfileMain(getActivity(), macIP + "profile_main_name.jsp?loginEmail=" + loginEmail, "profile_main");
+            NetworkTaskProfileMain networkTaskName = new NetworkTaskProfileMain(getActivity(), macIP + "jsp/profile_main_name.jsp?loginEmail=" + loginEmail, "profile_main");
             Object objName = networkTaskName.execute().get();
             name = (String) objName;
             Log.v("Chk", "ProfileFragment : " + name);
 
-            NetworkTaskProfileMain networkTaskBuy = new NetworkTaskProfileMain(getActivity(), macIP + "profile_main_buy.jsp?loginEmail=" + loginEmail, "profile_main");
+            NetworkTaskProfileMain networkTaskBuy = new NetworkTaskProfileMain(getActivity(), macIP + "jsp/profile_main_buy.jsp?loginEmail=" + loginEmail, "profile_main");
             Object objBuy = networkTaskBuy.execute().get();
             buy = (String) objBuy;
             Log.v("Chk", "ProfileFragment : " + buy);
 
-            NetworkTaskProfileMain networkTaskSell = new NetworkTaskProfileMain(getActivity(), macIP + "profile_main_sell.jsp?loginEmail=" + loginEmail, "profile_main");
+            NetworkTaskProfileMain networkTaskSell = new NetworkTaskProfileMain(getActivity(), macIP + "jsp/profile_main_sell.jsp?loginEmail=" + loginEmail, "profile_main");
             Object objSell = networkTaskSell.execute().get();
             sell = (String) objSell;
             Log.v("Chk", "ProfileFragment : " + sell);
 
-            NetworkTaskProfileMain networkTaskRecommend = new NetworkTaskProfileMain(getActivity(), macIP + "profile_main_recommend.jsp?loginEmail=" + loginEmail, "profile_main");
+            NetworkTaskProfileMain networkTaskRecommend = new NetworkTaskProfileMain(getActivity(), macIP + "jsp/profile_main_recommend.jsp?loginEmail=" + loginEmail, "profile_main");
             Object objRecommend = networkTaskRecommend.execute().get();
             recommend = (String) objRecommend;
             Log.v("Chk", "ProfileFragment : " + recommend);

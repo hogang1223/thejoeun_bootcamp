@@ -129,14 +129,14 @@ public class NetworkTaskRecommendList extends AsyncTask<Integer, String, Object>
 
             for(int i=0; i<jsonArray.length(); i++) {
                 JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
-                int dealNo = jsonObject1.getInt("dealNo");
+                int imgCode = jsonObject1.getInt("imgCode");
                 String filepath = jsonObject1.getString("filepath");
                 String myname = jsonObject1.getString("myname");
                 String title = jsonObject1.getString("title");
                 String price = jsonObject1.getString("price");
                 int recommend = jsonObject1.getInt("recommend");
 
-                RecommendListBean rl = new RecommendListBean(dealNo, filepath, myname, title, price, recommend);
+                RecommendListBean rl = new RecommendListBean(imgCode, filepath, myname, title, price, recommend);
                 recommendlist.add(rl);
             }
             Log.v("Chk", "NetWork_doInBackground_parserBuyList buylist : " + recommendlist);

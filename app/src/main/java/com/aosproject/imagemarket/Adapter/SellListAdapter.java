@@ -11,8 +11,11 @@ import android.widget.TextView;
 import com.aosproject.imagemarket.Bean.ImgListBean;
 import com.aosproject.imagemarket.Bean.SellListBean;
 import com.aosproject.imagemarket.R;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+
+import static com.aosproject.imagemarket.Util.ShareVar.macIP;
 
 public class SellListAdapter extends BaseAdapter {
 
@@ -53,9 +56,16 @@ public class SellListAdapter extends BaseAdapter {
         TextView buyCode = convertView.findViewById(R.id.profile_tv_selllist_buycode);
         TextView dealDate = convertView.findViewById(R.id.profile_tv_selllist_selldate);
 
-//        img.setImageResource();
+        Glide.with(mContext)
+                .load(macIP + "/image/" + data.get(position).getFilepath())
+                .into(img);
+
         title.setText(data.get(position).getTitle());
-        price.setText(data.get(position).getPrice() + "원");
+
+        String priceData = data.get(position).getPrice();
+        int priceNum = Integer.parseInt(priceData);
+        price.setText(String.format("%,d", priceNum) + "원");
+
         dealDate.setText(data.get(position).getDealDate());
         buyCode.setText(data.get(position).getBuyCode());
 

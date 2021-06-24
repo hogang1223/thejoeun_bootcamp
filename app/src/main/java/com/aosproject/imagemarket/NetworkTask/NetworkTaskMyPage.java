@@ -5,8 +5,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.aosproject.imagemarket.Activity.MyPage;
-import com.aosproject.imagemarket.Bean.ImgListBean;
 import com.aosproject.imagemarket.Bean.MyPageBean;
 
 import org.json.JSONArray;
@@ -27,13 +25,16 @@ public class NetworkTaskMyPage extends AsyncTask<Integer, String, Object> {
     ProgressDialog progressDialog = null;
     ArrayList<MyPageBean> mypage;
 
+    String where = null;
+
 
     // Construct
-    public NetworkTaskMyPage(Context context, String mAddr) {
+    public NetworkTaskMyPage(Context context, String mAddr, String where) {
         this.context = context;
         this.mAddr = mAddr;
         this.mypage = mypage;
         this.mypage = new ArrayList<MyPageBean>();
+        this.where = where;
     }
 
     // progress 실행
@@ -89,8 +90,12 @@ public class NetworkTaskMyPage extends AsyncTask<Integer, String, Object> {
                     stringBuffer.append(strline + "\n");
                 }
 
-                Log.v("Chk", "NetWork_doInBackground_parserBuyList_start stringBuffer : " + stringBuffer.toString());
-                parserBuyList(stringBuffer.toString());
+                if(where.equals("select")) {
+                    Log.v("Chk", "NetWork_doInBackground_parserBuyList_start stringBuffer : " + stringBuffer.toString());
+                    parserBuyList(stringBuffer.toString());
+                }else {
+                    result = parserAction(stringBuffer.toString());
+                }
                 Log.v("Chk", "NetWork_doInBackground_parserBuyList_end");
             }
         } catch (Exception e) {
@@ -105,7 +110,11 @@ public class NetworkTaskMyPage extends AsyncTask<Integer, String, Object> {
             }
         }
 
-        return mypage;
+        if(where.equals("select")) {
+            return mypage;
+        }else {
+            return result;
+        }
     }
 
     private void parserBuyList(String str) {
@@ -136,5 +145,18 @@ public class NetworkTaskMyPage extends AsyncTask<Integer, String, Object> {
         }catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    private String parserAction(String str) {
+        String returnValue = null;
+        try {
+            JSONObject jsonObject = new JSONObject(str);
+            returnValue = jsonObject.getString("result");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Log.v("Chk", "NetWork parserAction : " + returnValue);
+        return returnValue;
     }
 }

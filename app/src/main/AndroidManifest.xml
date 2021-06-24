@@ -17,7 +17,6 @@
         android:theme="@style/Theme.ImageMarket">
         <activity android:name=".Activity.SellList"></activity>
         <activity android:name=".Activity.BottomSheet" />
-        <activity android:name=".Activity.SellReport_Settlement" />
         <activity android:name=".Activity.SellReport" />
         <activity android:name=".Activity.ImgList" />
         <activity android:name=".Activity.RecommendList" />

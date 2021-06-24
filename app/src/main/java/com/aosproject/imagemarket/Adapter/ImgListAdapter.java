@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 import com.aosproject.imagemarket.Bean.ImgListBean;
 import com.aosproject.imagemarket.R;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+
+import static com.aosproject.imagemarket.Util.ShareVar.macIP;
 
 public class ImgListAdapter extends BaseAdapter {
 
@@ -51,8 +54,16 @@ public class ImgListAdapter extends BaseAdapter {
         TextView price = convertView.findViewById(R.id.profile_tv_imglist_price);
         TextView sellCount = convertView.findViewById(R.id.profile_tv_imglist_sellcount);
 
-//        img.setImageResource();
+        Glide.with(mContext)
+                .load(macIP + "/image/" + data.get(position).getFilepath())
+                .into(img);
+
         title.setText(data.get(position).getTitle());
+
+        String priceData = data.get(position).getPrice();
+        int priceNum = Integer.parseInt(priceData);
+        price.setText(String.format("%,d", priceNum) + "원");
+
         price.setText(data.get(position).getPrice() + "원");
         sellCount.setText("판매 수 " + data.get(position).getSellCount());
 

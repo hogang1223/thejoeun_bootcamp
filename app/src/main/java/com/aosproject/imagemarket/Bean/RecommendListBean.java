@@ -2,15 +2,15 @@ package com.aosproject.imagemarket.Bean;
 
 public class RecommendListBean {
 
-    int dealNo;
+    int imgCode;
     String filepath;
     String myname;
     String title;
     String price;
     int recommend;
 
-    public RecommendListBean(int dealNo, String filepath, String myname, String title, String price, int recommend) {
-        this.dealNo = dealNo;
+    public RecommendListBean(int imgCode, String filepath, String myname, String title, String price, int recommend) {
+        this.imgCode = imgCode;
         this.filepath = filepath;
         this.myname = myname;
         this.title = title;
@@ -18,12 +18,12 @@ public class RecommendListBean {
         this.recommend = recommend;
     }
 
-    public int getDealNo() {
-        return dealNo;
+    public int getImageCode() {
+        return imgCode;
     }
 
-    public void setDealNo(int dealNo) {
-        this.dealNo = dealNo;
+    public void setImageCode(int imgCode) {
+        this.imgCode = imgCode;
     }
 
     public String getFilepath() {

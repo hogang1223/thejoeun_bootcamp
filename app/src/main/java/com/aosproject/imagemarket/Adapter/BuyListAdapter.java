@@ -70,7 +70,10 @@ public class BuyListAdapter extends BaseAdapter {
 //        img.setImageResource();
         seller.setText(data.get(position).getMyname());
         title.setText(data.get(position).getTitle());
-        price.setText(data.get(position).getPrice() + "원");
+
+        String priceData = data.get(position).getPrice();
+        int priceNum = Integer.parseInt(priceData);
+        price.setText(String.format("%,d", priceNum) + "원");
 
         if(data.get(position).getDownloadCount() >= 3) {
             download.setVisibility(View.INVISIBLE);
@@ -124,7 +127,7 @@ public class BuyListAdapter extends BaseAdapter {
             update = 1;
         }
 
-        urlAddr = macIP + "profile_buylist_recommend.jsp?dealNo=" + dealNo + "&update=" + update;
+        urlAddr = macIP + "jsp/profile_buylist_recommend.jsp?dealNo=" + dealNo + "&update=" + update;
         String result = null;
 
         try {

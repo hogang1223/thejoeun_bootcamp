@@ -260,11 +260,6 @@
 
             </LinearLayout>
 
-
-
-
-
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -276,14 +271,52 @@
                 android:layout_marginBottom="10dp"
                 />
 
-            <ListView
-                android:id="@+id/profile_lv_sellreport_best_items"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                />
+                android:layout_height="wrap_content"
+                >
+
+                <ListView
+                    android:id="@+id/profile_lv_sellreport_best_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="420dp"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/profile_layout_sellreport_null"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/layout_background_shadow"
+                    android:elevation="5dp"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    >
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/ic_baseline_photo_library_24"
+                        app:tint="@color/purple_500"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="판매중인 상품이 없습니다."
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="20dp"
+                        />
+
+
+
+                </LinearLayout>
+
+
+            </FrameLayout>
 
         </LinearLayout>
-
 
     </ScrollView>
 

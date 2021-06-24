@@ -104,9 +104,10 @@
             android:gravity="bottom"
             >
             <Button
+                android:id="@+id/profile_btn_mypage_account_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="게좌번호 변경 완료"
+                android:text="계좌번호 변경 완료"
                 android:textSize="20dp"
                 android:padding="15dp"
                 android:layout_margin="20dp"

@@ -3,6 +3,7 @@ package com.aosproject.imagemarket.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,12 @@ import com.aosproject.imagemarket.Activity.RecommendList;
 import com.aosproject.imagemarket.Bean.RecommendListBean;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskRecommendList;
 import com.aosproject.imagemarket.R;
+import com.aosproject.imagemarket.Util.RecommendListClickListener;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import static com.aosproject.imagemarket.Util.ShareVar.loginEmail;
 import static com.aosproject.imagemarket.Util.ShareVar.macIP;
 
 public class RecommendListAdapter extends BaseAdapter {
@@ -27,14 +31,16 @@ public class RecommendListAdapter extends BaseAdapter {
     private int layout = 0;
     private ArrayList<RecommendListBean> data = null;
     private LayoutInflater inflater = null;
+    private RecommendListClickListener listener;
 
     String urlAddr = null;
-    int dealNo;
+    int imgCode;
 
-    public RecommendListAdapter(Context mContext, int layout, ArrayList<RecommendListBean> data) {
+    public RecommendListAdapter(Context mContext, int layout, ArrayList<RecommendListBean> data, RecommendListClickListener listener) {
         this.mContext = mContext;
         this.layout = layout;
         this.data = data;
+        this.listener = listener;
         this.inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -45,7 +51,7 @@ public class RecommendListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return data.get(position).getDealNo();
+        return data.get(position).getImageCode();
     }
 
     @Override
@@ -64,10 +70,15 @@ public class RecommendListAdapter extends BaseAdapter {
 
         ImageView recommend = convertView.findViewById(R.id.profile_tv_recommendlist_recommend);
 
-//        img.setImageResource();
+        Glide.with(mContext)
+                .load(macIP + "/image/" + data.get(position).getFilepath())
+                .into(img);
         seller.setText(data.get(position).getMyname());
         title.setText(data.get(position).getTitle());
-        price.setText(data.get(position).getPrice() + "원");
+
+        String priceData = data.get(position).getPrice();
+        int priceNum = Integer.parseInt(priceData);
+        price.setText(String.format("%,d", priceNum) + "원");
 
 
         if(data.get(position).getRecommend() == 1) {
@@ -78,7 +89,7 @@ public class RecommendListAdapter extends BaseAdapter {
             recommend.setColorFilter(Color.parseColor("#845EC2"));
         }
 
-        dealNo = data.get(position).getDealNo();
+        imgCode = data.get(position).getImageCode();
         recommend.setOnClickListener(onClickListener);
 
         return convertView;
@@ -89,9 +100,9 @@ public class RecommendListAdapter extends BaseAdapter {
         public void onClick(View v) {
 
             String result = connectInsertData();
-            if(result.equals("1")) {
+            if(result.equals("1") || result.equals("2")) {
                 Toast.makeText(mContext, "추천을 취소했습니다.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext, RecommendList.class);  // 이거 소용없음ㅎ
+                listener.onRecommendListClickListener(true);
             }else {
                 Toast.makeText(mContext, "추천 취소를 실패하였습니다.", Toast.LENGTH_SHORT).show();
             }
@@ -101,7 +112,9 @@ public class RecommendListAdapter extends BaseAdapter {
 
     private String connectInsertData() {
 
-        urlAddr = macIP + "profile_recommendlist_update.jsp?dealNo=" + dealNo;
+        Log.v("Chk", "RecommendListAdapter connectInsertData imgCode : " + imgCode);
+
+        urlAddr = macIP + "jsp/profile_recommendlist_update.jsp?imgCode=" + imgCode + "&loginEmail=" + loginEmail;
         String result = null;
 
         try {

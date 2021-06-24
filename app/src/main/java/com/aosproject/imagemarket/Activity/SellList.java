@@ -42,7 +42,7 @@ public class SellList extends Activity {
         profile_iv_selllist_back = findViewById(R.id.profile_iv_selllist_back);
         profile_lv_selllist_list = findViewById(R.id.profile_lv_selllist_list);
 
-        urlAddr = macIP + "profile_selllist.jsp?loginEmail=" + loginEmail;
+        urlAddr = macIP + "jsp/profile_selllist.jsp?loginEmail=" + loginEmail;
 
         profile_iv_selllist_back.setOnClickListener(onClickListener);
     }
