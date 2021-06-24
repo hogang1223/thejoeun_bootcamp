@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -39,7 +40,6 @@ public class CartFragment extends Fragment implements CartItemLongClickListener,
     private final String TAG = "CartFragment";
 
     boolean clickStatus = false;
-    ShareVar shareVar = new ShareVar();
     String urlAddr = null;
     ArrayList<CartHK> cartItems;
     ArrayList<CartHK> selectedCartItems = new ArrayList<>();
@@ -72,8 +72,8 @@ public class CartFragment extends Fragment implements CartItemLongClickListener,
     @Override
     public void onResume() {
         super.onResume();
-        connectGetData();
 
+            connectGetData();
     }
 
     // button Action
@@ -305,7 +305,7 @@ public class CartFragment extends Fragment implements CartItemLongClickListener,
     // cart Adapter (recyclerView) 연결
     public void connectGetData() {
         try {
-            urlAddr = shareVar.macIP + "jsp/cart_select_all_HK.jsp?loginEmail=" + shareVar.loginEmail;
+            urlAddr = ShareVar.macIP + "jsp/cart_select_all_HK.jsp?loginEmail=" + ShareVar.loginEmail;
             CartNetworkTaskHK cartNetworkTask = new CartNetworkTaskHK(getContext(), urlAddr, "select");
             Object obj = cartNetworkTask.execute().get();
             cartItems = (ArrayList<CartHK>) obj;
@@ -321,8 +321,19 @@ public class CartFragment extends Fragment implements CartItemLongClickListener,
                 bottomLayoutSmall.setVisibility(View.VISIBLE);
                 bottomLayoutBig.setVisibility(View.GONE);
 
+                if(selectedCartItems.isEmpty()==false) {
+                    for (int i = 0; i < selectedCartItems.size(); i++) {
+                        for (int j = 0; j < cartItems.size(); j++) {
+                            if (selectedCartItems.get(i).getCartNo() == cartItems.get(j).getCartNo()) {
+                                Log.v(TAG,"selected:"+selectedCartItems.get(i).getCartNo() + "cart:" + cartItems.get(j).getCartNo());
+                                cartItems.get(j).setSelected(true);
+                            }
+                        }
+                    }
+                }
+
                 // recycler view 연결
-                cartAdapter = new CartAdapterHK(getContext(), cartItems, this, this::onCartItemSwipeListener,  clickStatus);
+                cartAdapter = new CartAdapterHK(getContext(), cartItems,this, this::onCartItemSwipeListener,  clickStatus);
                 cartRecyclerView.setAdapter(cartAdapter);
 
                 // item swipe
@@ -369,7 +380,7 @@ public class CartFragment extends Fragment implements CartItemLongClickListener,
             cartNos = itemParsing("all");
         }
 
-        String urlAddr = shareVar.macIP + "jsp/cart_delete_item_HK.jsp?cartNos=" + cartNos;
+        String urlAddr = ShareVar.macIP + "jsp/cart_delete_item_HK.jsp?cartNos=" + cartNos;
         try {
             CartNetworkTaskHK networkTask = new CartNetworkTaskHK(getContext(), urlAddr, "delete");
             Object obj = networkTask.execute().get();

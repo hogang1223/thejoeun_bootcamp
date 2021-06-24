@@ -3,6 +3,7 @@ package com.aosproject.imagemarket.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aosproject.imagemarket.Activity.DealItemActivityHK;
+import com.aosproject.imagemarket.Activity.ImageDetailActivity;
 import com.aosproject.imagemarket.Bean.CartHK;
 import com.aosproject.imagemarket.Fragment.CartFragment;
 import com.aosproject.imagemarket.NetworkTask.CartNetworkTaskHK;
@@ -35,7 +37,6 @@ import java.util.ArrayList;
 public class CartAdapterHK extends RecyclerView.Adapter<CartAdapterHK.ViewHolder> implements CartItemTouchHelperListener {
 
     private final String TAG = "CartAdapterHK";
-    ShareVar shareVar = new ShareVar();
 
     private Context context;
     private ArrayList<CartHK> cartItems = null;
@@ -73,7 +74,6 @@ public class CartAdapterHK extends RecyclerView.Adapter<CartAdapterHK.ViewHolder
             tvImagePrice = itemView.findViewById(R.id.cartlist_tv_imagePrice);
             ivWaterMark = itemView.findViewById(R.id.cartlist_iv_watermark);
             itemViews.add(itemView);
-
         }
 
     } // END view holder class
@@ -92,7 +92,7 @@ public class CartAdapterHK extends RecyclerView.Adapter<CartAdapterHK.ViewHolder
     public void onBindViewHolder(@NonNull CartAdapterHK.ViewHolder holder, int position) {
         // load image into imageview using glide
         Glide.with(context)
-                .load(shareVar.macIP + "image/" + cartItems.get(position).getImageFilepath())
+                .load(ShareVar.macIP + "image/" + cartItems.get(position).getImageFilepath())
                 .override(110, 110)
                 .centerCrop()
                 .error(R.drawable.cart_image_error)
@@ -105,29 +105,36 @@ public class CartAdapterHK extends RecyclerView.Adapter<CartAdapterHK.ViewHolder
         holder.itemView.setTag(cartItems.get(position).getCartNo());
         holder.tvImageTitle.setTag(cartItems.get(position).getCartNo());
 
+        if(cartItems.get(position).isSelected() == true){
+            holder.ivWaterMark.setVisibility(View.VISIBLE);
+            holder.itemView.setBackgroundColor(Color.LTGRAY);
+            cartItemLongClickListener.onCartLongClickAction(true);
+        }
+
         // click시 DetailView
-        holder.ivImageFile.setOnTouchListener(new View.OnTouchListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onClick(View v) {
                 int position = holder.getAdapterPosition();
-                // **********************************
-                // 현재 구매 페이지로 가는 중 detailView로 변경 필요
-                Intent intent = new Intent(context, DealItemActivityHK.class);
+                Intent intent = new Intent(context, ImageDetailActivity.class);
                 intent.putExtra("code", cartItems.get(position).getImageCode());
-                context.startActivity(intent);
-                // **********************************
-                return false;
             }
         });
+//        holder.ivImageFile.setOnTouchListener(new View.OnTouchListener() {
 //            @Override
-//            public void onClick(View v) {
+//            public boolean onTouch(View v, MotionEvent event) {
 //                int position = holder.getAdapterPosition();
-//                // **********************************
-//                // 현재 구매 페이지로 가는 중 detailView로 변경 필요
-//                Intent intent = new Intent(context, DealItemActivityHK.class);
+//                Intent intent = new Intent(context, ImageDetailActivity.class);
 //                intent.putExtra("code", cartItems.get(position).getImageCode());
-//                context.startActivity(intent);
-//                // **********************************
+//
+//
+////                // **********************************
+////                // 현재 구매 페이지로 가는 중 detailView로 변경 필요
+////                Intent intent = new Intent(context, DealItemActivityHK.class);
+////                intent.putExtra("code", cartItems.get(position).getImageCode());
+////                context.startActivity(intent);
+////                // **********************************
+//                return false;
 //            }
 //        });
 
@@ -153,8 +160,6 @@ public class CartAdapterHK extends RecyclerView.Adapter<CartAdapterHK.ViewHolder
                 return false;
             }
         });
-
-
     }
 
     @Override
@@ -199,7 +204,7 @@ public class CartAdapterHK extends RecyclerView.Adapter<CartAdapterHK.ViewHolder
     // 스와이프 한 아이템 삭제
     private String connectSwipeDelete(int cartNo){
         String result = null;
-        String urlAddr = shareVar.macIP + "jsp/cart_delete_swipe_item_HK.jsp?cartNo=" + cartNo;
+        String urlAddr = ShareVar.macIP + "jsp/cart_delete_swipe_item_HK.jsp?cartNo=" + cartNo;
         try {
             CartNetworkTaskHK networkTask = new CartNetworkTaskHK(context, urlAddr, "delete");
             Object obj = networkTask.execute().get();
@@ -237,5 +242,22 @@ public class CartAdapterHK extends RecyclerView.Adapter<CartAdapterHK.ViewHolder
             cardView.setBackgroundColor(Color.TRANSPARENT);
         }
     }
+
+//    public void selectedItemsSetting() {
+//        if (selectedItems.isEmpty() == false) {
+//            for (int i = 0; i < selectedItems.size(); i++) {
+//                for (int j = 0; j < cartItems.size(); j++) {
+//                    if (selectedItems.get(i).getCartNo() == cartItems.get(j).getCartNo()) {
+//                        Log.v(TAG,"selected:"+selectedItems.get(i).getCartNo() + "cart:" + cartItems.get(j).getCartNo());
+//                        ImageView ivWaterMark = itemViews.get(j).findViewById(R.id.cartlist_iv_watermark);
+//                        CardView cardView = itemViews.get(j).findViewById(R.id.cartlist_cv_view);
+//                        ivWaterMark.setVisibility(View.VISIBLE);
+//                        cardView.setBackgroundColor(Color.LTGRAY);
+//                        cartItems.get(j).setSelected(true);
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 }

@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aosproject.imagemarket.Adapter.ImageDetailAdapterHJ;
 import com.aosproject.imagemarket.Bean.DealHJ;
 import com.aosproject.imagemarket.Bean.ImageHJ;
+import com.aosproject.imagemarket.Fragment.CartFragment;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskDealHJ;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskImageHJ;
 import com.aosproject.imagemarket.R;
@@ -352,7 +353,7 @@ public class ImageDetailActivity extends Activity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     // *************************** 효경님 구매 페이지 연결 ****************************
-                                    Intent intent = new Intent(ImageDetailActivity.this, ImageAddNameActivity.class);
+                                    Intent intent = new Intent(ImageDetailActivity.this, DealItemActivityHK.class);
                                     // *************************** 효경님 구매 페이지 연결 ****************************
                                     intent.putExtra("code", code);
                                     startActivity(intent);
@@ -369,7 +370,7 @@ public class ImageDetailActivity extends Activity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     // *************************** 효경님 구매 페이지 연결 ****************************
-                                    Intent intent = new Intent(ImageDetailActivity.this, ImageAddTagActivity.class);
+                                    Intent intent = new Intent(ImageDetailActivity.this, DealItemActivityHK.class);
                                     // *************************** 효경님 구매 페이지 연결 ****************************
                                     intent.putExtra("code", code);
                                     startActivity(intent);
@@ -386,15 +387,18 @@ public class ImageDetailActivity extends Activity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     // *************************** 효경님 장바구니 페이지 연결 ****************************
-                                    Intent intent = new Intent(ImageDetailActivity.this, ImageAddNameActivity.class);
+                                    Intent intent = new Intent(ImageDetailActivity.this, MainActivity.class);
                                     // *************************** 효경님 장바구니 페이지 연결 ****************************
-                                    intent.putExtra("code", code);
+                                    intent.putExtra("cart", 3);
                                     startActivity(intent);
+                                    finish();
+
                                 }
                             })
                             .setNegativeButton("Cancel", null)
                             .show();
                     break;
+
                 case R.id.detail_btn_cart_slide:
                     new AlertDialog.Builder(ImageDetailActivity.this)
                             .setMessage("해당 이미지를 장바구니에 담았습니다.\n장바구니로 이동하시겠습니까?")
@@ -403,9 +407,9 @@ public class ImageDetailActivity extends Activity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     // *************************** 효경님 장바구니 페이지 연결 ****************************
-                                    Intent intent = new Intent(ImageDetailActivity.this, ImageAddTagActivity.class);
+                                    Intent intent = new Intent(ImageDetailActivity.this, MainActivity.class);
                                     // *************************** 효경님 장바구니 페이지 연결 ****************************
-                                    intent.putExtra("code", code);
+//                                    intent.putExtra("code", code);
                                     startActivity(intent);
                                 }
                             })

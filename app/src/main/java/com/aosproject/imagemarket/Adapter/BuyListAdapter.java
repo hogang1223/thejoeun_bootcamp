@@ -294,6 +294,7 @@ public class BuyListAdapter extends BaseAdapter {
                                     String result = connectDelete(downloadDealNo);
                                     if(result.equals("1")){
                                         Toast.makeText(mContext, "결제가 취소되었습니다.", Toast.LENGTH_SHORT).show();
+                                        clickListener.onBuyListClickListener(true);
                                         dialogDownload.dismiss();
                                     }else{
                                         Toast.makeText(mContext, "결제 취소에 실패했습니다. 관리자에게 문의해주세요", Toast.LENGTH_SHORT).show();
