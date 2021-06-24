@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="위치 입력"
+                android:text="이름 입력"
                 android:gravity="center"
                 android:textSize="20dp"
                 android:layout_gravity="center"
@@ -135,7 +135,6 @@
                     android:text="다음"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:backgroundTint="#845EC2"
                     android:layout_margin="20dp"
                     android:enabled="false"
                     />

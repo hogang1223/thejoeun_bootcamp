@@ -1,5 +1,6 @@
 package com.aosproject.imagemarket.Activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -18,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class ImageAddNameActivity extends Activity {
+public class ImageAddNameActivity extends AppCompatActivity {
 
     String filepath = null;
     Button button;
@@ -31,6 +32,9 @@ public class ImageAddNameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_add_name);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         Intent intent = getIntent();
         filepath = intent.getStringExtra("filepath");
 
@@ -40,34 +44,38 @@ public class ImageAddNameActivity extends Activity {
         editText = findViewById(R.id.add_name_edit);
         editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)});
 
-//        editText.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//                if(s.toString().trim().length()==0){
-//                    button.setEnabled(false);
-//                }else {
-//                    button.setEnabled(true);
-//                }
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                if(s.toString().trim().length()==0){
-//                    button.setEnabled(false);
-//                }else {
-//                    button.setEnabled(true);
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                if(s.toString().trim().length()==0){
-//                    button.setEnabled(false);
-//                }else {
-//                    button.setEnabled(true);
-//                }
-//            }
-//        });
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if(s.toString().trim().length()==0){
+                    button.setEnabled(false);
+                    layout.setError("이미지 이름을 입력해주세요!");
+
+                }else {
+                    button.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.toString().trim().length()==0){
+                    button.setEnabled(false);
+                    layout.setError("이미지 이름을 입력해주세요!");
+                }else {
+                    button.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.toString().trim().length()==0){
+                    button.setEnabled(false);
+                    layout.setError("이미지 이름을 입력해주세요!");
+                }else {
+                    button.setEnabled(true);
+                }
+            }
+        });
 
         button.setOnClickListener(onClickListener);
         imageView.setOnClickListener(onClickListener);
