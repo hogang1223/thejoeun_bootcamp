@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -39,6 +40,8 @@ public class ImageAddImageActivity extends Activity {
     private String img_path = null; // 최종 file name
     private String f_ext = null;    // 최종 file extension
     File tempSelectFile;
+    BitmapDrawable drawable;
+    Bitmap bitmap;
 
     String devicePath = Environment.getDataDirectory().getAbsolutePath() + "/data/com.aosproject.imagemarket/";
     String urlAddr = null;
@@ -55,6 +58,8 @@ public class ImageAddImageActivity extends Activity {
         button = findViewById(R.id.add_image_btn_next);
         imageView = findViewById(R.id.add_image_ivbtn_back);
 
+//        button.setEnabled(false);
+
         uploadImg.setOnClickListener(onClickListener);
         button.setOnClickListener(onClickListener);
         imageView.setOnClickListener(onClickListener);
@@ -70,30 +75,37 @@ public class ImageAddImageActivity extends Activity {
                     intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
                     intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, REQ_CODE_SELECT_IMAGE);
+
+//                    drawable = (BitmapDrawable) uploadImg.getDrawable();
+//                    bitmap = drawable.getBitmap();
+//                    if(bitmap!=null){
+//                        button.setEnabled(true);
+//                    }
+
                     break;
                 case R.id.add_image_btn_next:
-                    urlAddr = ShareVar.macIP + "jsp/multipartRequest.jsp";
-                    Log.v("Message", urlAddr);
-                    NetworkTaskImageAddHJ networkTask = new NetworkTaskImageAddHJ(ImageAddImageActivity.this, urlAddr, img_path, uploadImg);
-                    try {
-                        Integer result = (Integer) networkTask.execute(100).get();
-                        switch (result) {
-                            case 1:
-                                //connectInsertData(imageName);
-                                File file = new File(img_path);
-                                file.delete();
-                                intent = new Intent(ImageAddImageActivity.this, ImageAddNameActivity.class);
-                                intent.putExtra("filepath", imageName);
-                                startActivity(intent);
-                                break;
-                            case 0:
-                                Toast.makeText(ImageAddImageActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                                break;
+                        urlAddr = ShareVar.macIP + "jsp/multipartRequest.jsp";
+                        Log.v("Message", urlAddr);
+                        NetworkTaskImageAddHJ networkTask = new NetworkTaskImageAddHJ(ImageAddImageActivity.this, urlAddr, img_path, uploadImg);
+                        try {
+                            Integer result = (Integer) networkTask.execute(100).get();
+                            switch (result) {
+                                case 1:
+                                    //connectInsertData(imageName);
+                                    File file = new File(img_path);
+                                    file.delete();
+                                    intent = new Intent(ImageAddImageActivity.this, ImageAddNameActivity.class);
+                                    intent.putExtra("filepath", imageName);
+                                    startActivity(intent);
+                                    break;
+                                case 0:
+                                    Toast.makeText(ImageAddImageActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                    break;
 
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
                     break;
                 case R.id.add_image_ivbtn_back:
                     finish();
