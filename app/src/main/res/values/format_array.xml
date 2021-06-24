@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="format">
+
+        <item>이미지 파일 형식 선택</item>
+        <item>JPG</item>
+        <item>JPEG</item>
+        <item>PNG</item>
+        <item>PDF</item>
+        <item>SVG</item>
+        <item>GIF</item>
+
+    </string-array>
+
+</resources>

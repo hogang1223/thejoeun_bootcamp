@@ -2,13 +2,37 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aosproject.imagemarket">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageMarket">
+        <activity android:name=".Activity.ImageEditDeleteActivity"></activity>
+        <activity android:name=".Activity.ImageEditActivity" />
+        <activity android:name=".Activity.ImageAddLocationActivity" />
+        <activity android:name=".Activity.ImageAddPriceActivity" />
+        <activity android:name=".Activity.ImageAddTagActivity" />
+        <activity android:name=".Activity.ImageAddCategoryActivity" />
+        <activity android:name=".Activity.ImageAddFormatActivity" />
+        <activity android:name=".Activity.ImageAddContentActivity" />
+        <activity android:name=".Activity.ImageAddNameActivity" />
+        <activity android:name=".Activity.ImageAddImageActivity" />
+        <activity android:name=".Activity.ImageDetailActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCqNC2pD8z__Vb3miH5P7sCENR3uWqcIIo" />
+
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
