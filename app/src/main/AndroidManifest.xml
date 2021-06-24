@@ -28,6 +28,10 @@
         <activity android:name=".Activity.ImageAddNameActivity" />
         <activity android:name=".Activity.ImageAddImageActivity" />
         <activity android:name=".Activity.ImageDetailActivity" />
+        <activity android:name=".Activity.BuyList" />
+        <activity android:name=".Activity.DealItemActivityHK" />
+        <activity android:name=".Activity.DealCompeletedActivityHK" />
+        <activity android:name=".Activity.DealCartItemActivityHK" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
