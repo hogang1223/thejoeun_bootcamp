@@ -5,9 +5,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.aosproject.imagemarket.Adapter.BuyListAdapter;
-import com.aosproject.imagemarket.Bean.BuyListBean;
-import com.aosproject.imagemarket.Fragment.ProfileFragment;
+import com.aosproject.imagemarket.Activity.MyPage;
+import com.aosproject.imagemarket.Bean.ImgListBean;
+import com.aosproject.imagemarket.Bean.MyPageBean;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,24 +19,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class NetworkTaskProfileMain extends AsyncTask<Integer, String, Object> {
+public class NetworkTaskMyPage extends AsyncTask<Integer, String, Object> {
 
     // Field
     Context context = null;
     String mAddr = null;
     ProgressDialog progressDialog = null;
-    ArrayList<BuyListBean> buylist;
+    ArrayList<MyPageBean> mypage;
 
-    // Network Task를 검색, 입력, 수정, 삭제 구분 없이 하나로 사용하기 위해 생성자 변수 추가.
-    String where = null;
 
     // Construct
-    public NetworkTaskProfileMain(Context context, String mAddr, String where) {
+    public NetworkTaskMyPage(Context context, String mAddr) {
         this.context = context;
         this.mAddr = mAddr;
-        this.buylist = buylist;
-        this.buylist = new ArrayList<BuyListBean>();
-        this.where = where;
+        this.mypage = mypage;
+        this.mypage = new ArrayList<MyPageBean>();
     }
 
     // progress 실행
@@ -92,12 +89,9 @@ public class NetworkTaskProfileMain extends AsyncTask<Integer, String, Object> {
                     stringBuffer.append(strline + "\n");
                 }
 
-                if (where.equals("profile_main")) {
-                    result = parserAction(stringBuffer.toString());
-                    Log.v("Chk", "NetWork doInBackground : " + result);
-                }else if(where.equals("profile_buylist")) {
-                    parserBuyList(stringBuffer.toString());
-                }
+                Log.v("Chk", "NetWork_doInBackground_parserBuyList_start stringBuffer : " + stringBuffer.toString());
+                parserBuyList(stringBuffer.toString());
+                Log.v("Chk", "NetWork_doInBackground_parserBuyList_end");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -111,53 +105,36 @@ public class NetworkTaskProfileMain extends AsyncTask<Integer, String, Object> {
             }
         }
 
-        if (where.equals("profile_main")) {
-            Log.v("Chk", "NetWork return : " + result);
-            return result;
-        } else if (where.equals("profile_buylist")) {
-            return buylist;
-        }else {
-            return result;
-        }
-    }
-
-    private String parserAction(String str) {
-        String returnValue = null;
-        try {
-            JSONObject jsonObject = new JSONObject(str);
-            returnValue = jsonObject.getString("result");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Log.v("Chk", "NetWork parserAction : " + returnValue);
-        return returnValue;
+        return mypage;
     }
 
     private void parserBuyList(String str) {
-//        try {
-//            JSONObject jsonObject = new JSONObject(str);
-//            JSONArray jsonArray = new JSONArray(jsonObject.getString("profile_buylist"));
-//            buylist.clear();
-//
-//            for(int i=0; i<jsonArray.length(); i++) {
-//                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
-//                int dealNo = jsonObject1.getInt("dealNo");
-//                String dealDate = jsonObject1.getString("dealDate");
-//                String buyCode = jsonObject1.getString("buyCode");
-//                String filepath = jsonObject1.getString("filepath");
-//                String myname = jsonObject1.getString("myname");
-//                String title = jsonObject1.getString("title");
-//                String price = jsonObject1.getString("price");
-//                int downloadCount = jsonObject1.getInt("downloadCount");
-//                int recommend = jsonObject1.getInt("recommend");
-//
-//                BuyListBean buy = new BuyListBean(dealNo, dealDate, buyCode, filepath, myname, title, price, downloadCount, recommend);
-//                buylist.add(buy);
-//            }
-//
-//        }catch(Exception e) {
-//            e.printStackTrace();
-//        }
-    }
+        try {
+            Log.v("Chk", "NetWork_parserBuyList_start");
+            JSONObject jsonObject = new JSONObject(str);
+            Log.v("Chk", "NetWork_parserBuyList_JSONObject");
+            JSONArray jsonArray = new JSONArray(jsonObject.getString("profile_mypage"));
+            Log.v("Chk", "NetWork_parserBuyList_JSONArray");
+            mypage.clear();
+            Log.v("Chk", "NetWork_parserBuyList_clear");
 
+            for(int i=0; i<jsonArray.length(); i++) {
+                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                String myname = jsonObject1.getString("myname");
+                String email = jsonObject1.getString("email");
+                String password = jsonObject1.getString("password");
+                String phone = jsonObject1.getString("phone");
+                String account_bank = jsonObject1.getString("account_bank");
+                String account_name = jsonObject1.getString("account_name");
+                String account_number = jsonObject1.getString("account_number");
+
+                MyPageBean myinfo = new MyPageBean(myname, email, password, phone, account_bank, account_name, account_number);
+                mypage.add(myinfo);
+            }
+            Log.v("Chk", "NetWork_doInBackground_parserBuyList mypage : " + mypage);
+
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

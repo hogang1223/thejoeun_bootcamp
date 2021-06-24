@@ -2,6 +2,7 @@ package com.aosproject.imagemarket.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import static com.aosproject.imagemarket.Util.ShareVar.loginEmail;
 import static com.aosproject.imagemarket.Util.ShareVar.macIP;
 
-public class RecommendList extends AppCompatActivity {
+public class RecommendList extends Activity {
 
     String urlAddr = null;
     ArrayList<RecommendListBean> recommendlist;
@@ -75,7 +76,7 @@ public class RecommendList extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.profile_iv_recommendlist_back:
-
+                    finish();
                     break;
             }
         }

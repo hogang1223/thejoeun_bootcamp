@@ -13,9 +13,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.aosproject.imagemarket.Bean.ImgListBean;
+import com.aosproject.imagemarket.Bean.MyPageBean;
 import com.aosproject.imagemarket.Fragment.ProfileFragment;
+import com.aosproject.imagemarket.NetworkTask.NetworkTaskMyPage;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskProfileMain;
 import com.aosproject.imagemarket.R;
+
+import java.util.ArrayList;
 
 import static com.aosproject.imagemarket.Util.ShareVar.loginEmail;
 import static com.aosproject.imagemarket.Util.ShareVar.macIP;
@@ -29,7 +34,8 @@ public class MyPage extends Activity {
     EditText profile_et_mypage_pw, profile_et_mypage_pw_chk, profile_et_mypage_name, profile_et_mypage_phone;
 
     String pw, name, phone;
-    String urlAddr;
+    String urlAddr = null;
+    ArrayList<MyPageBean> mypage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,21 +44,21 @@ public class MyPage extends Activity {
 
         Log.v("Chk", "MyPage_onCreate");
 
-        profile_iv_mypage_back.findViewById(R.id.profile_iv_mypage_back);
-        profile_tv_mypage_name.findViewById(R.id.profile_tv_mypage_name);
-        profile_tv_mypage_email.findViewById(R.id.profile_tv_mypage_email);
-        profile_et_mypage_pw.findViewById(R.id.profile_et_mypage_pw);
-        profile_et_mypage_name.findViewById(R.id.profile_et_mypage_name);
-        profile_et_mypage_phone.findViewById(R.id.profile_et_mypage_phone);
-        profile_layout_mypage_account.findViewById(R.id.profile_layout_mypage_account);
-        profile_tv_mypage_account.findViewById(R.id.profile_tv_mypage_account);
+        profile_iv_mypage_back = findViewById(R.id.profile_iv_mypage_back);
+        profile_tv_mypage_name = findViewById(R.id.profile_tv_mypage_name);
+        profile_tv_mypage_email = findViewById(R.id.profile_tv_mypage_email);
+        profile_et_mypage_pw = findViewById(R.id.profile_et_mypage_pw);
+        profile_et_mypage_name = findViewById(R.id.profile_et_mypage_name);
+        profile_et_mypage_phone = findViewById(R.id.profile_et_mypage_phone);
+        profile_layout_mypage_account = findViewById(R.id.profile_layout_mypage_account);
+        profile_tv_mypage_account = findViewById(R.id.profile_tv_mypage_account);
 
-        profile_tv_mypage_pw_chk.findViewById(R.id.profile_tv_mypage_pw_chk);
-        profile_et_mypage_pw_chk.findViewById(R.id.profile_et_mypage_pw_chk);
-        profile_tv_mypage_pw_save.findViewById(R.id.profile_tv_mypage_pw_save);
-        profile_tv_mypage_name_save.findViewById(R.id.profile_tv_mypage_name_save);
-        profile_tv_mypage_phone_save.findViewById(R.id.profile_tv_mypage_phone_save);
-        profile_tv_mypage_pw_msg.findViewById(R.id.profile_tv_mypage_pw_msg);
+        profile_tv_mypage_pw_chk = findViewById(R.id.profile_tv_mypage_pw_chk);
+        profile_et_mypage_pw_chk = findViewById(R.id.profile_et_mypage_pw_chk);
+        profile_tv_mypage_pw_save = findViewById(R.id.profile_tv_mypage_pw_save);
+        profile_tv_mypage_name_save = findViewById(R.id.profile_tv_mypage_name_save);
+        profile_tv_mypage_phone_save = findViewById(R.id.profile_tv_mypage_phone_save);
+        profile_tv_mypage_pw_msg = findViewById(R.id.profile_tv_mypage_pw_msg);
 
         Log.v("Chk", "MyPage_onCreate_id");
 
@@ -61,6 +67,11 @@ public class MyPage extends Activity {
         phone = profile_et_mypage_phone.getText().toString();
 
         Log.v("Chk", "MyPage_getText");
+
+        profile_tv_mypage_pw_save.setVisibility(View.INVISIBLE);
+        profile_tv_mypage_name_save.setVisibility(View.INVISIBLE);
+        profile_tv_mypage_phone_save.setVisibility(View.INVISIBLE);
+        profile_tv_mypage_pw_msg.setVisibility(View.INVISIBLE);
 
         profile_et_mypage_pw.setOnTouchListener(onTouchListener);
         profile_et_mypage_name.setOnTouchListener(onTouchListener);
@@ -83,10 +94,17 @@ public class MyPage extends Activity {
 
     private void connectGetData() {
         try {
-//            urlAddr = macIP + "profile_main_name.jsp?loginEmail=" + loginEmail;
-//            NetworkTaskProfileMain networkTaskName = new NetworkTaskProfileMain(MyPage.this, urlAddr, "profile_main");
-//            Object objName = networkTaskName.execute().get();
-//            name = (String) objName;
+            urlAddr = macIP + "profile_mypage.jsp?loginEmail=" + loginEmail;
+            NetworkTaskMyPage networkTask = new NetworkTaskMyPage(MyPage.this, urlAddr);
+            Object obj = networkTask.execute().get();
+            mypage = (ArrayList<MyPageBean>) obj;
+
+            profile_tv_mypage_name.setText(mypage.get(0).getMyname());
+            profile_tv_mypage_email.setText(mypage.get(0).getEmail());
+            profile_et_mypage_pw.setText(mypage.get(0).getPassword());
+            profile_et_mypage_name.setText(mypage.get(0).getMyname());
+            profile_et_mypage_phone.setText(mypage.get(0).getPhone());
+            profile_tv_mypage_account.setText(mypage.get(0).getAccount_name() + " (" + mypage.get(0).getAccount_bank() + " " + mypage.get(0).getAccount_number() + ")");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -119,13 +137,13 @@ public class MyPage extends Activity {
         public boolean onTouch(View v, MotionEvent event) {
             switch(v.getId()) {
                 case R.id.profile_et_mypage_pw:
-                    profile_et_mypage_pw.setVisibility(View.VISIBLE);
+                    profile_tv_mypage_pw_save.setVisibility(View.VISIBLE);
                     break;
                 case R.id.profile_et_mypage_name:
-                    profile_et_mypage_name.setVisibility(View.VISIBLE);
+                    profile_tv_mypage_name_save.setVisibility(View.VISIBLE);
                     break;
                 case R.id.profile_et_mypage_phone:
-                    profile_et_mypage_phone.setVisibility(View.VISIBLE);
+                    profile_tv_mypage_phone_save.setVisibility(View.VISIBLE);
                     break;
             }
             return false;

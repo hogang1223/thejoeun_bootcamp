@@ -122,6 +122,7 @@
                         android:textColor="@color/black"
                         android:layout_marginBottom="40dp"
                         android:hint="비밀번호를 입력하세요."
+                        android:inputType="textPassword"
                         />
 
                     <TextView
@@ -135,11 +136,11 @@
                         android:id="@+id/profile_et_mypage_pw_chk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="*********"
                         android:textSize="20dp"
                         android:textColor="@color/black"
                         android:layout_marginBottom="40dp"
                         android:hint="비밀번호를 한번 더 입력하세요."
+                        android:inputType="textPassword"
                         />
 
                     <TextView

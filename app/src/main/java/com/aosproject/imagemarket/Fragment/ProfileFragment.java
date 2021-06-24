@@ -14,12 +14,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.aosproject.imagemarket.Activity.BuyList;
+import com.aosproject.imagemarket.Activity.ImgList;
 import com.aosproject.imagemarket.Activity.MyPage;
 import com.aosproject.imagemarket.Activity.RecommendList;
+import com.aosproject.imagemarket.Activity.SellList;
+import com.aosproject.imagemarket.Activity.SellReport;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskProfileMain;
 import com.aosproject.imagemarket.R;
-
-import java.util.ArrayList;
 
 import static com.aosproject.imagemarket.Util.ShareVar.loginEmail;
 import static com.aosproject.imagemarket.Util.ShareVar.macIP;
@@ -90,22 +91,22 @@ public class ProfileFragment extends Fragment {
     private void connectGetData() {
         Log.v("Chk", "ProfileFragment_connectGetData");
         try {
-            NetworkTaskProfileMain networkTaskName = new NetworkTaskProfileMain(ProfileFragment.this, macIP + "profile_main_name.jsp?loginEmail=" + loginEmail, "profile_main");
+            NetworkTaskProfileMain networkTaskName = new NetworkTaskProfileMain(getActivity(), macIP + "profile_main_name.jsp?loginEmail=" + loginEmail, "profile_main");
             Object objName = networkTaskName.execute().get();
             name = (String) objName;
             Log.v("Chk", "ProfileFragment : " + name);
 
-            NetworkTaskProfileMain networkTaskBuy = new NetworkTaskProfileMain(ProfileFragment.this, macIP + "profile_main_buy.jsp?loginEmail=" + loginEmail, "profile_main");
+            NetworkTaskProfileMain networkTaskBuy = new NetworkTaskProfileMain(getActivity(), macIP + "profile_main_buy.jsp?loginEmail=" + loginEmail, "profile_main");
             Object objBuy = networkTaskBuy.execute().get();
             buy = (String) objBuy;
             Log.v("Chk", "ProfileFragment : " + buy);
 
-            NetworkTaskProfileMain networkTaskSell = new NetworkTaskProfileMain(ProfileFragment.this, macIP + "profile_main_sell.jsp?loginEmail=" + loginEmail, "profile_main");
+            NetworkTaskProfileMain networkTaskSell = new NetworkTaskProfileMain(getActivity(), macIP + "profile_main_sell.jsp?loginEmail=" + loginEmail, "profile_main");
             Object objSell = networkTaskSell.execute().get();
             sell = (String) objSell;
             Log.v("Chk", "ProfileFragment : " + sell);
 
-            NetworkTaskProfileMain networkTaskRecommend = new NetworkTaskProfileMain(ProfileFragment.this, macIP + "profile_main_recommend.jsp?loginEmail=" + loginEmail, "profile_main");
+            NetworkTaskProfileMain networkTaskRecommend = new NetworkTaskProfileMain(getActivity(), macIP + "profile_main_recommend.jsp?loginEmail=" + loginEmail, "profile_main");
             Object objRecommend = networkTaskRecommend.execute().get();
             recommend = (String) objRecommend;
             Log.v("Chk", "ProfileFragment : " + recommend);
@@ -133,23 +134,23 @@ public class ProfileFragment extends Fragment {
                     Log.v("Chk", "ProfileFragment_onClickListener_BuyList_end");
                     break;
                 case R.id.profile_layout_sell_list:
-//                    intent = new Intent(getActivity(), SellList.class);
-//                    startActivity(intent);
+                    intent = new Intent(getActivity(), SellList.class);
+                    startActivity(intent);
                     break;
                 case R.id.profile_layout_like_list:
                     intent = new Intent(getActivity(), RecommendList.class);
                     startActivity(intent);
                     break;
                 case R.id.profile_tv_img_list:
-//                    intent = new Intent(getActivity(), ImgList.class);
-//                    startActivity(intent);
+                    intent = new Intent(getActivity(), ImgList.class);
+                    startActivity(intent);
                     break;
                 case R.id.profile_tv_img_add:
                     // 혜지언니 이미지 등록 intent
                     break;
                 case R.id.profile_tv_sell_report:
-//                    intent = new Intent(getActivity(), SellReport.class);
-//                    startActivity(intent);
+                    intent = new Intent(getActivity(), SellReport.class);
+                    startActivity(intent);
                     break;
                 case R.id.profile_tv_logout:
                     // 로그아웃

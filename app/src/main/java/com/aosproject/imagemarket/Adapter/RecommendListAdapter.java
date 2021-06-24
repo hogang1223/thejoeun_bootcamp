@@ -91,7 +91,7 @@ public class RecommendListAdapter extends BaseAdapter {
             String result = connectInsertData();
             if(result.equals("1")) {
                 Toast.makeText(mContext, "추천을 취소했습니다.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext, RecommendList.class);
+                Intent intent = new Intent(mContext, RecommendList.class);  // 이거 소용없음ㅎ
             }else {
                 Toast.makeText(mContext, "추천 취소를 실패하였습니다.", Toast.LENGTH_SHORT).show();
             }

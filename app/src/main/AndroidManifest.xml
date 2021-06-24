@@ -15,7 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageMarket">
-        <activity android:name=".Activity.RecommendList"></activity>
+        <activity android:name=".Activity.SellList"></activity>
+        <activity android:name=".Activity.BottomSheet" />
+        <activity android:name=".Activity.SellReport_Settlement" />
+        <activity android:name=".Activity.SellReport" />
+        <activity android:name=".Activity.ImgList" />
+        <activity android:name=".Activity.RecommendList" />
         <activity android:name=".Activity.BuyList" />
         <activity android:name=".Activity.MyPage_Account" />
         <activity android:name=".Activity.MyPage" />

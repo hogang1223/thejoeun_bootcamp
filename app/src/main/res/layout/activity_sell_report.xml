@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.BuyList">
+
+    <!--상단바-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="판매 현황"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            />
+        <ImageView
+            android:id="@+id/profile_iv_sellreport_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="30dp"
+            app:tint="@color/black"
+            />
+    </FrameLayout>
+    <!--밑줄 선-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#A8A8A8"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="총 판매 금액"
+                    android:textSize="30dp"
+                    android:textColor="@color/black"
+                    />
+
+                <ImageView
+                    android:id="@+id/profile_iv_sellreport_light"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_lightbulb_24"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_gravity="center|left"
+                    app:tint="#9F9F9F" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/profile_tv_sellreport_all_profit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="000원"
+                android:textSize="30dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="15dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_background_shadow"
+                    android:orientation="vertical"
+                    android:elevation="5dp"
+                    android:layout_margin="10dp"
+                    android:padding="20dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="정산 예정 금액"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:layout_marginBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/profile_tv_sellreport_now_profit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="000원"
+                        android:textSize="25dp"
+                        android:textColor="@color/purple_500"
+                        android:gravity="center"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/profile_layout_sellreport_past"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_background_shadow"
+                    android:orientation="vertical"
+                    android:elevation="5dp"
+                    android:layout_margin="10dp"
+                    android:padding="20dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="정산 완료 금액"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:layout_marginBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/profile_tv_sellreport_past_profit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="000원"
+                        android:textSize="25dp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="총 판매 건수"
+                android:textSize="30dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                />
+
+            <TextView
+                android:id="@+id/profile_tv_sellreport_all_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="000건"
+                android:textSize="30dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="15dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_background_shadow"
+                    android:orientation="vertical"
+                    android:elevation="5dp"
+                    android:layout_margin="10dp"
+                    android:padding="20dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="오늘 판매 건수"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:layout_marginBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/profile_tv_sellreport_today_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="000건"
+                        android:textSize="25dp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_background_shadow"
+                    android:orientation="vertical"
+                    android:elevation="5dp"
+                    android:layout_margin="10dp"
+                    android:padding="20dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="이달 판매 건수"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:layout_marginBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/profile_tv_sellreport_month_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="000건"
+                        android:textSize="25dp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="판매 베스트 3"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                />
+
+            <ListView
+                android:id="@+id/profile_lv_sellreport_best_items"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
