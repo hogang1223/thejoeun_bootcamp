@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -53,6 +54,7 @@ public class ImageAddLocationActivity extends Activity {
         editText = findViewById(R.id.add_location_edit);
         layout = findViewById(R.id.add_location_layout);
         imageView = findViewById(R.id.add_location_ivbtn_back);
+        editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(300)});
 
         button.setOnClickListener(onClickListener);
         imageView.setOnClickListener(onClickListener);

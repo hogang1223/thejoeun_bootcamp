@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +52,7 @@ public class ImageAddTagActivity extends Activity {
         plus = findViewById(R.id.add_tag_plus);
         imageView = findViewById(R.id.add_tag_ivbtn_back);
         chipGroup = findViewById(R.id.add_tag_chip_group);
+        editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(100)});
 
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override

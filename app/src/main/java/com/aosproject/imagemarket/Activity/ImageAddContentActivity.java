@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +37,7 @@ public class ImageAddContentActivity extends Activity {
         imageView = findViewById(R.id.add_content_ivbtn_back);
         layout = findViewById(R.id.add_content_layout);
         editText = findViewById(R.id.add_content_edit);
+        editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(150)});
 
         button.setOnClickListener(onClickListener);
         imageView.setOnClickListener(onClickListener);
