@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageMarket">
-        <activity android:name=".Activity.ImageEditDeleteActivity"></activity>
+        <activity android:name=".Activity.UserDelete"></activity>
+        <activity android:name=".Activity.ImageEditDeleteActivity" />
         <activity android:name=".Activity.ImageEditActivity" />
         <activity android:name=".Activity.ImageAddLocationActivity" />
         <activity android:name=".Activity.ImageAddPriceActivity" />
@@ -28,7 +29,7 @@
         <activity android:name=".Activity.ImageAddNameActivity" />
         <activity android:name=".Activity.ImageAddImageActivity" />
         <activity android:name=".Activity.ImageDetailActivity" />
-        <activity android:name=".Activity.SellList"/>
+        <activity android:name=".Activity.SellList" />
         <activity android:name=".Activity.SellReport" />
         <activity android:name=".Activity.ImgList" />
         <activity android:name=".Activity.RecommendList" />
