@@ -1,5 +1,6 @@
 package com.aosproject.imagemarket.Activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -22,7 +23,7 @@ import com.aosproject.imagemarket.R;
 import static com.aosproject.imagemarket.Util.ShareVar.loginEmail;
 import static com.aosproject.imagemarket.Util.ShareVar.macIP;
 
-public class MyPage_Account extends Activity {
+public class MyPage_Account extends AppCompatActivity {
 
     String name, bank, number;
     String new_name, new_bank, new_number;
@@ -38,6 +39,9 @@ public class MyPage_Account extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page_account);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
