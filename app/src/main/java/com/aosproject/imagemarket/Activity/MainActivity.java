@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+        bottomNavigationView.setSelectedItemId(R.id.item_fragment1);
     }
 
     private void BottomNavigate(int id) {
