@@ -6,12 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.BottomSheet"
     android:paddingHorizontal="50dp"
     android:paddingTop="30dp"
     android:paddingBottom="40dp"
     >
-
+    <!--    tools:context=".Activity.BottomSheet"-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
