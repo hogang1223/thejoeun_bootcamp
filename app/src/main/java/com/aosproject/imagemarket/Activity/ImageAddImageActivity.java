@@ -1,6 +1,7 @@
 package com.aosproject.imagemarket.Activity;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -9,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -30,7 +32,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ImageAddImageActivity extends Activity {
+public class ImageAddImageActivity extends AppCompatActivity {
 
     String imageName = null;
     ImageView uploadImg, imageView = null;
@@ -48,12 +50,16 @@ public class ImageAddImageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_add_image);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         ActivityCompat.requestPermissions(ImageAddImageActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
         ActivityCompat.requestPermissions(ImageAddImageActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MODE_PRIVATE);
 
         uploadImg = findViewById(R.id.image_upload);
         button = findViewById(R.id.add_image_btn_next);
         imageView = findViewById(R.id.add_image_ivbtn_back);
+
 
         uploadImg.setOnClickListener(onClickListener);
         button.setOnClickListener(onClickListener);
@@ -66,34 +72,18 @@ public class ImageAddImageActivity extends Activity {
             Intent intent = null;
             switch (v.getId()){
                 case R.id.image_upload:
+                    button.setEnabled(true);
                     intent = new Intent(Intent.ACTION_PICK);
                     intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
                     intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, REQ_CODE_SELECT_IMAGE);
+
                     break;
                 case R.id.add_image_btn_next:
-                    urlAddr = ShareVar.macIP + "jsp/multipartRequest.jsp";
-                    Log.v("Message", urlAddr);
-                    NetworkTaskImageAddHJ networkTask = new NetworkTaskImageAddHJ(ImageAddImageActivity.this, urlAddr, img_path, uploadImg);
-                    try {
-                        Integer result = (Integer) networkTask.execute(100).get();
-                        switch (result) {
-                            case 1:
-                                //connectInsertData(imageName);
-                                File file = new File(img_path);
-                                file.delete();
-                                intent = new Intent(ImageAddImageActivity.this, ImageAddNameActivity.class);
-                                intent.putExtra("filepath", imageName);
-                                startActivity(intent);
-                                break;
-                            case 0:
-                                Toast.makeText(ImageAddImageActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                                break;
-
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    intent = new Intent(ImageAddImageActivity.this, ImageAddNameActivity.class);
+                    intent.putExtra("filepath", imageName);
+                    intent.putExtra("img_path", img_path);
+                    startActivity(intent);
                     break;
                 case R.id.add_image_ivbtn_back:
                     finish();
@@ -128,7 +118,7 @@ public class ImageAddImageActivity extends Activity {
                     height = image_bitmap_copy.getHeight();
                     width = image_bitmap_copy.getWidth();
                 }
-                uploadImg.setImageBitmap(image_bitmap_copy);
+                uploadImg.setImageBitmap(image_bitmap_copy); // 여기까지가 iv에 띄어줌
 
                 // 파일 이름 및 경로 바꾸기(임시 저장, 경로는 임의로 지정 가능)
                 String date = new SimpleDateFormat("yyyyMMddHmsS").format(new Date());

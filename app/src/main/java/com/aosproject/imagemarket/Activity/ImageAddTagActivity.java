@@ -1,5 +1,6 @@
 package com.aosproject.imagemarket.Activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -23,9 +24,9 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class ImageAddTagActivity extends Activity {
+public class ImageAddTagActivity extends AppCompatActivity {
 
-    String filepath, title, detail, fileformat = null;
+    String filepath, title, detail, fileformat, img_path = null;
     int category = 0;
     Button button;
     ImageView imageView, plus;
@@ -37,12 +38,16 @@ public class ImageAddTagActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_add_tag);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         Intent intent = getIntent();
         filepath = intent.getStringExtra("filepath");
         title = intent.getStringExtra("title");
         detail = intent.getStringExtra("detail");
         fileformat = intent.getStringExtra("fileformat");
         category = intent.getIntExtra("category", 0);
+        img_path = intent.getStringExtra("img_path");
 
         Log.v("Message", "파일 형식 확인!!!" + fileformat);
 
@@ -64,6 +69,22 @@ public class ImageAddTagActivity extends Activity {
         button.setOnClickListener(onClickListener);
         imageView.setOnClickListener(onClickListener);
         plus.setOnClickListener(onClickListener);
+
+//        if(chipGroup.getChildCount()==0){
+//            Toast.makeText(ImageAddTagActivity.this, "태그는 1개 이상 입력해주세요!", Toast.LENGTH_SHORT).show();
+//            button.setEnabled(false);
+//        }else if (chipGroup.getChildCount()>9){
+//            button.setEnabled(false);
+//            Toast.makeText(ImageAddTagActivity.this, "태그는 9개 이하로 입력해주세요!", Toast.LENGTH_SHORT).show();
+////            Snackbar.make(v, "태그는 9개 이하로 입력해주세요!", Snackbar.LENGTH_SHORT).show();
+//        } else {
+//            button.setEnabled(true);
+//        }
+
+        if(chipGroup.getChildCount()>=1){
+            button.setEnabled(true);
+        }
+
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -77,9 +98,12 @@ public class ImageAddTagActivity extends Activity {
                 case R.id.add_tag_btn_next:
                     if(chipGroup.getChildCount()==0){
                         Snackbar.make(v, "태그는 1개 이상 입력해주세요!", Snackbar.LENGTH_SHORT).show();
+//                        button.setEnabled(false);
                     }else if (chipGroup.getChildCount()>9){
+//                        button.setEnabled(false);
                         Snackbar.make(v, "태그는 9개 이하로 입력해주세요!", Snackbar.LENGTH_SHORT).show();
                     } else {
+//                        button.setEnabled(true);
                         StringBuffer result = new StringBuffer("");
                         for(int i=0; i<chipGroup.getChildCount(); i++) {
                             Chip chip = (Chip) chipGroup.getChildAt(i);
@@ -95,6 +119,7 @@ public class ImageAddTagActivity extends Activity {
                         intent.putExtra("fileformat", fileformat);
                         intent.putExtra("category", category);
                         intent.putExtra("tag", result.toString());
+                        intent.putExtra("img_path", img_path);
                         startActivity(intent);
                     }
                     break;
@@ -102,6 +127,7 @@ public class ImageAddTagActivity extends Activity {
                     finish();
                     break;
                 case R.id.add_tag_plus:
+                    button.setEnabled(true);
                     LayoutInflater inflater = LayoutInflater.from(ImageAddTagActivity.this);
                     for(String text : tags){
                         Chip chip = (Chip) inflater.inflate(R.layout.chip_item, null, false);
