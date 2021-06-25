@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.BottomSheet"
+    android:paddingHorizontal="50dp"
+    android:paddingTop="30dp"
+    android:paddingBottom="40dp"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="정산 안내"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="정산은 수수료 5% 공제 후 이루어지니다. 보이는 금액은 수수료가 계산되지 않은 금액입니다."
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        />
+
+</LinearLayout>
