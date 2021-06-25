@@ -13,4 +13,15 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="SpinnerDivideStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:divider">#C5C5C5</item> <!-- divider 색 -->
+        <item name="android:dividerHeight">2dp</item> <!-- divider 높이 -->
+    </style>
+
+    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Entry">
+
+        <item name="chipBackgroundColor">@color/chip_background_color</item>
+    </style>
+
 </resources>
