@@ -124,6 +124,7 @@ public class HomeFragment extends Fragment {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     // *************************** 도희님 개인정보 페이지 연결 ****************************
+                                                    //Intent intent = new Intent(getActivity(), MyPage.class);
                                                     Intent intent = new Intent(getActivity(), ImageAddTagActivity.class);
                                                     // *************************** 도희님 개인정보 페이지 연결 ****************************
                                                     startActivity(intent);

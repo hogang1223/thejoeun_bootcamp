@@ -2,6 +2,7 @@ package com.aosproject.imagemarket.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,13 +33,19 @@ import com.aosproject.imagemarket.Util.ShareVar;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
 
-public class ImageDetailActivity extends Activity {
+public class ImageDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    String urlAddr, urlAddr2, urlAddr3, urlAddr4, urlAddr5, urlAddr6, urlAddr7, urlAddr8, urlAddr9, user_email, filepath = null;
+    String urlAddr, urlAddr2, urlAddr3, urlAddr4, urlAddr5, urlAddr6, urlAddr7, urlAddr8, user_email, filepath, locationTitle = null;
     int code, recommend = 0;
     TextView detailImageName, detailImageRecommend, detailImagePrice, detailImageFormat, detailImageDetail, detailImageCategory, detailImageLocation, detailImageSeller = null;
     ImageView imageView, back, recommendOff, recommendOn = null;
@@ -47,12 +57,17 @@ public class ImageDetailActivity extends Activity {
     ImageDetailAdapterHJ adapter = null;
     LinearLayout linearLayout = null;
     Button buy1, buy2, cart1, cart2 = null;
-    boolean btnClick = false;
+    private FragmentManager fragmentManager;
+    private MapFragment mapFragment;
+    Double lat, lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_detail);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         Intent intent = getIntent();
         code = intent.getIntExtra("code", 0);
@@ -94,6 +109,10 @@ public class ImageDetailActivity extends Activity {
         cart2 = findViewById(R.id.detail_btn_cart_slide);
         recommendOff = findViewById(R.id.detail_iv_recommend_off);
         recommendOn = findViewById(R.id.detail_iv_recommend);
+        fragmentManager = getFragmentManager();
+        mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.detail_map);
+
+        mapFragment.getMapAsync(this);
 
         layoutManager = new LinearLayoutManager(ImageDetailActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -141,9 +160,13 @@ public class ImageDetailActivity extends Activity {
         }
         if (images.get(0).getLocation().equals("none")) {
             linearLayout.setVisibility(View.GONE);
+            locationTitle = "none";
         } else {
             linearLayout.setVisibility(View.VISIBLE);
             detailImageLocation.setText(images.get(0).getLocation());
+            lat = Double.parseDouble(images.get(0).getLatitude());
+            lng = Double.parseDouble(images.get(0).getLongitude());
+            locationTitle = images.get(0).getLocation();
         }
 
         user_email = images.get(0).getUser_email();
@@ -235,8 +258,6 @@ public class ImageDetailActivity extends Activity {
                 recommendOff.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.v("Message", btnClick + "1 이거 뭐여?!!!!");
-
                         urlAddr8 = ShareVar.macIP + "jsp/recommendOnUpdate.jsp?code=" + code + "&email=" + ShareVar.loginEmail;
                         Log.v("Message", urlAddr8);
                         String result4 = connectRecommendData4();
@@ -415,4 +436,24 @@ public class ImageDetailActivity extends Activity {
             }
         }
     };
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        Log.v("Message", locationTitle);
+        if (locationTitle.equals("none")) {
+            LatLng location = new LatLng(37.501884, 127.025242);
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.title("더조은 아카데미");
+            markerOptions.position(location);
+            googleMap.addMarker(markerOptions);
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,16));
+        } else {
+            LatLng location = new LatLng(lat, lng);
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.title(locationTitle);
+            markerOptions.position(location);
+            googleMap.addMarker(markerOptions);
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,16));
+        }
+    }
 }

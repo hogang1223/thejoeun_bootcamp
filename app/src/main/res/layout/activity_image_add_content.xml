@@ -128,8 +128,8 @@
                     android:text="다음"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:backgroundTint="#845EC2"
                     android:layout_margin="20dp"
+                    android:enabled="false"
                     />
 
 

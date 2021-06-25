@@ -61,12 +61,27 @@
                 android:gravity="center"
                 >
 
-                <ImageView
-                    android:id="@+id/edit_delete_image"
-                    android:layout_width="370dp"
-                    android:layout_height="420dp"
-                    android:src="@mipmap/ic_launcher"
-                    />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <ImageView
+                        android:id="@+id/edit_delete_image"
+                        android:layout_width="370dp"
+                        android:layout_height="420dp"
+                        android:src="@mipmap/ic_launcher"
+                        />
+
+                    <ImageView
+                        android:id="@+id/edit_delete_image_watermark"
+                        android:layout_width="match_parent"
+                        android:layout_height="420dp"
+                        android:src="@drawable/ic_baseline_thumb_up_24"
+                        android:background="#00ffffff"
+                        />
+
+                </FrameLayout>
 
             </LinearLayout>
 
@@ -459,7 +474,7 @@
                         android:id="@+id/edit_delete_textview_location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="16dp"
                         android:text="위치"
                         android:textColor="@color/black"
                         android:textSize="20dp" />
@@ -467,8 +482,8 @@
                     <fragment
                         android:id="@+id/edit_delete_map"
                         android:layout_width="350dp"
-                        android:layout_height="150dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_height="250dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginBottom="20dp"
                         android:layout_gravity="center"
                         class="com.google.android.gms.maps.MapFragment" />

@@ -19,7 +19,7 @@ public class ImageAddCategoryActivity extends Activity {
     ArrayAdapter<CharSequence> adapter = null;
     Spinner spinner = null;
     Button button;
-    String filepath, title, detail, fileformat = null;
+    String filepath, title, detail, fileformat, img_path = null;
     ImageView imageView;
 
     @Override
@@ -32,6 +32,7 @@ public class ImageAddCategoryActivity extends Activity {
         title = intent.getStringExtra("title");
         detail = intent.getStringExtra("detail");
         fileformat = intent.getStringExtra("fileformat");
+        img_path = intent.getStringExtra("img_path");
 
         adapter = ArrayAdapter.createFromResource(this, R.array.category, android.R.layout.simple_spinner_dropdown_item);
 
@@ -59,6 +60,7 @@ public class ImageAddCategoryActivity extends Activity {
                         intent.putExtra("detail", detail);
                         intent.putExtra("fileformat", fileformat);
                         intent.putExtra("category", 1);
+                        intent.putExtra("img_path", img_path);
                         startActivity(intent);
                     }else if (spinner.getSelectedItem().toString().equals("일러스트")){
                         Intent intent = new Intent(ImageAddCategoryActivity.this, ImageAddTagActivity.class);
@@ -67,6 +69,7 @@ public class ImageAddCategoryActivity extends Activity {
                         intent.putExtra("detail", detail);
                         intent.putExtra("fileformat", fileformat);
                         intent.putExtra("category", 2);
+                        intent.putExtra("img_path", img_path);
                         startActivity(intent);
                     }else if (spinner.getSelectedItem().toString().equals("캘리그라피")){
                         Intent intent = new Intent(ImageAddCategoryActivity.this, ImageAddTagActivity.class);
@@ -75,6 +78,7 @@ public class ImageAddCategoryActivity extends Activity {
                         intent.putExtra("detail", detail);
                         intent.putExtra("fileformat", fileformat);
                         intent.putExtra("category", 3);
+                        intent.putExtra("img_path", img_path);
                         startActivity(intent);
                     }
                     break;

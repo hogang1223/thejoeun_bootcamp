@@ -2,6 +2,7 @@ package com.aosproject.imagemarket.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,6 +99,15 @@ public class ImageDetailAdapterHJ extends RecyclerView.Adapter<ImageDetailAdapte
                     img.setAlpha(80);
                     tv.setVisibility(View.VISIBLE);
                     tv.setText(images.get(position).getTitle()+"\n"+images.get(position).getPrice() + " 원");
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            tv.setVisibility(View.INVISIBLE);
+                            img.setAlpha(250);
+                        }
+                    }, 800);
                     return true;
                 }
             });
