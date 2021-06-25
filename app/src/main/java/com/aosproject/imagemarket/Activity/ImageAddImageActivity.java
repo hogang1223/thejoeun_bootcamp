@@ -91,7 +91,6 @@ public class ImageAddImageActivity extends Activity {
                             Integer result = (Integer) networkTask.execute(100).get();
                             switch (result) {
                                 case 1:
-                                    //connectInsertData(imageName);
                                     File file = new File(img_path);
                                     file.delete();
                                     intent = new Intent(ImageAddImageActivity.this, ImageAddNameActivity.class);
