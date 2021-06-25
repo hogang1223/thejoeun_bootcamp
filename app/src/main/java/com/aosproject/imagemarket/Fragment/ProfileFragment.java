@@ -147,6 +147,8 @@ public class ProfileFragment extends Fragment {
                     break;
                 case R.id.profile_tv_img_add:
                     // 혜지언니 이미지 등록 intent
+//                    intent = new Intent(getActivity(), ImageAddImageActivity.class);
+//                    startActivity(intent);
                     break;
                 case R.id.profile_tv_sell_report:
                     intent = new Intent(getActivity(), SellReport.class);

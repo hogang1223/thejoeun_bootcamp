@@ -69,9 +69,13 @@ public class RecommendListAdapter extends BaseAdapter {
         TextView price = convertView.findViewById(R.id.profile_tv_recommendlist_price);
 
         ImageView recommend = convertView.findViewById(R.id.profile_tv_recommendlist_recommend);
+        recommend.setTag(data.get(position).getImageCode());
 
         Glide.with(mContext)
                 .load(macIP + "/image/" + data.get(position).getFilepath())
+                .override(110, 110)
+                .centerCrop()
+//                .error(R.drawable.---)
                 .into(img);
         seller.setText(data.get(position).getMyname());
         title.setText(data.get(position).getTitle());
@@ -79,7 +83,6 @@ public class RecommendListAdapter extends BaseAdapter {
         String priceData = data.get(position).getPrice();
         int priceNum = Integer.parseInt(priceData);
         price.setText(String.format("%,d", priceNum) + "원");
-
 
         if(data.get(position).getRecommend() == 1) {
             recommend.setImageResource(R.drawable.ic_baseline_thumb_up_alt_24);
@@ -89,32 +92,43 @@ public class RecommendListAdapter extends BaseAdapter {
             recommend.setColorFilter(Color.parseColor("#845EC2"));
         }
 
-        imgCode = data.get(position).getImageCode();
-        recommend.setOnClickListener(onClickListener);
+        imgCode = (Integer) recommend.getTag();
+        recommend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = connectInsertData((Integer) recommend.getTag());
+                if(result.equals("0")) {
+                    Toast.makeText(mContext, "추천 취소를 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(mContext, "추천을 취소했습니다.", Toast.LENGTH_SHORT).show();
+                    listener.onRecommendListClickListener(true);
+                }
+            }
+        });
 
         return convertView;
     }
 
-    View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+//    View.OnClickListener onClickListener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//
+//            String result = connectInsertData(imgCode);
+//            if(result.equals("0")) {
+//                Toast.makeText(mContext, "추천 취소를 실패하였습니다.", Toast.LENGTH_SHORT).show();
+//            }else {
+//                Toast.makeText(mContext, "추천을 취소했습니다.", Toast.LENGTH_SHORT).show();
+//                listener.onRecommendListClickListener(true);
+//            }
+//
+//        }
+//    };
 
-            String result = connectInsertData();
-            if(result.equals("1") || result.equals("2")) {
-                Toast.makeText(mContext, "추천을 취소했습니다.", Toast.LENGTH_SHORT).show();
-                listener.onRecommendListClickListener(true);
-            }else {
-                Toast.makeText(mContext, "추천 취소를 실패하였습니다.", Toast.LENGTH_SHORT).show();
-            }
+    private String connectInsertData(int code) {
 
-        }
-    };
+        Log.v("Chk", "RecommendListAdapter connectInsertData imgCode : " + code);
 
-    private String connectInsertData() {
-
-        Log.v("Chk", "RecommendListAdapter connectInsertData imgCode : " + imgCode);
-
-        urlAddr = macIP + "jsp/profile_recommendlist_update.jsp?imgCode=" + imgCode + "&loginEmail=" + loginEmail;
+        urlAddr = macIP + "jsp/profile_recommendlist_update.jsp?imgCode=" + code + "&loginEmail=" + loginEmail;
         String result = null;
 
         try {

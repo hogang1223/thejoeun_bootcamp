@@ -205,6 +205,8 @@ public class MyPage extends Activity {
             switch(v.getId()) {
                 case R.id.profile_et_mypage_pw:
                     profile_tv_mypage_pw_save.setVisibility(View.VISIBLE);
+                    profile_tv_mypage_name_save.setVisibility(View.INVISIBLE);
+                    profile_tv_mypage_phone_save.setVisibility(View.INVISIBLE);
 
                     ViewGroup.LayoutParams params = profile_layout_mypage_pw_chk.getLayoutParams();
                     params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -213,9 +215,15 @@ public class MyPage extends Activity {
                     break;
                 case R.id.profile_et_mypage_name:
                     profile_tv_mypage_name_save.setVisibility(View.VISIBLE);
+                    profile_tv_mypage_phone_save.setVisibility(View.INVISIBLE);
+                    profile_tv_mypage_pw_save.setVisibility(View.INVISIBLE);
+                    profile_layout_mypage_pw_chk.setVisibility(View.GONE);
                     break;
                 case R.id.profile_et_mypage_phone:
                     profile_tv_mypage_phone_save.setVisibility(View.VISIBLE);
+                    profile_tv_mypage_pw_save.setVisibility(View.INVISIBLE);
+                    profile_tv_mypage_name_save.setVisibility(View.INVISIBLE);
+                    profile_layout_mypage_pw_chk.setVisibility(View.GONE);
                     break;
             }
 

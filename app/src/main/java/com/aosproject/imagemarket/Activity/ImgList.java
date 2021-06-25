@@ -1,6 +1,7 @@
 package com.aosproject.imagemarket.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -83,7 +84,9 @@ public class ImgList extends Activity {
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            // 혜지언니 판매 상품 상세 페이지 추가해주세요~
+            // 혜지언니 판매 상품 상세 페이지
+//            Intent intent = new Intent(ImgList.this, ImageEditDeleteActivity.class);
+//            startActivity(intent);
         }
     };
 }
