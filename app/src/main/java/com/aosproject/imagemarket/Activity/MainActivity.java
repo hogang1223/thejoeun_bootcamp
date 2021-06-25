@@ -25,7 +25,7 @@ import static com.aosproject.imagemarket.R.id.item_fragment3;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int page;
+    private int fromImageDetailViewToCartPage;
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.hide();
 
         Intent intent = getIntent();
-        page = intent.getIntExtra("cart", 0);
+        fromImageDetailViewToCartPage = intent.getIntExtra("cart", 0);
 
 
         bottomNavigationView = findViewById(R.id.tabar_nav);
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         });
 //        bottomNavigationView.setSelectedItemId(R.id.item_fragment1);
 
-        if(page == 3){
+        if(fromImageDetailViewToCartPage == 3){
             bottomNavigationView.setSelectedItemId(R.id.item_fragment3);
         }else{
             bottomNavigationView.setSelectedItemId(R.id.item_fragment1);

@@ -32,7 +32,6 @@ public class DealCartItemActivityHK extends AppCompatActivity {
 
     private final String TAG = "DealActivityHK";
 
-    ShareVar shareVar = new ShareVar();
     String urlAddr = null;
     ArrayList<CartHK> dealCartItems;
 
@@ -226,7 +225,7 @@ public class DealCartItemActivityHK extends AppCompatActivity {
         String sellEmails = sellEmailParsing();
         String imageCodes = imageCodeParsing();
         String buyCode = new SimpleDateFormat("yyMMddHmsS").format(new Date());
-        String urlAddr = shareVar.macIP + "jsp/deal_insert_item_HK.jsp?sellEmails=" + sellEmails + "&imageCodes=" + imageCodes + "&buyCode=" + buyCode + "&loginEmail=" + shareVar.loginEmail;
+        String urlAddr = ShareVar.macIP + "jsp/deal_insert_item_HK.jsp?sellEmails=" + sellEmails + "&imageCodes=" + imageCodes + "&buyCode=" + buyCode + "&loginEmail=" + ShareVar.loginEmail;
         try {
             CartNetworkTaskHK networkTask = new CartNetworkTaskHK(DealCartItemActivityHK.this, urlAddr, "insert");
             Object obj = networkTask.execute().get();
@@ -242,7 +241,7 @@ public class DealCartItemActivityHK extends AppCompatActivity {
         String result = "";
         String cartNos = cartNoParsing();
 
-        String urlAddr = shareVar.macIP + "jsp/cart_delete_item_HK.jsp?cartNos=" + cartNos;
+        String urlAddr = ShareVar.macIP + "jsp/cart_delete_item_HK.jsp?cartNos=" + cartNos;
         try {
             CartNetworkTaskHK networkTask = new CartNetworkTaskHK(DealCartItemActivityHK.this, urlAddr, "update");
             networkTask.execute().get();

@@ -43,14 +43,6 @@ public class DealCompeletedActivityHK extends AppCompatActivity {
     private ImageView ivBack;
     private TextView tvGoOrderList;
 
-    //------
-    // Deal ArrayList에서 가져올 것들 (+ Date dealDate)
-    int dealNo = 18;
-    int image_code = 5;
-    int downloadCount = 1;
-    String imageFilepath = "img1.JPG";
-    String imageTitle = "봄에는 역시 벚꽃이지";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

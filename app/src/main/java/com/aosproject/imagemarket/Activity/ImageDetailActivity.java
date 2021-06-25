@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,8 @@ import com.aosproject.imagemarket.Adapter.ImageDetailAdapterHJ;
 import com.aosproject.imagemarket.Bean.DealHJ;
 import com.aosproject.imagemarket.Bean.ImageHJ;
 import com.aosproject.imagemarket.Fragment.CartFragment;
+import com.aosproject.imagemarket.NetworkTask.CartNetworkTaskHK;
+import com.aosproject.imagemarket.NetworkTask.DownloadDeviceNetworkTaskHK;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskDealHJ;
 import com.aosproject.imagemarket.NetworkTask.NetworkTaskImageHJ;
 import com.aosproject.imagemarket.R;
@@ -103,6 +106,7 @@ public class ImageDetailActivity extends Activity {
         chip = new Chip[]{c0, c1, c2, c3, c4, c5, c6, c7, c8};
 
         detailImageName.setText(images.get(0).getTitle());
+
         Glide.with(this).load(ShareVar.macIP + "image/" + images.get(0).getFilepath()).transform(new FitCenter(), new RoundedCorners(25)).into(imageView);
         detailImagePrice.setText(String.format("%,d", images.get(0).getPrice()) + " 원");
         String[] parserData = images.get(0).getTag().split(",");
@@ -195,11 +199,11 @@ public class ImageDetailActivity extends Activity {
         Log.v("Message", urlAddr5);
         String result = connectRecommendData1();
         Log.v("Message", "여기서 result!!!!" + result);
-        if(result.equals("true")){ // 구매 여부 판단
+        if (result.equals("true")) { // 구매 여부 판단
             urlAddr6 = ShareVar.macIP + "jsp/recommendSelect2.jsp?code=" + code + "&email=" + ShareVar.loginEmail;
             Log.v("Message", urlAddr6);
             String result2 = connectRecommendData2();
-            if(result2.equals("true")){ // 구매도 하고 추천도 한 경우
+            if (result2.equals("true")) { // 구매도 하고 추천도 한 경우
                 recommendOn.setVisibility(View.VISIBLE);
                 recommendOff.setVisibility(View.INVISIBLE);
                 recommendOn.setOnClickListener(new View.OnClickListener() {
@@ -208,7 +212,7 @@ public class ImageDetailActivity extends Activity {
                         urlAddr7 = ShareVar.macIP + "jsp/recommendOffUpdate.jsp?code=" + code + "&email=" + ShareVar.loginEmail;
                         Log.v("Message", urlAddr7);
                         String result3 = connectRecommendData3();
-                        if(Integer.parseInt(result3)>=1){
+                        if (Integer.parseInt(result3) >= 1) {
                             recommendOff.setVisibility(View.VISIBLE);
                             recommendOn.setVisibility(View.INVISIBLE);
                             urlAddr2 = ShareVar.macIP + "jsp/imageRecommend.jsp?code=" + code;
@@ -221,7 +225,7 @@ public class ImageDetailActivity extends Activity {
                                 recommend = deals.get(0).getRecommend();
                                 Log.v("Message", deals.get(0).getRecommend() + "log");
                                 detailImageRecommend.setText(recommend + " 명이 추천합니다");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 Log.v("Message", "error");
                                 detailImageRecommend.setText("0 명이 추천합니다");
                                 e.printStackTrace();
@@ -230,7 +234,7 @@ public class ImageDetailActivity extends Activity {
                         onResume();
                     }
                 });
-            }else { // 구매는 했지만 추천은 하지 않은 경우
+            } else { // 구매는 했지만 추천은 하지 않은 경우
                 recommendOff.setVisibility(View.VISIBLE);
                 recommendOn.setVisibility(View.INVISIBLE);
                 recommendOff.setOnClickListener(new View.OnClickListener() {
@@ -241,7 +245,7 @@ public class ImageDetailActivity extends Activity {
                         urlAddr8 = ShareVar.macIP + "jsp/recommendOnUpdate.jsp?code=" + code + "&email=" + ShareVar.loginEmail;
                         Log.v("Message", urlAddr8);
                         String result4 = connectRecommendData4();
-                        if(Integer.parseInt(result4)>=1){
+                        if (Integer.parseInt(result4) >= 1) {
                             recommendOff.setVisibility(View.INVISIBLE);
                             recommendOn.setVisibility(View.VISIBLE);
                             urlAddr2 = ShareVar.macIP + "jsp/imageRecommend.jsp?code=" + code;
@@ -254,7 +258,7 @@ public class ImageDetailActivity extends Activity {
                                 recommend = deals.get(0).getRecommend();
                                 Log.v("Message", deals.get(0).getRecommend() + "log");
                                 detailImageRecommend.setText(recommend + " 명이 추천합니다");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 Log.v("Message", "error");
                                 detailImageRecommend.setText("0 명이 추천합니다");
                                 e.printStackTrace();
@@ -264,13 +268,13 @@ public class ImageDetailActivity extends Activity {
                     }
                 });
             }
-        }else{
+        } else {
             recommendOff.setVisibility(View.VISIBLE);
             recommendOn.setVisibility(View.INVISIBLE);
         }
     }
 
-    private String connectRecommendData1(){
+    private String connectRecommendData1() {
         Log.v("Message", "result");
         String result = null;
         try {
@@ -280,14 +284,14 @@ public class ImageDetailActivity extends Activity {
             // true 들어오면 성공한 것, 만약 그 이외의 숫자면 실패한 것
             result = (String) obj;
             Log.v("Message", result);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(ImageDetailActivity.this, "실패", Toast.LENGTH_SHORT).show();
         }
         return result;
     }
 
-    private String connectRecommendData2(){
+    private String connectRecommendData2() {
         Log.v("Message", "result");
         String result = null;
         try {
@@ -297,14 +301,14 @@ public class ImageDetailActivity extends Activity {
             // true 들어오면 성공한 것, 만약 그 이외의 숫자면 실패한 것
             result = (String) obj;
             Log.v("Message", result);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(ImageDetailActivity.this, "실패", Toast.LENGTH_SHORT).show();
         }
         return result;
     }
 
-    private String connectRecommendData3(){
+    private String connectRecommendData3() {
         Log.v("Message", "result");
         String result = null;
         try {
@@ -314,14 +318,14 @@ public class ImageDetailActivity extends Activity {
             // true 들어오면 성공한 것, 만약 그 이외의 숫자면 실패한 것
             result = (String) obj;
             Log.v("Message", result);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(ImageDetailActivity.this, "실패", Toast.LENGTH_SHORT).show();
         }
         return result;
     }
 
-    private String connectRecommendData4(){
+    private String connectRecommendData4() {
         Log.v("Message", "result");
         String result = null;
         try {
@@ -331,7 +335,7 @@ public class ImageDetailActivity extends Activity {
             // true 들어오면 성공한 것, 만약 그 이외의 숫자면 실패한 것
             result = (String) obj;
             Log.v("Message", result);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(ImageDetailActivity.this, "실패", Toast.LENGTH_SHORT).show();
         }
@@ -341,7 +345,7 @@ public class ImageDetailActivity extends Activity {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.detail_ivbtn_back:
                     finish();
                     break;
@@ -380,43 +384,127 @@ public class ImageDetailActivity extends Activity {
                             .show();
                     break;
                 case R.id.detail_btn_cart:
-                    new AlertDialog.Builder(ImageDetailActivity.this)
-                            .setMessage("해당 이미지를 장바구니에 담았습니다.\n장바구니로 이동하시겠습니까?")
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // *************************** 효경님 장바구니 페이지 연결 ****************************
-                                    Intent intent = new Intent(ImageDetailActivity.this, MainActivity.class);
-                                    // *************************** 효경님 장바구니 페이지 연결 ****************************
-                                    intent.putExtra("cart", 3);
-                                    startActivity(intent);
-                                    finish();
+                    // 동일한 이미지가 이미 장바구니에 있을 경우
+                    String checkImage = checkCartItem(code);
+                    if (checkImage.equals("true")) {
+                        new AlertDialog.Builder(ImageDetailActivity.this)
+                                .setMessage("해당 상품은 이미 장바구니에 담겨있습니다.\n장바구니로 이동하시겠습니까?")
+                                .setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                        Intent intent = new Intent(ImageDetailActivity.this, MainActivity.class);
+                                        // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                        intent.putExtra("cart", 3);
+                                        startActivity(intent);
+                                        finish();
 
-                                }
-                            })
-                            .setNegativeButton("Cancel", null)
-                            .show();
+                                    }
+                                })
+                                .setNegativeButton("Cancel", null)
+                                .show();
+                    } else {
+                        // cart insert
+                        String insertItem = insertItemToCart(code);
+                        if (insertItem.equals("1")) {
+                            new AlertDialog.Builder(ImageDetailActivity.this)
+                                    .setMessage("해당 이미지를 장바구니에 담았습니다.\n장바구니로 이동하시겠습니까?")
+                                    .setCancelable(false)
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                            Intent intent = new Intent(ImageDetailActivity.this, MainActivity.class);
+                                            // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                            intent.putExtra("cart", 3);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    })
+                                    .setNegativeButton("Cancel", null)
+                                    .show();
+                        } else {
+                            Toast.makeText(ImageDetailActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                     break;
 
                 case R.id.detail_btn_cart_slide:
-                    new AlertDialog.Builder(ImageDetailActivity.this)
-                            .setMessage("해당 이미지를 장바구니에 담았습니다.\n장바구니로 이동하시겠습니까?")
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // *************************** 효경님 장바구니 페이지 연결 ****************************
-                                    Intent intent = new Intent(ImageDetailActivity.this, MainActivity.class);
-                                    // *************************** 효경님 장바구니 페이지 연결 ****************************
-//                                    intent.putExtra("code", code);
-                                    startActivity(intent);
-                                }
-                            })
-                            .setNegativeButton("Cancel", null)
-                            .show();
+                    checkImage = checkCartItem(code);
+                    if (checkImage.equals("true")) {
+                        new AlertDialog.Builder(ImageDetailActivity.this)
+                                .setMessage("해당 상품은 이미 장바구니에 담겨있습니다.\n장바구니로 이동하시겠습니까?")
+                                .setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                        Intent intent = new Intent(ImageDetailActivity.this, MainActivity.class);
+                                        // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                        intent.putExtra("cart", 3);
+                                        startActivity(intent);
+                                        finish();
+
+                                    }
+                                })
+                                .setNegativeButton("Cancel", null)
+                                .show();
+                    } else {
+                        // cart insert
+                        // cart insert
+                        String insertItem = insertItemToCart(code);
+                        if (insertItem.equals("1")) {
+                            new AlertDialog.Builder(ImageDetailActivity.this)
+                                    .setMessage("해당 이미지를 장바구니에 담았습니다.\n장바구니로 이동하시겠습니까?")
+                                    .setCancelable(false)
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                            Intent intent = new Intent(ImageDetailActivity.this, MainActivity.class);
+                                            // *************************** 효경님 장바구니 페이지 연결 ****************************
+                                            intent.putExtra("cart", 3);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    })
+                                    .setNegativeButton("Cancel", null)
+                                    .show();
+                        } else {
+                            Toast.makeText(ImageDetailActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                     break;
             }
         }
     };
+
+    // 장바구니에 이미 해당 이미지가 담겨있는지 확인
+    private String checkCartItem(int imageCode) {
+        String result = null;
+        String urlAddr = ShareVar.macIP + "jsp/cart_select_item_check_HK.jsp?imageCode=" + imageCode + "&loginEmail=" + ShareVar.loginEmail;
+        try {
+            CartNetworkTaskHK networkTask = new CartNetworkTaskHK(ImageDetailActivity.this, urlAddr, "check");
+            Object obj = networkTask.execute().get();
+            result = (String) obj;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private String insertItemToCart(int imageCode) {
+        String result = null;
+        String urlAddr = ShareVar.macIP + "jsp/cart_insert_item_HK.jsp?imageCode=" + imageCode + "&loginEmail=" + ShareVar.loginEmail;
+        try {
+            CartNetworkTaskHK networkTask = new CartNetworkTaskHK(ImageDetailActivity.this, urlAddr, "insert");
+            Object obj = networkTask.execute().get();
+            result = (String) obj;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 }

@@ -21,7 +21,9 @@ import com.aosproject.imagemarket.R;
 import com.aosproject.imagemarket.Util.ShareVar;
 import com.bumptech.glide.Glide;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DealItemActivityHK extends AppCompatActivity {
 
@@ -89,8 +91,9 @@ public class DealItemActivityHK extends AppCompatActivity {
 
                 // 결제 버튼 클릭 시
                 case R.id.deal_btn_deal:
-//            connectInsertDealData();    // DB : Insert Deal Table
-//            connectUpdateCartStatus();  // DB : Update Cart Table cstatus
+                    String sellEmail = dealItem.get(0).getSellEmail();
+                    connectInsertDealData(imageCode, sellEmail);    // DB : Insert Deal Table
+                    connectUpdateCartStatus(imageCode);  // DB : Update Cart Table cstatus
                     Intent intent = new Intent(DealItemActivityHK.this, DealCompeletedActivityHK.class);
                     startActivity(intent);
                     break;
@@ -101,8 +104,10 @@ public class DealItemActivityHK extends AppCompatActivity {
     CompoundButton.OnCheckedChangeListener cbOnCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if(cb1.isChecked() && cb2.isChecked() && cb3.isChecked() && cb4.isChecked()){
-                btnDeal.setEnabled(true);
+//
+                if(cb1.isChecked() && cb2.isChecked() && cb3.isChecked() && cb4.isChecked()){
+                    btnDeal.setEnabled(true);
+//                }
             }else{
                 btnDeal.setEnabled(false);
             }
@@ -224,6 +229,37 @@ public class DealItemActivityHK extends AppCompatActivity {
         cb3.setOnCheckedChangeListener(cbOnCheckedChangeListener);
         cb4.setOnCheckedChangeListener(cbOnCheckedChangeListener);
 
+    }
+
+    // DB 연결하기
+    // 1. Deal Table Insert
+    private String connectInsertDealData(int imageCode, String sellEmail){
+        String result =  "";
+        String buyCode = new SimpleDateFormat("yyMMddHmsS").format(new Date());
+        String urlAddr = ShareVar.macIP + "jsp/deal_insert_item_HK.jsp?sellEmails=" + sellEmail + "&imageCodes=" + imageCode + "&buyCode=" + buyCode + "&loginEmail=" + ShareVar.loginEmail;
+        try {
+            CartNetworkTaskHK networkTask = new CartNetworkTaskHK(DealItemActivityHK.this, urlAddr, "insert");
+            Object obj = networkTask.execute().get();
+            result = (String) obj;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    // 2. Cart Table Update (cstatus = 0)
+    private String connectUpdateCartStatus(int imageCode){
+        String result = "";
+        String urlAddr = ShareVar.macIP + "jsp/cart_delete_item_HK.jsp?cartNos=" + imageCode;
+        try {
+            CartNetworkTaskHK networkTask = new CartNetworkTaskHK(DealItemActivityHK.this, urlAddr, "update");
+            networkTask.execute().get();
+            result = "1";
+        }catch (Exception e){
+            e.printStackTrace();
+            result = "0";
+        }
+        return result;
     }
 
 

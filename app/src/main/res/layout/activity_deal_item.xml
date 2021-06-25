@@ -120,7 +120,7 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="2"
                                 android:text="이미지 타이틀"
-                                android:textSize="16dp"
+                                android:textSize="20dp"
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
                                 />
@@ -130,7 +130,7 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="2"
                                 android:text="1,000원"
-                                android:textSize="16dp"
+                                android:textSize="20dp"
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
                                 />

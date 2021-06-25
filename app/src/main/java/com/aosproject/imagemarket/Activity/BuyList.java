@@ -99,10 +99,6 @@ public class BuyList extends Activity implements BuyListClickListener {
 
     @Override
     public void onBuyListClickListener(boolean isSelected) {
-        if(isSelected){
-            connectGetData();
-        }else{
-            connectGetData();
-        }
+        connectGetData();
     }
 }

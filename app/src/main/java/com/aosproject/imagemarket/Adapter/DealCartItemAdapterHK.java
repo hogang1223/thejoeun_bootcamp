@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class DealCartItemAdapterHK extends RecyclerView.Adapter<DealCartItemAdapterHK.ViewHolder> {
 
     private final String TAG = "DealCartItemAdapterHK";
-    ShareVar shareVar = new ShareVar();
 
     private Context context;
     private ArrayList<CartHK> dealCartItems = null;
@@ -65,7 +64,7 @@ public class DealCartItemAdapterHK extends RecyclerView.Adapter<DealCartItemAdap
     public void onBindViewHolder(@NonNull DealCartItemAdapterHK.ViewHolder holder, int position) {
         // load image into imageview using glide
         Glide.with(context)
-                .load(shareVar.macIP + "image/" + dealCartItems.get(position).getImageFilepath())
+                .load(ShareVar.macIP + "image/" + dealCartItems.get(position).getImageFilepath())
                 .override(110, 110)
                 .centerCrop()
                 .error(R.drawable.cart_image_error)

@@ -123,12 +123,13 @@ public class ImageAddImageActivity extends Activity {
 
                 //image_bitmap 으로 받아온 이미지의 사이즈를 임의적으로 조절함. width: 400 , height: 300
 //                Bitmap image_bitmap_copy = Bitmap.createScaledBitmap(image_bitmap, 400, 300, true);
-                while (width > 400){
-                    image_bitmap_copy = Bitmap.createScaledBitmap(image_bitmap, 400, (height*400)/width, true);
+                while (width > 1024){
+                    image_bitmap_copy = Bitmap.createScaledBitmap(image_bitmap, 1024, (height*1024)/width, true);
                     height = image_bitmap_copy.getHeight();
                     width = image_bitmap_copy.getWidth();
                 }
                 uploadImg.setImageBitmap(image_bitmap_copy);
+                //
 
                 // 파일 이름 및 경로 바꾸기(임시 저장, 경로는 임의로 지정 가능)
                 String date = new SimpleDateFormat("yyyyMMddHmsS").format(new Date());

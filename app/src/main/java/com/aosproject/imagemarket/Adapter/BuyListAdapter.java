@@ -36,6 +36,7 @@ import com.aosproject.imagemarket.R;
 import com.aosproject.imagemarket.Util.BuyListClickListener;
 import com.aosproject.imagemarket.Util.CartItemLongClickListener;
 import com.aosproject.imagemarket.Util.ShareVar;
+import com.bumptech.glide.Glide;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -114,9 +115,18 @@ public class BuyListAdapter extends BaseAdapter {
 
         date.setText(data.get(position).getDealDate() + " - " + data.get(position).getBuyCode());
 //        img.setImageResource();
+        Glide.with(mContext)
+                .load(ShareVar.macIP + "image/" + data.get(position).getFilepath())
+                .override(110, 110)
+                .centerCrop()
+                .error(R.drawable.cart_image_error)
+                .into(img);
+
         seller.setText(data.get(position).getMyname());
         title.setText(data.get(position).getTitle());
-        price.setText(data.get(position).getPrice() + "원");
+        String priceData = data.get(position).getPrice();
+        int priceNum = Integer.parseInt(priceData);
+        price.setText(String.format("%,d", priceNum) + "원");
 
         if(data.get(position).getDownloadCount() >= 3) {
             download.setVisibility(View.INVISIBLE);
@@ -135,8 +145,10 @@ public class BuyListAdapter extends BaseAdapter {
 
         recommendInt = data.get(position).getRecommend();
 //        dealNo = data.get(position).getDealNo();
+        img.setTag(data.get(position).getImage_code());
         download.setTag(data.get(position).getDealNo());
         recommend.setTag(data.get(position).getRecommend());
+
 
 
         if(recommendInt == 1) {
@@ -151,12 +163,14 @@ public class BuyListAdapter extends BaseAdapter {
         recommend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result = connectInsertData((Integer)recommend.getTag(), (Integer)download.getTag());
-                    if(result.equals("1") && (Integer)recommend.getTag() == 1 ) {
+                String result = connectInsertData((Integer)recommend.getTag(), (String) img.getTag());
+                    if(!result.equals("0") && (Integer)recommend.getTag() == 1 ) {
                         Toast.makeText(mContext, "추천을 취소했습니다.", Toast.LENGTH_SHORT).show();
                         clickListener.onBuyListClickListener(true);
-                    }else if(result.equals("1") && (Integer)recommend.getTag() == 0){
+                        Log.v("BuyList", "recommen Click Listener : recomment cancel");
+                    }else if(!result.equals("0") && (Integer)recommend.getTag() == 0){
                         clickListener.onBuyListClickListener(true);
+                        Log.v("BuyList", "recommend Click Listener : recomment");
                     }
                     else{
                         Toast.makeText(mContext, "추천 취소를 실패하였습니다.", Toast.LENGTH_SHORT).show();
@@ -188,29 +202,7 @@ public class BuyListAdapter extends BaseAdapter {
         return convertView;
     }
 
-//    View.OnClickListener onClickListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            switch (v.getId()) {
-//                case R.id.profile_iv_buylist_download:
-//                    //효경언니 여기 추가하세요~~
-//
-//
-//
-//                    break;
-////                case R.id.profile_tv_buylist_recommend:
-////                    String result = connectInsertData();
-////                    if(result.equals("1")) {
-////                        Toast.makeText(mContext, "추천을 취소했습니다.", Toast.LENGTH_SHORT).show();
-//////                        Intent intent = new Intent(mContext, BuyList.class);
-////                    }else {
-////                        Toast.makeText(mContext, "추천 취소를 실패하였습니다.", Toast.LENGTH_SHORT).show();
-////                    }
-//            }
-//        }
-//    };
-
-    private String connectInsertData(int recommendInt, int dealNo) {
+    private String connectInsertData(int recommendInt, String imageCode) {
 
         int update;
         if(recommendInt == 1) {
@@ -218,7 +210,7 @@ public class BuyListAdapter extends BaseAdapter {
         }else {
             update = 1;
         }
-        urlAddr = macIP + "jsp/profile_buylist_recommend.jsp?dealNo=" + dealNo + "&update=" + update;
+        urlAddr = macIP + "jsp/profile_buylist_recommend.jsp?imageCode=" + imageCode + "&update=" + update +"&loginEmail=" + ShareVar.loginEmail;
         String result = null;
 
         try {

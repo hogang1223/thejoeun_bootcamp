@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class CartNetworkTaskHK extends AsyncTask<Integer, String, Object> {
 
     private final String TAG = "CartNetworkTaskHK";
+
     Context context = null;
     String mAddr = null;
     ProgressDialog progressDialog = null;
