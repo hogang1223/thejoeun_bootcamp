@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/profile_tv_selllist_selldate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2021-01-01"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="16dp"
+            >
+
+            <ImageView
+                android:id="@+id/profile_iv_selllist_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            >
+
+            <TextView
+                android:id="@+id/profile_tv_selllist_buycode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="주문번호"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="5dp"
+                />
+            <TextView
+                android:id="@+id/profile_tv_selllist_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="이미지 이름"
+                android:textSize="20dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/profile_tv_selllist_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1,000원"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,11 +1,14 @@
 package com.aosproject.imagemarket.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,14 +34,20 @@ import com.aosproject.imagemarket.Util.ShareVar;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
 
-public class ImageEditDeleteActivity extends Activity {
+public class ImageEditDeleteActivity extends AppCompatActivity implements OnMapReadyCallback {
 
 
-    String urlAddr, urlAddr2, urlAddr3, urlAddr4, urlAddr5, user_email, filepath = null;
+    String urlAddr, urlAddr2, urlAddr3, urlAddr4, urlAddr5, user_email, filepath, locationTitle  = null;
     int code, recommend = 0;
     ArrayList<ImageHJ> images = null;
     ArrayList<DealHJ> deals = null;
@@ -50,11 +59,17 @@ public class ImageEditDeleteActivity extends Activity {
     RecyclerView.LayoutManager layoutManager = null;
     ImageEditAdapterHJ adapter = null;
     LinearLayout linearLayout = null;
+    private FragmentManager fragmentManager;
+    private MapFragment mapFragment;
+    Double lat, lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_edit_delete);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
     }
 
@@ -99,6 +114,11 @@ public class ImageEditDeleteActivity extends Activity {
         deleteBtn = findViewById(R.id.edit_delete_btn_delete);
         editSliderBtn = findViewById(R.id.edit_delete_btn_edit_slide);
         deleteSliderBtn = findViewById(R.id.edit_delete_btn_delete_slide);
+
+        fragmentManager = getFragmentManager();
+        mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.edit_delete_map);
+
+        mapFragment.getMapAsync(this);
 
         layoutManager = new LinearLayoutManager(ImageEditDeleteActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -150,9 +170,13 @@ public class ImageEditDeleteActivity extends Activity {
         }
         if(images.get(0).getLocation().equals("none")){
             linearLayout.setVisibility(View.GONE);
+            locationTitle = "none";
         }else {
             linearLayout.setVisibility(View.VISIBLE);
             editDeleteImageLocation.setText(images.get(0).getLocation());
+            lat = Double.parseDouble(images.get(0).getLatitude());
+            lng = Double.parseDouble(images.get(0).getLongitude());
+            locationTitle = images.get(0).getLocation();
         }
 
         user_email = images.get(0).getUser_email();
@@ -204,7 +228,8 @@ public class ImageEditDeleteActivity extends Activity {
             switch (v.getId()){
                 case R.id.edit_delete_ivbtn_back:
                     // *************************** 도희님 판매목록 페이지 연결 ****************************
-                    intent = new Intent(ImageEditDeleteActivity.this, ImageDetailActivity.class);
+                    //intent = new Intent(ImageEditDeleteActivity.this, ImgList.class);
+                    intent = new Intent(ImageEditDeleteActivity.this, HomeFragment.class);
                     // *************************** 도희님 판매목록 페이지 연결 ****************************
                     startActivity(intent);
                     break;
@@ -243,6 +268,7 @@ public class ImageEditDeleteActivity extends Activity {
                                                     @Override
                                                     public void onClick(DialogInterface dialog, int which) {
                                                         // *************************** 도희님 판매목록 페이지 연결 ****************************
+                                                        //Intent intent = new Intent(ImageEditDeleteActivity.this, ImgList.class);
                                                         Intent intent = new Intent(ImageEditDeleteActivity.this, ImageAddImageActivity.class);
                                                         // *************************** 도희님 판매목록 페이지 연결 ****************************
                                                         startActivity(intent);
@@ -273,5 +299,25 @@ public class ImageEditDeleteActivity extends Activity {
             e.printStackTrace();
         }
         return result;
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        Log.v("Message", locationTitle);
+        if (locationTitle.equals("none")) {
+            LatLng location = new LatLng(37.501884, 127.025242);
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.title("더조은 아카데미");
+            markerOptions.position(location);
+            googleMap.addMarker(markerOptions);
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,16));
+        } else {
+            LatLng location = new LatLng(lat, lng);
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.title(locationTitle);
+            markerOptions.position(location);
+            googleMap.addMarker(markerOptions);
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,16));
+        }
     }
 }

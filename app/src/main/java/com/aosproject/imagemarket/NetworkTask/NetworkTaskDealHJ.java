@@ -40,7 +40,7 @@ public class NetworkTaskDealHJ extends AsyncTask<Integer, String, Object> {
         progressDialog = new ProgressDialog(context);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setTitle("Dialog");
-        progressDialog.setMessage("Get.....");
+        progressDialog.setMessage("로딩중입니다");
         progressDialog.show();
     }
 

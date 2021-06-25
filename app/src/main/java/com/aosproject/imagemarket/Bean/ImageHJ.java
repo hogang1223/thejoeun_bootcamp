@@ -13,6 +13,8 @@ public class ImageHJ {
     String location;
     String user_email;
     String myname;
+    String latitude;
+    String longitude;
 
     public ImageHJ(String myname) {
         this.myname = myname;
@@ -52,7 +54,7 @@ public class ImageHJ {
         this.location = location;
     }
 
-    public ImageHJ(String filepath, String title, String detail, String fileformat, int category, String tag, int price, String location, String user_email) {
+    public ImageHJ(String filepath, String title, String detail, String fileformat, int category, String tag, int price, String location, String user_email, String latitude, String longitude) {
         this.filepath = filepath;
         this.title = title;
         this.detail = detail;
@@ -62,6 +64,8 @@ public class ImageHJ {
         this.price = price;
         this.location = location;
         this.user_email = user_email;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public int getCode() {
@@ -150,5 +154,21 @@ public class ImageHJ {
 
     public void setMyname(String myname) {
         this.myname = myname;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }

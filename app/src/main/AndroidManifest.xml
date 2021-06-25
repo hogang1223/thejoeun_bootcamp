@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageMarket">
-        <activity android:name=".Activity.ImageEditDeleteActivity"></activity>
+        <activity android:name=".Activity.UserDelete"></activity>
+        <activity android:name=".Activity.ImageEditDeleteActivity" />
         <activity android:name=".Activity.ImageEditActivity" />
         <activity android:name=".Activity.ImageAddLocationActivity" />
         <activity android:name=".Activity.ImageAddPriceActivity" />
@@ -28,10 +30,13 @@
         <activity android:name=".Activity.ImageAddNameActivity" />
         <activity android:name=".Activity.ImageAddImageActivity" />
         <activity android:name=".Activity.ImageDetailActivity" />
+        <activity android:name=".Activity.SellList" />
+        <activity android:name=".Activity.SellReport" />
+        <activity android:name=".Activity.ImgList" />
+        <activity android:name=".Activity.RecommendList" />
         <activity android:name=".Activity.BuyList" />
-        <activity android:name=".Activity.DealItemActivityHK" />
-        <activity android:name=".Activity.DealCompeletedActivityHK" />
-        <activity android:name=".Activity.DealCartItemActivityHK" />
+        <activity android:name=".Activity.MyPage_Account" />
+        <activity android:name=".Activity.MyPage" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

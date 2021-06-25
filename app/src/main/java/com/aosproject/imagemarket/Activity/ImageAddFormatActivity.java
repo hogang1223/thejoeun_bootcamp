@@ -28,7 +28,7 @@ public class ImageAddFormatActivity extends Activity {
     ArrayAdapter<CharSequence> adapter = null;
     Spinner spinner = null;
     Button button;
-    String filepath, title, detail = null;
+    String filepath, title, detail, fileformat, img_path = null;
     ImageView imageView;
 
     @Override
@@ -40,34 +40,10 @@ public class ImageAddFormatActivity extends Activity {
         filepath = intent.getStringExtra("filepath");
         title = intent.getStringExtra("title");
         detail = intent.getStringExtra("detail");
+        img_path = intent.getStringExtra("img_path");
 
         adapter = ArrayAdapter.createFromResource(this, R.array.format, android.R.layout.simple_spinner_dropdown_item);
 
-//        adapter = new ArrayAdapter<CharSequence>(this, R.layout.activity_image_add_format, R.array.format) {
-//
-//            @Override
-//            public boolean isEnabled(int position) {
-//                if (position == 0) {
-//                    return false;
-//                } else {
-//                    return true;
-//                }
-//            }
-//
-//            @Override
-//            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//                View view = super.getDropDownView(position, convertView, parent);
-//                TextView tv = (TextView) view;
-//                if (position == 0) {
-//                    tv.setTextColor(Color.GRAY);
-//                } else {
-//                    tv.setTextColor(Color.BLACK);
-//                }
-//                return view;
-//            }
-//        };
-
-        //adapter.setDropDownViewResource(R.layout.activity_image_add_format);
         spinner = findViewById(R.id.add_spinner_format);
         button = findViewById(R.id.add_format_btn_next);
         imageView = findViewById(R.id.add_format_ivbtn_back);
@@ -75,22 +51,6 @@ public class ImageAddFormatActivity extends Activity {
         spinner.setAdapter(adapter);
         button.setOnClickListener(onClickListener);
         imageView.setOnClickListener(onClickListener);
-
-
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String selectedItemText = (String) parent.getItemAtPosition(position);
-//                if(position > 0){
-//                    Toast.makeText(getApplicationContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            });
-//
-//    }
 
     }
 
@@ -103,11 +63,14 @@ public class ImageAddFormatActivity extends Activity {
                     if(spinner.getSelectedItem().toString().equals("이미지 파일 형식 선택")){
                         Snackbar.make(v, "이미지 파일 형식을 선택해주세요!", Snackbar.LENGTH_SHORT).show();
                     }else {
+                        button.setEnabled(true);
                         Intent intent = new Intent(ImageAddFormatActivity.this, ImageAddCategoryActivity.class);
                         intent.putExtra("filepath", filepath);
                         intent.putExtra("title", title);
                         intent.putExtra("detail", detail);
-                        intent.putExtra("fileformat", spinner.getSelectedItem().toString());
+                        fileformat = spinner.getSelectedItem().toString();
+                        intent.putExtra("fileformat", fileformat);
+                        intent.putExtra("img_path", img_path);
                         Log.v("Message", "파일 형식 확인!!! format " + spinner.getSelectedItem().toString());
                         startActivity(intent);
                     }

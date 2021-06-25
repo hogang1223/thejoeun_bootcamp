@@ -499,7 +499,7 @@
                                 android:id="@+id/detail_textview_location"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="16dp"
                                 android:text="위치"
                                 android:textColor="@color/black"
                                 android:textSize="20dp" />
@@ -507,8 +507,8 @@
                             <fragment
                                 android:id="@+id/detail_map"
                                 android:layout_width="350dp"
-                                android:layout_height="150dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_height="250dp"
+                                android:layout_marginTop="16dp"
                                 android:layout_marginBottom="20dp"
                                 android:layout_gravity="center"
                                 class="com.google.android.gms.maps.MapFragment" />

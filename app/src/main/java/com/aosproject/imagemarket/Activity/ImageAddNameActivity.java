@@ -21,7 +21,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class ImageAddNameActivity extends AppCompatActivity {
 
-    String filepath = null;
+    String filepath, img_path = null;
     Button button;
     ImageView imageView;
     TextInputLayout layout;
@@ -37,6 +37,7 @@ public class ImageAddNameActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         filepath = intent.getStringExtra("filepath");
+        img_path = intent.getStringExtra("img_path");
 
         button = findViewById(R.id.add_name_btn_next);
         imageView = findViewById(R.id.add_name_ivbtn_back);
@@ -53,6 +54,7 @@ public class ImageAddNameActivity extends AppCompatActivity {
 
                 }else {
                     button.setEnabled(true);
+                    layout.setError(null);
                 }
             }
 
@@ -63,6 +65,7 @@ public class ImageAddNameActivity extends AppCompatActivity {
                     layout.setError("이미지 이름을 입력해주세요!");
                 }else {
                     button.setEnabled(true);
+                    layout.setError(null);
                 }
             }
 
@@ -73,6 +76,7 @@ public class ImageAddNameActivity extends AppCompatActivity {
                     layout.setError("이미지 이름을 입력해주세요!");
                 }else {
                     button.setEnabled(true);
+                    layout.setError(null);
                 }
             }
         });
@@ -94,6 +98,7 @@ public class ImageAddNameActivity extends AppCompatActivity {
                         Intent intent = new Intent(ImageAddNameActivity.this, ImageAddContentActivity.class);
                         intent.putExtra("filepath", filepath);
                         intent.putExtra("title", editText.getText().toString());
+                        intent.putExtra("img_path", img_path);
                         startActivity(intent);
                     }
                     break;

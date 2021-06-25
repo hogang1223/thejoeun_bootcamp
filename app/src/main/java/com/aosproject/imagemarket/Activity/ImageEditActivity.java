@@ -1,11 +1,14 @@
 package com.aosproject.imagemarket.Activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,8 +34,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ImageEditActivity extends Activity {
+public class ImageEditActivity extends AppCompatActivity {
 
     ArrayAdapter<CharSequence> adapterFormat = null;
     ArrayAdapter<CharSequence> adapterCategory = null;
@@ -46,11 +50,15 @@ public class ImageEditActivity extends Activity {
     ArrayList<ImageHJ> images = null;
     EditText tagEdit = null;
     ChipGroup chipGroup = null;
+    List<Address> address = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_edit);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         Intent intent = getIntent();
         code = intent.getIntExtra("code", 0);
@@ -234,23 +242,51 @@ public class ImageEditActivity extends Activity {
                                                 else result.append(chip.getText());
                                         }
 
-                                        urlAddr2 = ShareVar.macIP + "jsp/imageUpdate.jsp?title=" + titleEdit.getText().toString() + "&detail=" + contentEdit.getText().toString() + "&fileformat=" +
-                                                formatSpinner.getSelectedItem().toString() + "&category=" + category + "&tag=" + result.toString() + "&price=" + priceEdit.getText().toString() +
-                                                "&location=" + locationEdit.getText().toString() + "&code=" + code;
-                                        Log.v("Message", urlAddr2);
-                                        String result2 = connectUpdateData();
-                                        if(result2.equals("1")) {
-                                            new AlertDialog.Builder(ImageEditActivity.this)
-                                                    .setMessage("이미지 정보가 수정되었습니다!")
-                                                    .setCancelable(false)
-                                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            finish();
-                                                        }
-                                                    })
-                                                    .show();
+                                        try {
+                                            Geocoder g = new Geocoder(ImageEditActivity.this);
+
+                                            String locationTitle;
+                                            String lat;
+                                            String lng;
+
+                                            if(locationEdit.getText().toString().isEmpty()){
+                                                locationTitle = "none";
+                                                lat = "none";
+                                                lng = "none";
+                                            }else {
+                                                locationTitle = locationEdit.getText().toString();
+                                                address = g.getFromLocationName(locationTitle, 1);
+                                                double mLat = address.get(0).getLatitude();
+                                                double mLng = address.get(0).getLongitude();
+                                                lat = Double.toString(mLat);
+                                                lng = Double.toString(mLng);
+                                                Log.v("Message", "위도랑 경도!!" + mLat);
+                                                Log.v("Message", "위도랑 경도!!" + mLng);
+                                            }
+
+
+                                            urlAddr2 = ShareVar.macIP + "jsp/imageUpdate.jsp?title=" + titleEdit.getText().toString() + "&detail=" + contentEdit.getText().toString() + "&fileformat=" +
+                                                    formatSpinner.getSelectedItem().toString() + "&category=" + category + "&tag=" + result.toString() + "&price=" + priceEdit.getText().toString() +
+                                                    "&location=" + locationTitle + "&code=" + code + "&latitude=" + lat + "&longitude=" + lng;
+                                            Log.v("Message", urlAddr2);
+                                            String result2 = connectUpdateData();
+                                            if(result2.equals("1")) {
+                                                new AlertDialog.Builder(ImageEditActivity.this)
+                                                        .setMessage("이미지 정보가 수정되었습니다!")
+                                                        .setCancelable(false)
+                                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                finish();
+                                                            }
+                                                        })
+                                                        .show();
+                                            }
+                                        }catch (Exception e){
+                                            e.printStackTrace();
+                                            Toast.makeText(ImageEditActivity.this, "올바르지 않은 주소 정보입니다", Toast.LENGTH_SHORT).show();
                                         }
+
                                     }
                                 }
                             })

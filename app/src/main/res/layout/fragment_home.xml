@@ -4,21 +4,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:paddingTop="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:id="@+id/main_img_banner"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="100dp"
         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_marginTop="210dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="120dp"
         tools:listitem="@layout/main_custom_layout"
         />
 

@@ -23,7 +23,6 @@ public class NetworkTaskProfileMain extends AsyncTask<Integer, String, Object> {
 
     // Field
     Context context = null;
-    ProfileFragment fragment = null;
     String mAddr = null;
     ProgressDialog progressDialog = null;
     ArrayList<BuyListBean> buylist;
@@ -32,13 +31,6 @@ public class NetworkTaskProfileMain extends AsyncTask<Integer, String, Object> {
     String where = null;
 
     // Construct
-    // Fragment
-    public NetworkTaskProfileMain(ProfileFragment fragment, String mAddr, String where) {
-        this.fragment = fragment;
-        this.mAddr = mAddr;
-        this.where = where;
-    }
-    // Activity
     public NetworkTaskProfileMain(Context context, String mAddr, String where) {
         this.context = context;
         this.mAddr = mAddr;
