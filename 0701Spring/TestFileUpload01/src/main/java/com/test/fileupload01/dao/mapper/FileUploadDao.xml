@@ -6,10 +6,23 @@
 <mapper namespace="com.test.fileupload01.dao.FileUploadDao">
 
 	<select id="listDao" resultType="com.test.fileupload01.dto.FileUploadDto" >
-		SELECT * FROM SPRING
+		SELECT * FROM SPRING LIMIT #{param1}, #{param2}
+	</select>
+	
+	<select id="listCountDao" resultType="int">
+		SELECT COUNT(ID) FROM SPRING
 	</select>
 
 	<insert id="writeDao">
-		INSERT INTO SPRING (NAME, FILEPATH) VALUES (#{param1}, #{param2});
+		INSERT INTO SPRING (NAME, FILEPATH) VALUES (#{param1}, #{param2})
 	</insert>
+	
+	<select id="detailDao" resultType="com.test.fileupload01.dto.FileUploadDto">
+		SELECT * FROM SPRING WHERE ID = #{param1}
+	</select>
+	
+	<update id="modifyDao">
+		UPDATE SPRING SET NAME = #{param1}, FILEPATH = #{param2} WHERE ID = #{param3}
+	</update>
+	
 </mapper>

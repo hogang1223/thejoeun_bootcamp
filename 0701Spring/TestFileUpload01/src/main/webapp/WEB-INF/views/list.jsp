@@ -21,11 +21,20 @@
 			<td><a href="detail?id=${fileUploadDto.id}">${fileUploadDto.id}</a></td>
 			<td>${fileUploadDto.name}</td>
 			<td>
-				<img src="${pageContext.request.contextPath }/resources/test/${fileUploadDto.filepath}">
+				<img src="${pageContext.request.contextPath }/resources/test/${fileUploadDto.filepath}" width="auto" height="100">
 			</td>
 		<tr>
 		</c:forEach>
+		<tr>
+			<td>
+				<!--paing  -->
+				<c:forEach items="${pageList }" var="page">
+					<a href="list?page=${page }">${page }</a>
+				</c:forEach>
+			</td>
+		</tr>
 	</table>
+	<p><a href="uploadForm">글쓰기</a></p>
 
 
 </body>

@@ -32,9 +32,10 @@ public class FileUploadController {
 	
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
+	public String list(HttpServletRequest request, Model model) {
 		System.out.println("list()");
 		
+		model.addAttribute("request", request);
 		command = new ListCommand();
 		command.execute(sqlSession, model);
 		
@@ -51,7 +52,6 @@ public class FileUploadController {
 	// upload하기 - File 지정 폴더에 저장 and DB에 insert
 	@RequestMapping("upload")
 	public String upload(MultipartHttpServletRequest mtfRequest, Model model) {
-		
 		System.out.println("upload()");
 		
 		HttpSession session = mtfRequest.getSession(); 
@@ -65,34 +65,94 @@ public class FileUploadController {
         if ( ! new File(uploadPath).exists()) {
             new File(uploadPath).mkdirs();
         }
+        String saveFilename = null;
         
         // upload File
-        MultipartFile mf = mtfRequest.getFile("file");
-        String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+        MultipartFile mf = mtfRequest.getFile("imgfile");
+    	String originFileName = mf.getOriginalFilename(); // 원본 파일 명
         long fileSize = mf.getSize(); // 파일 사이즈
         
-        String saveFilename = System.currentTimeMillis() + originFileName; // 저장될 파일명
-        String saveFile = uploadPath + saveFilename;
-        
-        
-        try {
-        	mf.transferTo(new File(saveFile));
-        }catch (IllegalStateException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        // file upload check
+        if(fileSize != 0) {
+	        saveFilename = System.currentTimeMillis() + originFileName; // 저장될 파일명
+	        String saveFile = uploadPath + saveFilename;
+	        
+	        try {
+	        	mf.transferTo(new File(saveFile));
+	        }catch (IllegalStateException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	           e.printStackTrace();
+	        }
         }
         
         FileUploadDao dao = sqlSession.getMapper(FileUploadDao.class);
         dao.writeDao(mtfRequest.getParameter("name"), saveFilename);
         model.addAttribute("name", mtfRequest.getParameter("name"));
-        model.addAttribute("file", saveFilename);
+        model.addAttribute("imgfile", saveFilename);
         
 
 		return "uploadResult"; 
 	}
 	
+	@RequestMapping("/detail")
+	public String detail(HttpServletRequest request, Model model) {
+		System.out.println("detail()");
+		
+		FileUploadDao dao = sqlSession.getMapper(FileUploadDao.class);
+		model.addAttribute("detail", dao.detailDao(request.getParameter("id")));
+		
+		return "/detail";
+	}
+	
+	@RequestMapping("modify")
+	public String modify(MultipartHttpServletRequest mtfRequest, Model model) {
+		System.out.println("modify()");
+		
+		HttpSession session = mtfRequest.getSession(); 
+		String root_path = session.getServletContext().getRealPath("/"); // 웹서비스 root 경로 
+		String attach_path = "resources/test/";
+		
+		String uploadPath = root_path + attach_path;
+		System.out.println(uploadPath);
+		
+		// 폴더가 없을시 폴더 생성
+        if ( ! new File(uploadPath).exists()) {
+            new File(uploadPath).mkdirs();
+        }
+        
+        String saveFilename = null;
+        
+        // upload File
+        MultipartFile mf = mtfRequest.getFile("imgfile");
+    	String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+        long fileSize = mf.getSize(); // 파일 사이즈
+        
+        // file upload check
+        if(fileSize != 0) {
+	        saveFilename = System.currentTimeMillis() + originFileName; // 저장될 파일명
+	        String saveFile = uploadPath + saveFilename;
+	        
+	        try {
+	        	mf.transferTo(new File(saveFile));
+	        }catch (IllegalStateException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	           e.printStackTrace();
+	        }
+        }else {
+        	saveFilename = mtfRequest.getParameter("oldFilepath");
+        }
+        
+        FileUploadDao dao = sqlSession.getMapper(FileUploadDao.class);
+        dao.modifyDao(mtfRequest.getParameter("name"), saveFilename, mtfRequest.getParameter("id"));
+		
+		
+		return "redirect:list";
+	}
 
 }

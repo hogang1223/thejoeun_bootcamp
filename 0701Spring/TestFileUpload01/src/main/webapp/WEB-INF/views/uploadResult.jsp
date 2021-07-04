@@ -8,9 +8,10 @@
 </head>
 <body>
 		<p> 이름 : ${name }</p>
-		<p> 파일 : ${file } </p>
+		<p> 파일 : ${imgfile } </p>
 		<p>
-		<img src="${pageContext.request.contextPath }/resources/test/${file}">
+		<img src="${pageContext.request.contextPath }/resources/test/${imgfile}" width="auto" height="100">
 		</p>
+		<p><a href="list">목록</a></p>
 </body>
 </html>
