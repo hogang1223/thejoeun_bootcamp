@@ -50,13 +50,16 @@ class ViewController: UIViewController {
      case 3:
           lblTitle.text = subject[index]
           tfScore.isHidden = true
+          let subjectTotalScore : Int = totalScore()
+          let subjectAvgScore : Double = calcAvg(totalScore: subjectTotalScore)
           tvSummary.text = """
-          총점은 \(totalScore())입니다.
-          평균은 \(String(format:"%.2f", calcAvg(totalScore: totalScore())))입니다.
-          국어점수는 \(score[0])으로 \(compareScoreToAvg(score: score[0], avg: calcAvg(totalScore: totalScore())))
-          영어점수는 \(score[1])으로 \(compareScoreToAvg(score: score[1], avg: calcAvg(totalScore: totalScore())))
-          수학점수는 \(score[2])으로 \(compareScoreToAvg(score: score[2], avg: calcAvg(totalScore: totalScore())))
+          총점은 \(subjectTotalScore)입니다.
+          평균은 \(String(format:"%.2f", subjectAvgScore))입니다.
+          국어점수는 \(score[0])으로 \(compareScoreToAvg(score: score[0], avg: subjectAvgScore))
+          영어점수는 \(score[1])으로 \(compareScoreToAvg(score: score[1], avg: subjectAvgScore))
+          수학점수는 \(score[2])으로 \(compareScoreToAvg(score: score[2], avg: subjectAvgScore))
           """
+          score.removeAll()
           index = -1
      default:
           return
