@@ -27,23 +27,25 @@ class ViewController: UIViewController {
     @IBAction func btnPrev(_ sender: UIButton) {
     
         numImage -= 1
-        if numImage == -1{
+        if numImage < 0{
             numImage = imageName.count - 1
         }
-        imgTitle.text = imageName[numImage]
-        imgView.image = UIImage(named: imageName[numImage])
+        displayImage(numImage)
     }
     
     
     @IBAction func btnNext(_ sender: UIButton) {
         numImage += 1
-        if numImage == imageName.count {
+        if numImage >= imageName.count {
             numImage = 0
         }
+        displayImage(numImage)
+    }
+    
+    func displayImage(_ numImage: Int){
         imgTitle.text = imageName[numImage]
         imgView.image = UIImage(named: imageName[numImage])
     }
-    
 
 } // ViewController
 
