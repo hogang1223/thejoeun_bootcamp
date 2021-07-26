@@ -13,6 +13,7 @@
 		02993B4C26A0236A002FF2D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02993B4A26A0236A002FF2D3 /* Main.storyboard */; };
 		02993B4E26A0236E002FF2D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02993B4D26A0236E002FF2D3 /* Assets.xcassets */; };
 		02993B5126A0236E002FF2D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02993B4F26A0236E002FF2D3 /* LaunchScreen.storyboard */; };
+		D387EE985DAA220B211A6D53 /* Pods_Emoji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9FD93CA01EF19E93BE625A /* Pods_Emoji.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		02993B4D26A0236E002FF2D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02993B5026A0236E002FF2D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02993B5226A0236E002FF2D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A9FD93CA01EF19E93BE625A /* Pods_Emoji.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emoji.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CAB539873EC8376FC998315 /* Pods-Emoji.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emoji.debug.xcconfig"; path = "Target Support Files/Pods-Emoji/Pods-Emoji.debug.xcconfig"; sourceTree = "<group>"; };
+		BBC9DF8320D80F131079FC9B /* Pods-Emoji.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emoji.release.xcconfig"; path = "Target Support Files/Pods-Emoji/Pods-Emoji.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D387EE985DAA220B211A6D53 /* Pods_Emoji.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				02993B4326A0236A002FF2D3 /* Emoji */,
 				02993B4226A0236A002FF2D3 /* Products */,
+				05F0B7D70629528506A0695E /* Pods */,
+				2A16A815D94A60BBEDF8B2AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = Emoji;
 			sourceTree = "<group>";
 		};
+		05F0B7D70629528506A0695E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5CAB539873EC8376FC998315 /* Pods-Emoji.debug.xcconfig */,
+				BBC9DF8320D80F131079FC9B /* Pods-Emoji.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2A16A815D94A60BBEDF8B2AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A9FD93CA01EF19E93BE625A /* Pods_Emoji.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +99,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02993B5526A0236E002FF2D3 /* Build configuration list for PBXNativeTarget "Emoji" */;
 			buildPhases = (
+				F05F0FC72D722833299710CE /* [CP] Check Pods Manifest.lock */,
 				02993B3D26A0236A002FF2D3 /* Sources */,
 				02993B3E26A0236A002FF2D3 /* Frameworks */,
 				02993B3F26A0236A002FF2D3 /* Resources */,
@@ -131,6 +157,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F05F0FC72D722833299710CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Emoji-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		02993B3D26A0236A002FF2D3 /* Sources */ = {
@@ -283,6 +334,7 @@
 		};
 		02993B5626A0236E002FF2D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CAB539873EC8376FC998315 /* Pods-Emoji.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +354,7 @@
 		};
 		02993B5726A0236E002FF2D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBC9DF8320D80F131079FC9B /* Pods-Emoji.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
