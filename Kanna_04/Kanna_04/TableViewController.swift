@@ -9,9 +9,12 @@ import UIKit
 import Kanna
 
 var movies : [String] = []
+var links : [String] = []
+
 
 class TableViewController: UITableViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +41,7 @@ class TableViewController: UITableViewController {
             for title in doc.xpath("//*[@id='top_movies_main']/div/table/tr/td/a"){
                 movies.append("\(count) : " + title.text!.trimmingCharacters(in: .whitespacesAndNewlines))
 //                print(count, title.text!.trimmingCharacters(in: .whitespacesAndNewlines))
+                links.append(title["href"]!)
                 count += 1
             }
 
@@ -102,14 +106,18 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let cell = sender as! UITableViewCell
+        let indexPath = self.tableView.indexPath(for: cell)
+        
+        let detailView = segue.destination as! DetailViewController
+        detailView.receiveItems(links[indexPath!.row])
+        
     }
-    */
+    
 
 }
