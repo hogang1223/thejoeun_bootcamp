@@ -34,6 +34,17 @@ class ViewController: UIViewController {
         }
 
     }
+    
+    func checkNumPolicy(_ inputNum: String) -> Bool{
+        
+        guard inputNum != nil else{ return false }
+        let pattern: String = "[0-9]*"
+        let result = NSPredicate()
+        
+        
+        
+        return true
+    }
 
     // get random number
     func getNum() -> String{
