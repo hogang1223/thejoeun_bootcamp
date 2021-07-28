@@ -1,8 +1,8 @@
 //
 //  JsonModel.swift
-//  ServerJson_01
+//  ServerJson_03
 //
-//  Created by hyogang on 2021/07/27.
+//  Created by hyogang on 2021/07/28.
 //
 
 import Foundation
@@ -11,9 +11,11 @@ protocol JsonModelProtocol{
     func itemDownloaded(items: NSArray)
 }
 
+let macIP = "http://192.168.219.102:8080/ios/"
+
 class JsonModel{
     var delegate: JsonModelProtocol!
-    let urlPath = "http://192.168.2.12:8080/ios/student.json"
+    let urlPath = macIP + "student.json"
     
     func downloadItems(){
         let url: URL = URL(string: urlPath)!
@@ -45,8 +47,9 @@ class JsonModel{
             if let scode = jsonElement["code"] as? String,
                let sname = jsonElement["name"] as? String,
                let sdept = jsonElement["dept"] as? String,
+               let simage = jsonElement["image"] as? String,
                let sphone = jsonElement["phone"] as? String{
-                let query = DBModel(scode: scode, sname: sname, sdept: sdept, sphone: sphone)
+                let query = DBModel(scode: scode, sname: sname, sdept: sdept, simage: simage, sphone: sphone)
                 locations.add(query)
             }
         }

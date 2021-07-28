@@ -1,8 +1,8 @@
 //
 //  JsonModel.swift
-//  ServerJson_01
+//  ServerJson_02
 //
-//  Created by hyogang on 2021/07/27.
+//  Created by hyogang on 2021/07/28.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ protocol JsonModelProtocol{
 
 class JsonModel{
     var delegate: JsonModelProtocol!
-    let urlPath = "http://192.168.2.12:8080/ios/student.json"
+    let urlPath = "http://192.168.219.102:8080/ios/student.json"
     
     func downloadItems(){
         let url: URL = URL(string: urlPath)!

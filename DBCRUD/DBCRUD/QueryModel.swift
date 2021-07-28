@@ -1,19 +1,21 @@
 //
-//  JsonModel.swift
-//  ServerJson_01
+//  QueryModel.swift
+//  DBCRUD
 //
-//  Created by hyogang on 2021/07/27.
+//  Created by hyogang on 2021/07/28.
 //
 
 import Foundation
 
-protocol JsonModelProtocol{
-    func itemDownloaded(items: NSArray)
+protocol QueryModelProtocol{
+    func itemDownloaded(items: NSMutableArray)
 }
 
-class JsonModel{
-    var delegate: JsonModelProtocol!
-    let urlPath = "http://192.168.2.12:8080/ios/student.json"
+let macIP = "http://192.168.219.102:8080/ios/"
+
+class QueryModel{
+    var delegate: QueryModelProtocol!
+    let urlPath = macIP + "student_query_ios.jsp"
     
     func downloadItems(){
         let url: URL = URL(string: urlPath)!
