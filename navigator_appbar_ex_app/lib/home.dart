@@ -21,6 +21,48 @@ class Home extends StatelessWidget {
               icon: Icon(Icons.email_outlined)),
         ],
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('images/pikachu1.png'),
+                backgroundColor: Colors.white,
+              ),
+              accountName: Text('Pikachu'),
+              accountEmail: Text('pikachu@naver.com'),
+              onDetailsPressed: () {},
+              decoration: BoxDecoration(
+                color: Colors.red[400],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40.0),
+                  bottomRight: Radius.circular(40.0),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.email,
+                color: Colors.blue,
+              ),
+              title: Text('send mail'),
+              onTap: () {
+                sendEmail(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.email_outlined,
+                color: Colors.red,
+              ),
+              title: Text('received mail'),
+              onTap: () {
+                receivedEmail(context);
+              },
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
