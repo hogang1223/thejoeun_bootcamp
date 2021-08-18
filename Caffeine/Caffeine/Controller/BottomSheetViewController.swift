@@ -1,5 +1,5 @@
 //
-//  CalendarViewController.swift
+//  BottomSheetViewController.swift
 //  Caffeine
 //
 //  Created by hyogang on 2021/08/18.
@@ -8,7 +8,7 @@
 import UIKit
 import SQLite3
 
-class CalendarViewController: UIViewController {
+class BottomSheetViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

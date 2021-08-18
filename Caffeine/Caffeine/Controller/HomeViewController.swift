@@ -15,7 +15,6 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // create sqlite
         let sqlite = CaffeineDB()
         sqlite.createSQLite()
@@ -29,5 +28,11 @@ class HomeViewController: UIViewController {
             self.performSegue(withIdentifier: "sgMyinfo", sender: self)
         }
     }
+    
+    
+    @IBAction func btnMyinfo(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "sgMyinfo", sender: self)
+    }
+    
 }
 

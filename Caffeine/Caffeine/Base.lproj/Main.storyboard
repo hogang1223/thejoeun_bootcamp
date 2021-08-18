@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Daily Caffeine-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Caffeine" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,18 +35,61 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="FAj-a4-yxn">
-                        <barButtonItem key="backBarButtonItem" title="back" id="4jJ-O2-vF8"/>
+                    <navigationItem key="navigationItem" title="Daily Caffeine" id="FAj-a4-yxn">
+                        <barButtonItem key="backBarButtonItem" title="back" id="Mjp-pB-GVd"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="kMW-Il-qmS"/>
+                            <barButtonItem image="person.circle" catalog="system" id="5dK-dM-eU1">
+                                <connections>
+                                    <action selector="btnMyinfo:" destination="BYZ-38-t0r" id="NRm-hl-QQo"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="calendar" catalog="system" id="98M-R4-E59"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="lblName" destination="fod-Mu-u0d" id="mXq-o1-km8"/>
                         <segue destination="6ra-Bi-Otn" kind="show" identifier="sgMyinfo" id="MS9-9j-pii"/>
                         <segue destination="ZJa-K8-Nra" kind="show" identifier="sgCalendar" id="9eY-4i-AsY"/>
+                        <segue destination="a7P-ab-PTY" kind="show" identifier="sgAdd" id="ys0-TG-u7q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="88.392857142857139"/>
+        </scene>
+        <!--Bottom Sheet View Controller-->
+        <scene sceneID="LIZ-Op-xfX">
+            <objects>
+                <viewController id="dpA-6B-1fX" customClass="BottomSheetViewController" customModule="Caffeine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="exz-Tj-rui">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="wBN-gx-VA0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AmJ-kJ-aoS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1745" y="88"/>
+        </scene>
+        <!--Today-->
+        <scene sceneID="nF7-x2-KXG">
+            <objects>
+                <viewController id="a7P-ab-PTY" customClass="TodayViewController" customModule="Caffeine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v39-hr-OwN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="rb7-6E-b2Z"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Today" id="l1g-1b-aou">
+                        <barButtonItem key="backBarButtonItem" title="back" id="6ZS-Xk-JtI"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JLV-IQ-tE3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="956"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="TcE-yI-nkl">
@@ -58,11 +101,13 @@
                         <viewLayoutGuide key="safeArea" id="g4C-lL-mSr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar" id="cIB-A1-sje"/>
+                    <navigationItem key="navigationItem" title="Calendar" id="cIB-A1-sje">
+                        <barButtonItem key="backBarButtonItem" title="back" id="GYO-Ab-rUH"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggg-3m-PLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1788" y="88"/>
+            <point key="canvasLocation" x="1658" y="956"/>
         </scene>
         <!--MyInfo-->
         <scene sceneID="QHy-HD-kTE">
@@ -90,14 +135,16 @@
                         <viewLayoutGuide key="safeArea" id="9cy-8K-S2g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="MyInfo" id="9ib-Ix-u1x"/>
+                    <navigationItem key="navigationItem" title="MyInfo" id="9ib-Ix-u1x">
+                        <barButtonItem key="backBarButtonItem" title="back" id="pTP-Ba-xLk"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tfName" destination="GYy-3i-PFO" id="aj5-mN-Szn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="phe-yU-B7i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="937.68115942028987" y="880.58035714285711"/>
+            <point key="canvasLocation" x="222" y="956"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bGj-pV-jMY">
@@ -119,6 +166,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

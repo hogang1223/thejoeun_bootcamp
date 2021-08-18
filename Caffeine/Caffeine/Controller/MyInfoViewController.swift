@@ -13,8 +13,15 @@ class MyInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: false)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let userName = UserDefaults.standard.string(forKey: "userName"){
+            tfName.text = userName
+        }else{
+            self.navigationItem.setHidesBackButton(true, animated: false)
+        }
     }
     
     @IBAction func btnRegister(_ sender: UIButton) {

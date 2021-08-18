@@ -18,6 +18,8 @@
 		02B5347526CC51CD00B0DD52 /* CaffeineDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347426CC51CD00B0DD52 /* CaffeineDB.swift */; };
 		02B5347726CC539C00B0DD52 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347626CC539C00B0DD52 /* MyInfoViewController.swift */; };
 		02B5347926CC53CD00B0DD52 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347826CC53CD00B0DD52 /* CalendarViewController.swift */; };
+		02DA9BDC26CD4CEB00DEF413 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DA9BDB26CD4CEB00DEF413 /* BottomSheetViewController.swift */; };
+		02DA9BDE26CD4DBE00DEF413 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DA9BDD26CD4DBE00DEF413 /* TodayViewController.swift */; };
 		3BBB2A1011E9BD57C5D21E57 /* Pods_Caffeine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3855B5CC4FE830F1D51564DD /* Pods_Caffeine.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		02B5347426CC51CD00B0DD52 /* CaffeineDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineDB.swift; sourceTree = "<group>"; };
 		02B5347626CC539C00B0DD52 /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		02B5347826CC53CD00B0DD52 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		02DA9BDB26CD4CEB00DEF413 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		02DA9BDD26CD4DBE00DEF413 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		3855B5CC4FE830F1D51564DD /* Pods_Caffeine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Caffeine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACEAB40E0D643D26A1BD521 /* Pods-Caffeine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caffeine.debug.xcconfig"; path = "Target Support Files/Pods-Caffeine/Pods-Caffeine.debug.xcconfig"; sourceTree = "<group>"; };
 		873FCDFFB3ABC127F5D7DB64 /* Pods-Caffeine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caffeine.release.xcconfig"; path = "Target Support Files/Pods-Caffeine/Pods-Caffeine.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				02A97B5626CC4916004080F8 /* HomeViewController.swift */,
 				02B5347626CC539C00B0DD52 /* MyInfoViewController.swift */,
 				02B5347826CC53CD00B0DD52 /* CalendarViewController.swift */,
+				02DA9BDB26CD4CEB00DEF413 /* BottomSheetViewController.swift */,
+				02DA9BDD26CD4DBE00DEF413 /* TodayViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -252,7 +258,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02DA9BDE26CD4DBE00DEF413 /* TodayViewController.swift in Sources */,
 				02B5347926CC53CD00B0DD52 /* CalendarViewController.swift in Sources */,
+				02DA9BDC26CD4CEB00DEF413 /* BottomSheetViewController.swift in Sources */,
 				02B5347126CC507D00B0DD52 /* Caffeine.swift in Sources */,
 				02A97B5726CC4916004080F8 /* HomeViewController.swift in Sources */,
 				02B5347526CC51CD00B0DD52 /* CaffeineDB.swift in Sources */,

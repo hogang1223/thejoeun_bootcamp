@@ -9,12 +9,14 @@ import Foundation
 
 class Caffeine{
     var no : Int
-    var coffee : Int
-    var date : String?
+    var date : String
+    var mg : Int
+    var name : String
     
-    init(no: Int, coffee: Int, date: String?) {
+    init(no: Int, date: String, mg: Int, name: String) {
         self.no = no
-        self.coffee = coffee
         self.date = date
+        self.mg = mg
+        self.name = name
     }
 }
