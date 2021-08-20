@@ -1,4 +1,5 @@
 PODS:
+  - FSCalendar (2.8.2)
   - MaterialComponents/Availability (124.2.0)
   - MaterialComponents/BottomSheet (124.2.0):
     - MaterialComponents/Elevation
@@ -30,15 +31,18 @@ PODS:
     - MaterialComponents/ShadowLayer
 
 DEPENDENCIES:
+  - FSCalendar
   - MaterialComponents/BottomSheet
 
 SPEC REPOS:
   trunk:
+    - FSCalendar
     - MaterialComponents
 
 SPEC CHECKSUMS:
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
 
-PODFILE CHECKSUM: 2798bdc15cbf39a9ed8e813d6fca932a4419ddf2
+PODFILE CHECKSUM: fa637e30eddde15079add476fca872a413491110
 
 COCOAPODS: 1.10.2

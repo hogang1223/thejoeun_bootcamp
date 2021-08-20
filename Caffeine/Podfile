@@ -7,5 +7,6 @@ target 'Caffeine' do
 
   # Pods for Caffeine
   pod 'MaterialComponents/BottomSheet'
+  pod 'FSCalendar'
 
 end
