@@ -7,6 +7,7 @@
 
 import UIKit
 import SQLite3
+import MaterialComponents.MaterialBottomSheet
 
 class HomeViewController: UIViewController {
     
@@ -43,6 +44,17 @@ class HomeViewController: UIViewController {
         self.performSegue(withIdentifier: "sgMyinfo", sender: self)
     }
     
+    @IBAction func btnAddCaffeine(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "sgAdd", sender: self)
+    }
+    
+    
+    @IBAction func btnTodayCaffeine(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(identifier: "BottomSheetViewController") as! BottomSheetViewController
+        let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: vc)
+        present(bottomSheet, animated: true, completion: nil)
+        
+    }
     
     
 }
