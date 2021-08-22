@@ -32,10 +32,44 @@ class CalendarModel{
         let query = "SELECT * FROM caffeine"
         
         var stmt: OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글 깨짐 방지 ****
         
         if sqlite3_prepare(db, query, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error pareparing select: \(errmsg)")
+            return caffeineList
+        }
+        
+        while sqlite3_step(stmt) == SQLITE_ROW{
+            let no = sqlite3_column_int(stmt, 0)
+            let date = String(cString: sqlite3_column_text(stmt, 1))
+            let mg = sqlite3_column_int(stmt, 2)
+            let name = String(cString: sqlite3_column_text(stmt, 3))
+            
+            var cDate : String = date.components(separatedBy:["년", "월", "일"]).joined()
+            cDate = cDate.replacingOccurrences(of: " ", with: "-")
+            //print(no, date, mg, name)
+
+            caffeineList.append(Caffeine(no: Int(no), date: cDate, mg: Int(mg), name: name))
+        }
+        return caffeineList
+    }
+    
+    func selectDBSelectedDate(selectedDate:String) -> [Caffeine]{
+        caffeineList.removeAll()
+        var stmt: OpaquePointer?
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self) // 한글 깨짐 방지 ****
+        
+        let query = "SELECT * FROM caffeine WHERE date = ?"
+        
+        if sqlite3_prepare(db, query, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error pareparing select: \(errmsg)")
+            return caffeineList
+        }
+        if sqlite3_bind_text(stmt, 1, selectedDate, -1, SQLITE_TRANSIENT) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error binding date: \(errmsg)")
             return caffeineList
         }
         

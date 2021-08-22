@@ -12,10 +12,8 @@ import FSCalendar
 class CalendarViewController: UIViewController {
     
     // UI
-    @IBOutlet weak var roundView: UIView!
-    @IBOutlet weak var imgCoffee: UIImageView!
-    @IBOutlet weak var lblMg: UILabel!
-
+    @IBOutlet weak var btnDateCaffeine: UIButton!
+    
     @IBOutlet weak var calendar: FSCalendar!
     let screenSize : CGRect = UIScreen.main.bounds
     
@@ -23,6 +21,8 @@ class CalendarViewController: UIViewController {
     var db: OpaquePointer?
     var caffeineList : [Caffeine] = []
     let model = CalendarModel()
+    
+    var clickedDate : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,6 @@ class CalendarViewController: UIViewController {
         
         // DB Set
         model.loadSQLiteDB()
-        
         caffeineOfToday()
         
         // Do any additional setup after loading the view.
@@ -42,23 +41,16 @@ class CalendarViewController: UIViewController {
         caffeineList = model.selectDBAll()
     }
     
-    func caffeineOfToday(){
-        // set bottom UI
-        lblMg.textColor = UIColor(named: "c80")
-        roundView.layer.borderColor = CGColor(red: 0.333, green: 0.220, blue: 0.000, alpha: 100) // c80
-        roundView.layer.borderWidth = 2.0
-        roundView.layer.cornerRadius = 12.0
-        
-        // get Today's Data
-        caffeineList = model.selectDBAll()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let today = dateFormatter.string(from: Date())
-        
-        let totalMgOfToday = getClickData(calendarDate: today)
-        getCoffeeColor(totalMg: totalMgOfToday)
-        
-        lblMg.text = "카페인 섭취량 : \(totalMgOfToday)mg"
+    @IBAction func btnGoList(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "sgGoList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sgGoList"{
+            let destinationView = segue.destination as! ListViewController
+            destinationView.clickedDate = clickedDate
+            destinationView.totalMg = getClickData(calendarDate: clickedDate)
+        }
     }
     
     func getClickData(calendarDate : String) -> Int{
@@ -80,33 +72,60 @@ class CalendarViewController: UIViewController {
         
         switch percentage {
         case 0 :
-            imgCoffee.image = UIImage(systemName: "drop")
-            imgCoffee.tintColor = UIColor(named: "c80")
+            btnDateCaffeine.setImage(UIImage(systemName: "drop"
+            ), for: .normal)
+            btnDateCaffeine.tintColor = UIColor(named: "c80")
         case 1...20 :
-            imgCoffee.image = UIImage(systemName: "drop.fill")
-            imgCoffee.tintColor = UIColor(named: "c20")
+            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
+            ), for: .normal)
+            btnDateCaffeine.tintColor = UIColor(named: "c20")
         case 21...40 :
-            imgCoffee.image = UIImage(systemName: "drop.fill")
-            imgCoffee.tintColor = UIColor(named: "c40")
+            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
+            ), for: .normal)
+            btnDateCaffeine.tintColor = UIColor(named: "c40")
         case 41...60 :
-            imgCoffee.image = UIImage(systemName: "drop.fill")
-            imgCoffee.tintColor = UIColor(named: "c60")
+            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
+            ), for: .normal)
+            btnDateCaffeine.tintColor = UIColor(named: "c60")
         case 61...80 :
-            imgCoffee.image = UIImage(systemName: "drop.fill")
-            imgCoffee.tintColor = UIColor(named: "c80")
+            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
+            ), for: .normal)
+            btnDateCaffeine.tintColor = UIColor(named: "c80")
         case 81...100 :
-            imgCoffee.image = UIImage(systemName: "drop.fill")
-            imgCoffee.tintColor = UIColor(named: "c100")
+            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
+            ), for: .normal)
+            btnDateCaffeine.tintColor = UIColor(named: "c100")
         default:
-            imgCoffee.image = UIImage(systemName: "drop.fill")
-            imgCoffee.tintColor = .black
+            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
+            ), for: .normal)
+            btnDateCaffeine.tintColor = .black
         }
 
+    }
+    
+    func caffeineOfToday(){
+        // set button UI
+        btnDateCaffeine.layer.cornerRadius = 12
+        btnDateCaffeine.layer.borderWidth = 2.0
+        btnDateCaffeine.layer.borderColor = CGColor(red: 0.333, green: 0.220, blue: 0.000, alpha: 100) // c80
+        btnDateCaffeine.imageEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+        btnDateCaffeine.titleEdgeInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 24)
+        // get Today's Data
+        caffeineList = model.selectDBAll()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let today = dateFormatter.string(from: Date())
+        clickedDate = today
+        
+        let totalMg = getClickData(calendarDate: today)
+        getCoffeeColor(totalMg: totalMg)
+        
+        btnDateCaffeine.setTitle("카페인 섭취량 : \(totalMg)mg", for: .normal)
     }
 
     
     func setCalendar(){
-        
         // autoLayout
         self.view.addSubview(calendar)
         
@@ -137,10 +156,11 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let calendarDate = dateFormatter.string(from: date)
+        clickedDate = calendarDate
         
         let totalMg = getClickData(calendarDate: calendarDate)
+        btnDateCaffeine.setTitle("카페인 섭취량 : \(totalMg)mg", for: .normal)
         
-        lblMg.text = "카페인 섭취량 : \(totalMg)mg"
         getCoffeeColor(totalMg: totalMg)
     }
     
