@@ -12,11 +12,13 @@ class Caffeine{
     var date : String
     var mg : Int
     var name : String
+    var memo : String
     
-    init(no: Int, date: String, mg: Int, name: String) {
+    init(no: Int, date: String, mg: Int, name: String, memo: String) {
         self.no = no
         self.date = date
         self.mg = mg
         self.name = name
+        self.memo = memo
     }
 }

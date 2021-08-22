@@ -45,13 +45,14 @@ class BottomSheetViewController: UIViewController {
             let date = String(cString: sqlite3_column_text(stmt, 1))
             let mg = sqlite3_column_int(stmt, 2)
             let name = String(cString: sqlite3_column_text(stmt, 3))
+            let memo = String(cString: sqlite3_column_text(stmt, 4))
             
             
             // Data 잘 들어갔나 확인
             print(no, date, mg, name)
             
             // describing:
-            userCaffeine.append(Caffeine(no: Int(no), date: date, mg: Int(mg), name: name))
+            userCaffeine.append(Caffeine(no: Int(no), date: date, mg: Int(mg), name: name, memo: memo))
             
         }
         // 값이 들어왔으면 재구성

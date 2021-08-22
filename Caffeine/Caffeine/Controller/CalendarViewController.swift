@@ -5,6 +5,7 @@
 //  Created by hyogang on 2021/08/18.
 //
 
+// TODO: change maxMg -> 임산부, 학생 확인
 import UIKit
 import SQLite3
 import FSCalendar
@@ -17,12 +18,17 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     let screenSize : CGRect = UIScreen.main.bounds
     
+    // Image
+    @IBOutlet weak var imageView: UIImageView!
+    var coffeeImage : [String] = ["0.png","2_calendar.png", "4_calendar.png", "6_calendar.png", "8_calendar.png", "10_calendar.png"]
+    
     // DB
     var db: OpaquePointer?
     var caffeineList : [Caffeine] = []
     let model = CalendarModel()
     
     var clickedDate : String = ""
+    var maxMg : Double = 400
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +41,12 @@ class CalendarViewController: UIViewController {
         model.loadSQLiteDB()
         caffeineOfToday()
         
-        // Do any additional setup after loading the view.
+//        // garaData
+//        let gara = TempInsertDB()
+//        gara.loadData()
+//        gara.tempInsert()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         caffeineList = model.selectDBAll()
     }
@@ -67,38 +77,24 @@ class CalendarViewController: UIViewController {
     func getCoffeeColor(totalMg: Int){
         var percentage : Double = 0
         if totalMg != 0{
-            percentage = Double(totalMg) / 400 * 100
+            percentage = Double(totalMg) / maxMg * 100
         }
         
         switch percentage {
         case 0 :
-            btnDateCaffeine.setImage(UIImage(systemName: "drop"
-            ), for: .normal)
-            btnDateCaffeine.tintColor = UIColor(named: "c80")
+            imageView.image = UIImage(named: coffeeImage[0])
         case 1...20 :
-            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
-            ), for: .normal)
-            btnDateCaffeine.tintColor = UIColor(named: "c20")
+            imageView.image = UIImage(named: coffeeImage[1])
         case 21...40 :
-            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
-            ), for: .normal)
-            btnDateCaffeine.tintColor = UIColor(named: "c40")
+            imageView.image = UIImage(named: coffeeImage[2])
         case 41...60 :
-            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
-            ), for: .normal)
-            btnDateCaffeine.tintColor = UIColor(named: "c60")
+            imageView.image = UIImage(named: coffeeImage[3])
         case 61...80 :
-            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
-            ), for: .normal)
-            btnDateCaffeine.tintColor = UIColor(named: "c80")
+            imageView.image = UIImage(named: coffeeImage[4])
         case 81...100 :
-            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
-            ), for: .normal)
-            btnDateCaffeine.tintColor = UIColor(named: "c100")
+            imageView.image = UIImage(named: coffeeImage[5])
         default:
-            btnDateCaffeine.setImage(UIImage(systemName: "drop.fill"
-            ), for: .normal)
-            btnDateCaffeine.tintColor = .black
+            imageView.image = UIImage(named: coffeeImage[5])
         }
 
     }
@@ -137,8 +133,8 @@ class CalendarViewController: UIViewController {
         calendar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         
         // 달력 UI
-        calendar.appearance.titleDefaultColor = UIColor(named: "c100")
-        calendar.appearance.titleWeekendColor = UIColor(named: "c100")
+//        calendar.appearance.titleDefaultColor = UIColor(named: "c100")
+//        calendar.appearance.titleWeekendColor = UIColor(named: "c100")
         calendar.appearance.headerTitleColor = UIColor(named: "c60")
         calendar.appearance.weekdayTextColor = UIColor(named: "c60")
         calendar.appearance.headerDateFormat = "YYYY년 M월"
@@ -177,7 +173,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             
             var percentage:Double = 0.0
             if totalMg != 0{
-                percentage = Double(totalMg) / 400 * 100
+                percentage = Double(totalMg) / maxMg * 100
             }
             switch percentage {
             case 0 :
@@ -197,5 +193,28 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             }
         }
         
+    }
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let calendarDate = dateFormatter.string(from: date)
+        let today = dateFormatter.string(from: Date())
+        
+        if calendarDate == today{
+            return UIColor.white
+        }else{
+            let totalMg = getClickData(calendarDate: calendarDate)
+            
+            var percentage:Double = 0.0
+            if totalMg != 0{
+                percentage = Double(totalMg) / maxMg * 100
+            }
+            switch percentage {
+            case 0...60 :
+                return UIColor(named: "c80")
+            default:
+                return UIColor(named: "c60")
+            }
+        }
     }
 }

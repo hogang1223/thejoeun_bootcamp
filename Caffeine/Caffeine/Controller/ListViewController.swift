@@ -47,10 +47,14 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = caffeinTable.dequeueReusableCell(withIdentifier: "listCell", for: indexPath)
+        let cell = caffeinTable.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListVIewTableViewCell
         
-        cell.textLabel?.text = caffeineList[indexPath.row].name
-        cell.detailTextLabel?.text = "\(caffeineList[indexPath.row].mg)mg"
+        cell.lblName.text = caffeineList[indexPath.row].name
+        cell.lblMg.text = "\(caffeineList[indexPath.row].mg)mg"
+        cell.lblMemo.text = caffeineList[indexPath.row].memo
+        
+//        cell.textLabel?.text = caffeineList[indexPath.row].name
+//        cell.detailTextLabel?.text = "\(caffeineList[indexPath.row].mg)mg"
         
         return cell
     }

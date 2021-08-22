@@ -45,12 +45,13 @@ class CalendarModel{
             let date = String(cString: sqlite3_column_text(stmt, 1))
             let mg = sqlite3_column_int(stmt, 2)
             let name = String(cString: sqlite3_column_text(stmt, 3))
+            let memo = String(cString: sqlite3_column_text(stmt, 4))
             
             var cDate : String = date.components(separatedBy:["년", "월", "일"]).joined()
             cDate = cDate.replacingOccurrences(of: " ", with: "-")
             //print(no, date, mg, name)
 
-            caffeineList.append(Caffeine(no: Int(no), date: cDate, mg: Int(mg), name: name))
+            caffeineList.append(Caffeine(no: Int(no), date: cDate, mg: Int(mg), name: name, memo: memo))
         }
         return caffeineList
     }
@@ -78,12 +79,13 @@ class CalendarModel{
             let date = String(cString: sqlite3_column_text(stmt, 1))
             let mg = sqlite3_column_int(stmt, 2)
             let name = String(cString: sqlite3_column_text(stmt, 3))
+            let memo = String(cString: sqlite3_column_text(stmt, 4))
             
             var cDate : String = date.components(separatedBy:["년", "월", "일"]).joined()
             cDate = cDate.replacingOccurrences(of: " ", with: "-")
             //print(no, date, mg, name)
 
-            caffeineList.append(Caffeine(no: Int(no), date: cDate, mg: Int(mg), name: name))
+            caffeineList.append(Caffeine(no: Int(no), date: cDate, mg: Int(mg), name: name, memo: memo))
         }
         return caffeineList
     }
