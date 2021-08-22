@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		020881B226D13DB100F2AAB5 /* TempInsertDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020881B126D13DB100F2AAB5 /* TempInsertDB.swift */; };
 		020881B426D1450300F2AAB5 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020881B326D1450300F2AAB5 /* CalendarModel.swift */; };
 		020881B826D200F800F2AAB5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020881B726D200F800F2AAB5 /* ListViewController.swift */; };
 		02A97B5326CC4916004080F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A97B5226CC4916004080F8 /* AppDelegate.swift */; };
@@ -17,7 +16,6 @@
 		02A97B5C26CC4918004080F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A97B5B26CC4918004080F8 /* Assets.xcassets */; };
 		02A97B5F26CC4918004080F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A97B5D26CC4918004080F8 /* LaunchScreen.storyboard */; };
 		02B5347126CC507D00B0DD52 /* Caffeine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347026CC507D00B0DD52 /* Caffeine.swift */; };
-		02B5347326CC511D00B0DD52 /* EmptyProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347226CC511D00B0DD52 /* EmptyProcess.swift */; };
 		02B5347526CC51CD00B0DD52 /* CaffeineDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347426CC51CD00B0DD52 /* CaffeineDB.swift */; };
 		02B5347726CC539C00B0DD52 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347626CC539C00B0DD52 /* MyInfoViewController.swift */; };
 		02B5347926CC53CD00B0DD52 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347826CC53CD00B0DD52 /* CalendarViewController.swift */; };
@@ -27,7 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		020881B126D13DB100F2AAB5 /* TempInsertDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempInsertDB.swift; sourceTree = "<group>"; };
 		020881B326D1450300F2AAB5 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		020881B726D200F800F2AAB5 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		02A97B4F26CC4916004080F8 /* Caffeine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caffeine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,7 +36,6 @@
 		02A97B5E26CC4918004080F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02A97B6026CC4918004080F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02B5347026CC507D00B0DD52 /* Caffeine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caffeine.swift; sourceTree = "<group>"; };
-		02B5347226CC511D00B0DD52 /* EmptyProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyProcess.swift; sourceTree = "<group>"; };
 		02B5347426CC51CD00B0DD52 /* CaffeineDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineDB.swift; sourceTree = "<group>"; };
 		02B5347626CC539C00B0DD52 /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		02B5347826CC53CD00B0DD52 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +96,6 @@
 		02A97B6626CC4938004080F8 /* Process */ = {
 			isa = PBXGroup;
 			children = (
-				02B5347226CC511D00B0DD52 /* EmptyProcess.swift */,
 				020881B326D1450300F2AAB5 /* CalendarModel.swift */,
 			);
 			path = Process;
@@ -131,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				02B5347426CC51CD00B0DD52 /* CaffeineDB.swift */,
-				020881B126D13DB100F2AAB5 /* TempInsertDB.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -275,8 +269,6 @@
 				02A97B5726CC4916004080F8 /* HomeViewController.swift in Sources */,
 				02B5347526CC51CD00B0DD52 /* CaffeineDB.swift in Sources */,
 				02B5347726CC539C00B0DD52 /* MyInfoViewController.swift in Sources */,
-				020881B226D13DB100F2AAB5 /* TempInsertDB.swift in Sources */,
-				02B5347326CC511D00B0DD52 /* EmptyProcess.swift in Sources */,
 				02A97B5326CC4916004080F8 /* AppDelegate.swift in Sources */,
 				020881B826D200F800F2AAB5 /* ListViewController.swift in Sources */,
 				02A97B5526CC4916004080F8 /* SceneDelegate.swift in Sources */,
