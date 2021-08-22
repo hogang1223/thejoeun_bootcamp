@@ -167,7 +167,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         let today = dateFormatter.string(from: Date())
         
         if calendarDate == today{
-            return UIColor.systemTeal
+            return UIColor(displayP3Red: 0.702, green: 0.820, blue: 0.898, alpha: 100)
         }else{
             let totalMg = getClickData(calendarDate: calendarDate)
             
@@ -189,7 +189,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             case 81...100:
                 return UIColor(named: "c100")
             default:
-                return UIColor.black
+                return UIColor(named: "c100")
             }
         }
         
@@ -204,17 +204,17 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             return UIColor.white
         }else{
             let totalMg = getClickData(calendarDate: calendarDate)
-            
-            var percentage:Double = 0.0
             if totalMg != 0{
-                percentage = Double(totalMg) / maxMg * 100
-            }
-            switch percentage {
-            case 0...60 :
+                return UIColor.white
+            }else{
                 return UIColor(named: "c80")
-            default:
-                return UIColor(named: "c60")
             }
+//            switch percentage {
+//            case 0...60 :
+//                return UIColor(named: "c80")
+//            default:
+//                return UIColor(named: "c60")
+//            }
         }
     }
 }
