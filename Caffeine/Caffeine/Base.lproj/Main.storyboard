@@ -4,6 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,13 +40,21 @@
                     <navigationItem key="navigationItem" title="Daily Caffeine" id="FAj-a4-yxn">
                         <barButtonItem key="backBarButtonItem" title="back" id="Mjp-pB-GVd"/>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="kMW-Il-qmS"/>
+                            <barButtonItem systemItem="add" id="kMW-Il-qmS">
+                                <color key="tintColor" name="c60"/>
+                            </barButtonItem>
                             <barButtonItem image="person.circle" catalog="system" id="5dK-dM-eU1">
+                                <color key="tintColor" name="c60"/>
                                 <connections>
                                     <action selector="btnMyinfo:" destination="BYZ-38-t0r" id="NRm-hl-QQo"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="calendar" catalog="system" id="98M-R4-E59"/>
+                            <barButtonItem image="calendar" catalog="system" id="98M-R4-E59">
+                                <color key="tintColor" name="c60"/>
+                                <connections>
+                                    <action selector="btnCalendar:" destination="BYZ-38-t0r" id="tAC-NU-O47"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -98,16 +108,89 @@
                     <view key="view" contentMode="scaleToFill" id="Hn1-34-lhK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1n2-nr-kSV" customClass="FSCalendar">
+                                <rect key="frame" x="20" y="140" width="240" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RWY-ud-t4j">
+                                <rect key="frame" x="20" y="333" width="374" height="237"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aYw-1M-lnh">
+                                        <rect key="frame" x="20" y="24.5" width="50" height="49"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="exb-hk-HB8"/>
+                                            <constraint firstAttribute="width" constant="50" id="ye2-I8-khU"/>
+                                        </constraints>
+                                        <imageReference key="image" image="drop.fill" catalog="system" symbolScale="default"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fW-b1-axm">
+                                        <rect key="frame" x="142" y="10" width="224" height="100"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aYw-1M-lnh" firstAttribute="top" secondItem="RWY-ud-t4j" secondAttribute="top" constant="24" id="56a-s6-te3"/>
+                                    <constraint firstItem="aYw-1M-lnh" firstAttribute="leading" secondItem="RWY-ud-t4j" secondAttribute="leading" constant="20" id="6yg-Gv-uam"/>
+                                    <constraint firstItem="8fW-b1-axm" firstAttribute="leading" secondItem="aYw-1M-lnh" secondAttribute="trailing" constant="24" id="BfS-22-yRS"/>
+                                    <constraint firstAttribute="bottom" secondItem="8fW-b1-axm" secondAttribute="bottom" constant="10" id="JyR-9y-sHg"/>
+                                    <constraint firstItem="8fW-b1-axm" firstAttribute="top" secondItem="RWY-ud-t4j" secondAttribute="top" constant="10" id="NBv-N9-gec"/>
+                                    <constraint firstAttribute="trailing" secondItem="8fW-b1-axm" secondAttribute="trailing" constant="10" id="YnV-cd-Q5T"/>
+                                    <constraint firstAttribute="bottom" secondItem="aYw-1M-lnh" secondAttribute="bottom" constant="24" id="bNp-Mt-SLU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="g4C-lL-mSr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="g4C-lL-mSr" firstAttribute="trailing" secondItem="RWY-ud-t4j" secondAttribute="trailing" constant="20" id="2ub-vs-b0F"/>
+                            <constraint firstItem="RWY-ud-t4j" firstAttribute="top" secondItem="1n2-nr-kSV" secondAttribute="bottom" constant="16" id="UAL-TR-lo7"/>
+                            <constraint firstItem="RWY-ud-t4j" firstAttribute="leading" secondItem="g4C-lL-mSr" secondAttribute="leading" constant="20" id="jKH-xw-94q"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Calendar" id="cIB-A1-sje">
                         <barButtonItem key="backBarButtonItem" title="back" id="GYO-Ab-rUH"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="calendar" destination="1n2-nr-kSV" id="Lxv-tL-Qnj"/>
+                        <outlet property="imgCoffee" destination="aYw-1M-lnh" id="arX-4D-9pt"/>
+                        <outlet property="lblMg" destination="8fW-b1-axm" id="vYt-sj-R9d"/>
+                        <outlet property="roundView" destination="RWY-ud-t4j" id="bZC-KR-O6k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggg-3m-PLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1658" y="956"/>
+            <point key="canvasLocation" x="1657.9710144927537" y="955.58035714285711"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="LQz-oD-fEc">
+            <objects>
+                <tableViewController id="2vO-cz-rkZ" customClass="TableViewController" customModule="Caffeine" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mig-DD-hfb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hpM-Lo-EdQ">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hpM-Lo-EdQ" id="J0E-Ea-SGp">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2vO-cz-rkZ" id="9yk-5U-8Vh"/>
+                            <outlet property="delegate" destination="2vO-cz-rkZ" id="7yo-oe-mYM"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CX5-gd-Ym1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2412" y="956"/>
         </scene>
         <!--MyInfo-->
         <scene sceneID="QHy-HD-kTE">
@@ -167,7 +250,11 @@
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="drop.fill" catalog="system" width="101" height="128"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="c60">
+            <color red="0.46700000000000003" green="0.33700000000000002" blue="0.078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

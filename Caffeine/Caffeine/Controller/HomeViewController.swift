@@ -30,9 +30,20 @@ class HomeViewController: UIViewController {
     }
     
     
+    @IBAction func btnCalendar(_ sender: UIBarButtonItem) {
+        
+//        // tempData Insert
+//        let insert = TempInsertDB();
+//        insert.loadData()
+//        insert.tempInsert()
+        
+        self.performSegue(withIdentifier: "sgCalendar", sender: self)
+    }
     @IBAction func btnMyinfo(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "sgMyinfo", sender: self)
     }
+    
+    
     
 }
 
