@@ -1,17 +1,17 @@
 //
-//  InsertProcess.swift
+//  DeleteTodayModel.swift
 //  Caffeine
 //
-//  Created by hyogang on 2021/08/22.
+//  Created by Jaewon Park on 2021/08/24.
 //
 
 import Foundation
 import SQLite3
 
-class InsertModel{
+class DeleteTodayModel {
     
     var db: OpaquePointer?
-
+    
     func loadData(){
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("Caffeine.sqlite")
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK{
@@ -24,19 +24,13 @@ class InsertModel{
         }
     }
     
-    func insertValues(name: String, mg: Int, memo: String) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
-        let currentDate = formatter.string(from: Date())
-        let date = currentDate
+    func deleteValues(no: Int) {
         
         var stmt: OpaquePointer?
-        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
-        
-        print("name : \(name), mg : \(mg), memo : \(memo)")
+        let _ = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
         
         // Query
-        let queryString = "INSERT INTO caffeine(date, mg, name, memo) VALUES (?,?,?,?)"
+        let queryString = "DELETE FROM caffeine WHERE no = ?"
             
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -44,24 +38,9 @@ class InsertModel{
             return
         }
         
-        if sqlite3_bind_text(stmt, 1, date, -1, SQLITE_TRANSIENT) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error binding name: \(errmsg)")
-            return
-        }
-        if sqlite3_bind_int(stmt!, 2, Int32(mg)) != SQLITE_OK{
+        if sqlite3_bind_int(stmt!, 1, Int32(no)) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error binding dept: \(errmsg)")
-            return
-        }
-        if sqlite3_bind_text(stmt, 3, name, -1, SQLITE_TRANSIENT) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error binding phone: \(errmsg)")
-            return
-        }
-        if sqlite3_bind_text(stmt, 4, memo, -1, SQLITE_TRANSIENT) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error binding memo: \(errmsg)")
             return
         }
         

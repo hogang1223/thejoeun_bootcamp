@@ -1,17 +1,16 @@
 //
-//  ListVIewTableViewCell.swift
+//  ListView2TableViewCell.swift
 //  Caffeine
 //
-//  Created by hyogang on 2021/08/22.
+//  Created by hyogang on 2021/08/24.
 //
 
 import UIKit
 
-class ListVIewTableViewCell: UITableViewCell {
+class ListView2TableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var lblMg: UILabel!
-    @IBOutlet weak var lblMemo: UILabel!
+    @IBOutlet weak var lblNameNonMemo: UILabel!
+    @IBOutlet weak var lblMgNonMemo: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

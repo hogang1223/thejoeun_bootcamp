@@ -47,14 +47,18 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = caffeinTable.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListVIewTableViewCell
+        let cell = caffeinTable.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewTableViewCell
+        let cellNonMemo = caffeinTable.dequeueReusableCell(withIdentifier: "nonMemoListCell", for: indexPath) as! ListView2TableViewCell
         
-        cell.lblName.text = caffeineList[indexPath.row].name
-        cell.lblMg.text = "\(caffeineList[indexPath.row].mg)mg"
-        cell.lblMemo.text = caffeineList[indexPath.row].memo
-        
-//        cell.textLabel?.text = caffeineList[indexPath.row].name
-//        cell.detailTextLabel?.text = "\(caffeineList[indexPath.row].mg)mg"
+        if caffeineList[indexPath.row].memo.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty{
+            cellNonMemo.lblNameNonMemo.text = caffeineList[indexPath.row].name
+            cellNonMemo.lblMgNonMemo.text = "\(caffeineList[indexPath.row].mg)mg"
+            return cellNonMemo
+        }else{
+            cell.lblName.text = caffeineList[indexPath.row].name
+            cell.lblMg.text = "\(caffeineList[indexPath.row].mg)mg"
+            cell.lblMemo.text = caffeineList[indexPath.row].memo
+        }
         
         return cell
     }

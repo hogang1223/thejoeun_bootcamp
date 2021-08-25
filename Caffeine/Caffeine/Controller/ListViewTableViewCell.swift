@@ -1,19 +1,17 @@
 //
-//  BottomSheetTableViewCell.swift
+//  ListVIewTableViewCell.swift
 //  Caffeine
 //
-//  Created by Jaewon Park on 2021/08/22.
+//  Created by hyogang on 2021/08/22.
 //
 
 import UIKit
 
-class BottomSheetTableViewCell: UITableViewCell {
+class ListViewTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblItem: UILabel!
-    @IBOutlet weak var lblCaffeine: UILabel!
-    @IBOutlet weak var tfUserMemo: UITextField!
-    @IBOutlet weak var btnDelete: UIButton!
-    
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblMg: UILabel!
+    @IBOutlet weak var lblMemo: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

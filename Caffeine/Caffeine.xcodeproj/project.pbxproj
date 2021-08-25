@@ -10,12 +10,8 @@
 		020881B426D1450300F2AAB5 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020881B326D1450300F2AAB5 /* CalendarModel.swift */; };
 		020881B826D200F800F2AAB5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020881B726D200F800F2AAB5 /* ListViewController.swift */; };
 		0269CA8A26D2519300B8D4AC /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269CA8926D2519300B8D4AC /* ItemList.swift */; };
-		0269CA8C26D251B300B8D4AC /* InsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269CA8B26D251B300B8D4AC /* InsertModel.swift */; };
-		0269CA8E26D2520200B8D4AC /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269CA8D26D2520200B8D4AC /* TodayTableViewCell.swift */; };
-		0269CA9026D2520900B8D4AC /* BottomSheetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269CA8F26D2520900B8D4AC /* BottomSheetTableViewCell.swift */; };
 		02A97B5326CC4916004080F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A97B5226CC4916004080F8 /* AppDelegate.swift */; };
 		02A97B5526CC4916004080F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A97B5426CC4916004080F8 /* SceneDelegate.swift */; };
-		02A97B5726CC4916004080F8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A97B5626CC4916004080F8 /* HomeViewController.swift */; };
 		02A97B5A26CC4916004080F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A97B5826CC4916004080F8 /* Main.storyboard */; };
 		02A97B5C26CC4918004080F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A97B5B26CC4918004080F8 /* Assets.xcassets */; };
 		02A97B5F26CC4918004080F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A97B5D26CC4918004080F8 /* LaunchScreen.storyboard */; };
@@ -23,10 +19,17 @@
 		02B5347526CC51CD00B0DD52 /* CaffeineDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347426CC51CD00B0DD52 /* CaffeineDB.swift */; };
 		02B5347726CC539C00B0DD52 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347626CC539C00B0DD52 /* MyInfoViewController.swift */; };
 		02B5347926CC53CD00B0DD52 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B5347826CC53CD00B0DD52 /* CalendarViewController.swift */; };
+		02C328E626D521CF00B18C84 /* BottomSheetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C328E526D521CF00B18C84 /* BottomSheetTableViewCell.swift */; };
+		02C328E826D521FF00B18C84 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C328E726D521FF00B18C84 /* BottomSheetViewController.swift */; };
+		02C328EA26D5221800B18C84 /* DeleteTodayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C328E926D5221800B18C84 /* DeleteTodayModel.swift */; };
+		02C328EC26D5223D00B18C84 /* SelectTodayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C328EB26D5223D00B18C84 /* SelectTodayModel.swift */; };
+		02C328EE26D5227700B18C84 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C328ED26D5227700B18C84 /* TodayTableViewCell.swift */; };
+		02C328F026D5228000B18C84 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C328EF26D5228000B18C84 /* TodayViewController.swift */; };
+		02C328F226D522D500B18C84 /* InsertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C328F126D522D500B18C84 /* InsertModel.swift */; };
+		02C328F426D5242300B18C84 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C328F326D5242300B18C84 /* HomeViewController.swift */; };
+		02C328F626D531C300B18C84 /* ListView2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C328F526D531C300B18C84 /* ListView2TableViewCell.swift */; };
 		02C5140226D2846900FF8F02 /* TempInsertDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C5140126D2846900FF8F02 /* TempInsertDB.swift */; };
-		02C5140426D287B900FF8F02 /* ListVIewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C5140326D287B900FF8F02 /* ListVIewTableViewCell.swift */; };
-		02DA9BDC26CD4CEB00DEF413 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DA9BDB26CD4CEB00DEF413 /* BottomSheetViewController.swift */; };
-		02DA9BDE26CD4DBE00DEF413 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DA9BDD26CD4DBE00DEF413 /* TodayViewController.swift */; };
+		02C5140426D287B900FF8F02 /* ListViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C5140326D287B900FF8F02 /* ListViewTableViewCell.swift */; };
 		3BBB2A1011E9BD57C5D21E57 /* Pods_Caffeine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3855B5CC4FE830F1D51564DD /* Pods_Caffeine.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,13 +37,9 @@
 		020881B326D1450300F2AAB5 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		020881B726D200F800F2AAB5 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		0269CA8926D2519300B8D4AC /* ItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
-		0269CA8B26D251B300B8D4AC /* InsertModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertModel.swift; sourceTree = "<group>"; };
-		0269CA8D26D2520200B8D4AC /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
-		0269CA8F26D2520900B8D4AC /* BottomSheetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetTableViewCell.swift; sourceTree = "<group>"; };
 		02A97B4F26CC4916004080F8 /* Caffeine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caffeine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A97B5226CC4916004080F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02A97B5426CC4916004080F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		02A97B5626CC4916004080F8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02A97B5926CC4916004080F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02A97B5B26CC4918004080F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02A97B5E26CC4918004080F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,10 +48,17 @@
 		02B5347426CC51CD00B0DD52 /* CaffeineDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaffeineDB.swift; sourceTree = "<group>"; };
 		02B5347626CC539C00B0DD52 /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		02B5347826CC53CD00B0DD52 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		02C328E526D521CF00B18C84 /* BottomSheetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetTableViewCell.swift; sourceTree = "<group>"; };
+		02C328E726D521FF00B18C84 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		02C328E926D5221800B18C84 /* DeleteTodayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTodayModel.swift; sourceTree = "<group>"; };
+		02C328EB26D5223D00B18C84 /* SelectTodayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTodayModel.swift; sourceTree = "<group>"; };
+		02C328ED26D5227700B18C84 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
+		02C328EF26D5228000B18C84 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		02C328F126D522D500B18C84 /* InsertModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertModel.swift; sourceTree = "<group>"; };
+		02C328F326D5242300B18C84 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		02C328F526D531C300B18C84 /* ListView2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView2TableViewCell.swift; sourceTree = "<group>"; };
 		02C5140126D2846900FF8F02 /* TempInsertDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempInsertDB.swift; sourceTree = "<group>"; };
-		02C5140326D287B900FF8F02 /* ListVIewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVIewTableViewCell.swift; sourceTree = "<group>"; };
-		02DA9BDB26CD4CEB00DEF413 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
-		02DA9BDD26CD4DBE00DEF413 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		02C5140326D287B900FF8F02 /* ListViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewTableViewCell.swift; sourceTree = "<group>"; };
 		3855B5CC4FE830F1D51564DD /* Pods_Caffeine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Caffeine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACEAB40E0D643D26A1BD521 /* Pods-Caffeine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caffeine.debug.xcconfig"; path = "Target Support Files/Pods-Caffeine/Pods-Caffeine.debug.xcconfig"; sourceTree = "<group>"; };
 		873FCDFFB3ABC127F5D7DB64 /* Pods-Caffeine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caffeine.release.xcconfig"; path = "Target Support Files/Pods-Caffeine/Pods-Caffeine.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,7 +115,9 @@
 			isa = PBXGroup;
 			children = (
 				020881B326D1450300F2AAB5 /* CalendarModel.swift */,
-				0269CA8B26D251B300B8D4AC /* InsertModel.swift */,
+				02C328E926D5221800B18C84 /* DeleteTodayModel.swift */,
+				02C328EB26D5223D00B18C84 /* SelectTodayModel.swift */,
+				02C328F126D522D500B18C84 /* InsertModel.swift */,
 			);
 			path = Process;
 			sourceTree = "<group>";
@@ -126,15 +134,16 @@
 		02A97B6926CC4951004080F8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				02A97B5626CC4916004080F8 /* HomeViewController.swift */,
-				02DA9BDB26CD4CEB00DEF413 /* BottomSheetViewController.swift */,
-				0269CA8F26D2520900B8D4AC /* BottomSheetTableViewCell.swift */,
-				02DA9BDD26CD4DBE00DEF413 /* TodayViewController.swift */,
-				0269CA8D26D2520200B8D4AC /* TodayTableViewCell.swift */,
+				02C328F326D5242300B18C84 /* HomeViewController.swift */,
+				02C328E726D521FF00B18C84 /* BottomSheetViewController.swift */,
+				02C328E526D521CF00B18C84 /* BottomSheetTableViewCell.swift */,
+				02C328EF26D5228000B18C84 /* TodayViewController.swift */,
+				02C328ED26D5227700B18C84 /* TodayTableViewCell.swift */,
 				02B5347626CC539C00B0DD52 /* MyInfoViewController.swift */,
 				02B5347826CC53CD00B0DD52 /* CalendarViewController.swift */,
 				020881B726D200F800F2AAB5 /* ListViewController.swift */,
-				02C5140326D287B900FF8F02 /* ListVIewTableViewCell.swift */,
+				02C5140326D287B900FF8F02 /* ListViewTableViewCell.swift */,
+				02C328F526D531C300B18C84 /* ListView2TableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -279,23 +288,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0269CA8C26D251B300B8D4AC /* InsertModel.swift in Sources */,
-				02DA9BDE26CD4DBE00DEF413 /* TodayViewController.swift in Sources */,
 				020881B426D1450300F2AAB5 /* CalendarModel.swift in Sources */,
-				0269CA8E26D2520200B8D4AC /* TodayTableViewCell.swift in Sources */,
+				02C328EC26D5223D00B18C84 /* SelectTodayModel.swift in Sources */,
+				02C328F426D5242300B18C84 /* HomeViewController.swift in Sources */,
+				02C328F026D5228000B18C84 /* TodayViewController.swift in Sources */,
+				02C328EA26D5221800B18C84 /* DeleteTodayModel.swift in Sources */,
 				02B5347926CC53CD00B0DD52 /* CalendarViewController.swift in Sources */,
-				02DA9BDC26CD4CEB00DEF413 /* BottomSheetViewController.swift in Sources */,
+				02C328E626D521CF00B18C84 /* BottomSheetTableViewCell.swift in Sources */,
 				0269CA8A26D2519300B8D4AC /* ItemList.swift in Sources */,
 				02B5347126CC507D00B0DD52 /* Caffeine.swift in Sources */,
-				0269CA9026D2520900B8D4AC /* BottomSheetTableViewCell.swift in Sources */,
-				02A97B5726CC4916004080F8 /* HomeViewController.swift in Sources */,
 				02B5347526CC51CD00B0DD52 /* CaffeineDB.swift in Sources */,
-				02C5140426D287B900FF8F02 /* ListVIewTableViewCell.swift in Sources */,
+				02C328F226D522D500B18C84 /* InsertModel.swift in Sources */,
+				02C5140426D287B900FF8F02 /* ListViewTableViewCell.swift in Sources */,
 				02B5347726CC539C00B0DD52 /* MyInfoViewController.swift in Sources */,
+				02C328E826D521FF00B18C84 /* BottomSheetViewController.swift in Sources */,
+				02C328EE26D5227700B18C84 /* TodayTableViewCell.swift in Sources */,
 				02A97B5326CC4916004080F8 /* AppDelegate.swift in Sources */,
 				020881B826D200F800F2AAB5 /* ListViewController.swift in Sources */,
 				02C5140226D2846900FF8F02 /* TempInsertDB.swift in Sources */,
 				02A97B5526CC4916004080F8 /* SceneDelegate.swift in Sources */,
+				02C328F626D531C300B18C84 /* ListView2TableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

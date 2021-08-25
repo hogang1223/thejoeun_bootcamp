@@ -40,11 +40,6 @@ class CalendarViewController: UIViewController {
         // DB Set
         model.loadSQLiteDB()
         caffeineOfToday()
-        
-//        // garaData
-//        let gara = TempInsertDB()
-//        gara.loadData()
-//        gara.tempInsert()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,14 +48,6 @@ class CalendarViewController: UIViewController {
     
     @IBAction func btnGoList(_ sender: UIButton) {
         self.performSegue(withIdentifier: "sgGoList", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "sgGoList"{
-            let destinationView = segue.destination as! ListViewController
-            destinationView.clickedDate = clickedDate
-            destinationView.totalMg = getClickData(calendarDate: clickedDate)
-        }
     }
     
     func getClickData(calendarDate : String) -> Int{
@@ -133,13 +120,19 @@ class CalendarViewController: UIViewController {
         calendar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         
         // 달력 UI
-//        calendar.appearance.titleDefaultColor = UIColor(named: "c100")
-//        calendar.appearance.titleWeekendColor = UIColor(named: "c100")
         calendar.appearance.headerTitleColor = UIColor(named: "c60")
         calendar.appearance.weekdayTextColor = UIColor(named: "c60")
         calendar.appearance.headerDateFormat = "YYYY년 M월"
         calendar.locale = Locale(identifier: "ko_KR")
         calendar.appearance.headerMinimumDissolvedAlpha = 0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sgGoList"{
+            let destinationView = segue.destination as! ListViewController
+            destinationView.clickedDate = clickedDate
+            destinationView.totalMg = getClickData(calendarDate: clickedDate)
+        }
     }
     
     
