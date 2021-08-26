@@ -35,9 +35,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         // create sqlite
         sqlite.createSQLite()
-        
+
         // btn design
         btnOne.layer.cornerRadius = btnOne.layer.frame.size.height/2
         btnTwo.layer.cornerRadius = btnTwo.layer.frame.size.height/2

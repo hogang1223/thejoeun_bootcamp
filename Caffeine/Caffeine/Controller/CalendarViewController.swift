@@ -43,7 +43,9 @@ class CalendarViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         caffeineList = model.selectDBAll()
+        calendar.reloadData()
         let totalMg = getClickData(calendarDate: clickedDate)
         getCoffeeColor(totalMg: totalMg)
         btnDateCaffeine.setTitle("카페인 섭취량 : \(totalMg)mg", for: .normal)
@@ -206,12 +208,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             }else{
                 return UIColor(named: "c80")
             }
-//            switch percentage {
-//            case 0...60 :
-//                return UIColor(named: "c80")
-//            default:
-//                return UIColor(named: "c60")
-//            }
         }
     }
 }

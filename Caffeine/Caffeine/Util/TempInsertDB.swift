@@ -11,11 +11,11 @@ import SQLite3
 class TempInsertDB{
     
     var db: OpaquePointer?
-    // tempData
-    let tempDate : [String] = ["2021년 08월 13일", "2021년 08월 14일", "2021년 08월 15일", "2021년 08월 16일", "2021년 08월 16일", "2021년 08월 18일", "2021년 08월 19일", "2021년 08월 20일", "2021년 08월 21일", "2021년 08월 22일"]
-    let tempMg : [Int] = [70,75, 70, 150, 75, 70, 150, 70, 75, 70]
-    let tempName : [String] = ["믹스커피", "Espresso 1shot", "믹스커피", "Espresso 2shot", "Espresso 1shot", "믹스커피", "Espresso 2shot", "믹스커피", "Espresso 1shot", "믹스커피"]
-    let tempMemo : [String] = ["메모 테스트 메모 테스트1", "메모 테스트 메모 테스트2", "메모 테스트 메모 테스트3", "메모 테스트 메모 테스트4", "메모 테스트 메모 테스트5", "메모 테스트 메모 테스트6", "메모 테스트 메모 테스트7", "메모 테스트 메모 테스트8", "메모 테스트 메모 테스트9", "메모 테스트 메모 테스트10"]
+    // tempData    
+        let tempDate : [String] = ["2021년 08월 12일", "2021년 08월 12일", "2021년 08월 12일", "2021년 08월 12일", "2021년 08월 15일", "2021년 08월 15일", "2021년 08월 15일", "2021년 08월 15일", "2021년 08월 19일", "2021년 08월 19일"]
+        let tempMg : [Int] = [70,255, 70, 150, 75, 70, 150, 70, 255, 70]
+        let tempName : [String] = ["믹스커피", "Espresso 3shot", "믹스커피", "Espresso 2shot", "Espresso 1shot", "믹스커피", "Espresso 2shot", "믹스커피", "Espresso 3shot", "믹스커피"]
+        let tempMemo : [String] = ["카누", "", "맥심 모카골드", "빽다방 아이스아메리카노", "", "맥심 모카골드", "", "", "", ""]
     
     
     func loadData(){

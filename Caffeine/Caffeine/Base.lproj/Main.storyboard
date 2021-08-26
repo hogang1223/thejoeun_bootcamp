@@ -745,6 +745,7 @@
             <point key="canvasLocation" x="1743.4782608695652" y="87.053571428571431"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="c60"/>
     <resources>
         <image name="0" width="1550" height="1640"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
