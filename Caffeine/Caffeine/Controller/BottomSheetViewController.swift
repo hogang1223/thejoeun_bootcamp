@@ -46,15 +46,25 @@ extension BottomSheetViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "BottomSheetTableViewCell") as! BottomSheetTableViewCell
+        let cellNonMemo = tableView.dequeueReusableCell(withIdentifier: "BottomSheetnonMemoCell", for: indexPath) as! BottomSheet2TableViewCell
+        
         let item = userCaffeine[indexPath.row]
         
-        cell.lblItem.text = "\(item.name) (\(String(item.mg))mg)"
-        cell.lblCaffeine.text = "\(String(item.mg))"
-        cell.lblMemo.text = item.memo
-        
-        return cell
+        if item.memo.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty{
+            
+            cellNonMemo.lblNonName.text = "\(item.name)"
+            cellNonMemo.lblNonMg.text = "\(String(item.mg))"
+            
+            return cellNonMemo
+            
+        }else{
+            cell.lblItem.text = "\(item.name)"
+            cell.lblCaffeine.text = "\(String(item.mg))"
+            cell.lblMemo.text = item.memo
+            
+            return cell
+        }
     }
-    
     
 } // extension
 

@@ -44,6 +44,10 @@ class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         caffeineList = model.selectDBAll()
+        let totalMg = getClickData(calendarDate: clickedDate)
+        getCoffeeColor(totalMg: totalMg)
+        btnDateCaffeine.setTitle("카페인 섭취량 : \(totalMg)mg", for: .normal)
+        
     }
     
     @IBAction func btnGoList(_ sender: UIButton) {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,11 +14,33 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPT-jL-0Pi">
-                                <rect key="frame" x="20" y="438" width="374" height="21"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJd-uk-UGX">
+                                <rect key="frame" x="85" y="180" width="150" height="208"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8" translatesAutoresizingMaskIntoConstraints="NO" id="K0i-LW-PIf">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="IjF-Jk-5Yb"/>
+                                            <constraint firstAttribute="width" constant="150" id="bsw-eD-jK4"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="K0i-LW-PIf" firstAttribute="top" secondItem="XJd-uk-UGX" secondAttribute="top" id="1Ca-AU-7bh"/>
+                                    <constraint firstAttribute="trailing" secondItem="K0i-LW-PIf" secondAttribute="trailing" id="37k-iv-3Ub"/>
+                                    <constraint firstItem="K0i-LW-PIf" firstAttribute="leading" secondItem="XJd-uk-UGX" secondAttribute="leading" id="A7f-m2-Rw7"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Caffeine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jI-U2-Wlm">
+                                <rect key="frame" x="85" y="338" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Wh2-o2-LZv"/>
+                                    <constraint firstAttribute="width" constant="150" id="cuP-Fe-8Dh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -27,17 +49,22 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UPT-jL-0Pi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="36k-ar-auP"/>
-                            <constraint firstItem="UPT-jL-0Pi" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="a1Z-Fo-pbv"/>
+                            <constraint firstItem="5jI-U2-Wlm" firstAttribute="leading" secondItem="XJd-uk-UGX" secondAttribute="leading" id="93a-9S-0Lk"/>
+                            <constraint firstItem="5jI-U2-Wlm" firstAttribute="bottom" secondItem="XJd-uk-UGX" secondAttribute="bottom" id="ER5-0r-Caz"/>
+                            <constraint firstItem="5jI-U2-Wlm" firstAttribute="top" secondItem="K0i-LW-PIf" secondAttribute="bottom" constant="8" id="QPd-Kt-Ni0"/>
+                            <constraint firstItem="XJd-uk-UGX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Rkg-9B-xEI"/>
+                            <constraint firstItem="5jI-U2-Wlm" firstAttribute="trailing" secondItem="XJd-uk-UGX" secondAttribute="trailing" id="WWB-w5-euT"/>
+                            <constraint firstItem="XJd-uk-UGX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ZNA-zH-b3f"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+            <point key="canvasLocation" x="50.625" y="375"/>
         </scene>
     </scenes>
     <resources>
+        <image name="8" width="1550" height="1640"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

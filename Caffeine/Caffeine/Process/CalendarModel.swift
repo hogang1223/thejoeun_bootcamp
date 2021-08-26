@@ -54,7 +54,6 @@ class CalendarModel{
             caffeineList.append(Caffeine(no: Int(no), date: cDate, mg: Int(mg), name: name, memo: memo))
         }
         sqlite3_finalize(stmt)
-        sqlite3_close(db)
         
         return caffeineList
     }
@@ -91,7 +90,6 @@ class CalendarModel{
             caffeineList.append(Caffeine(no: Int(no), date: cDate, mg: Int(mg), name: name, memo: memo))
         }
         sqlite3_finalize(stmt)
-        sqlite3_close(db)
         return caffeineList
     }
 }
