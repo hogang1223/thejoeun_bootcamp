@@ -13,7 +13,6 @@ class BottomSheetViewController: UIViewController {
     var db: OpaquePointer?
     var userCaffeine:[Caffeine] = []
     let model = SelectTodayModel()
-    let deleteModel = DeleteTodayModel()
     
     @IBOutlet weak var userCaffeineTableView: UITableView!
     
@@ -22,7 +21,6 @@ class BottomSheetViewController: UIViewController {
         
         // DB Set
         model.loadData()
-        deleteModel.loadData()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 MM월 dd일"
         let currentDate = formatter.string(from: Date())
@@ -51,21 +49,10 @@ extension BottomSheetViewController: UITableViewDelegate, UITableViewDataSource 
         let item = userCaffeine[indexPath.row]
         
         cell.lblItem.text = "\(item.name) (\(String(item.mg))mg)"
-        //cell.lblCaffeine.text = "\(String(item.mg)) mg"
-        cell.tfUserMemo.text = item.memo
-        cell.btnDelete.tag = indexPath.row
-        cell.btnDelete.addTarget(self, action: #selector(itemDelete(_:)), for: .touchUpInside)
+        cell.lblCaffeine.text = "\(String(item.mg))"
+        cell.lblMemo.text = item.memo
         
         return cell
-    }
-
-    @objc func itemDelete(_ sender: UIButton){
-        let indexPath = sender.tag
-        let item = userCaffeine[indexPath]
-        userCaffeine.remove(at: indexPath)
-        deleteModel.deleteValues(no: item.no)
-        
-        userCaffeineTableView.reloadData()
     }
     
     

@@ -11,8 +11,7 @@ class BottomSheetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblItem: UILabel!
     @IBOutlet weak var lblCaffeine: UILabel!
-    @IBOutlet weak var tfUserMemo: UITextField!
-    @IBOutlet weak var btnDelete: UIButton!
+    @IBOutlet weak var lblMemo: UILabel!
     
     
     override func awakeFromNib() {

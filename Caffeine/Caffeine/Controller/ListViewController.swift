@@ -20,6 +20,9 @@ class ListViewController: UIViewController {
     var db: OpaquePointer?
     var caffeineList : [Caffeine] = []
     let model = CalendarModel()
+    let caffeineDB = CaffeineDB()
+    let deleteDB = DeleteTodayModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +32,26 @@ class ListViewController: UIViewController {
         
         // DB Set
         model.loadSQLiteDB()
+        deleteDB.loadData()
         let splitDate = clickedDate.split(separator: "-")
         let dbDate = "\(splitDate[0])년 \(splitDate[1])월 \(splitDate[2])일"
         caffeineList = model.selectDBSelectedDate(selectedDate: dbDate)
         
         // UISetting
         self.navigationItem.title = dbDate
-        lblTotalMg.text = "Total : \(totalMg)mg"
+        countTotalMg()
         
     }
+    
+    func countTotalMg() {
+        totalMg = 0
+        for i in caffeineList {
+            totalMg += i.mg
+        }
+        lblTotalMg.text = "Total : \(totalMg)mg"
+    }
+    
+    
 
 }
 // MARK : - Table Delegate, DataSource
@@ -63,4 +77,21 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
  
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            let item = caffeineList[indexPath.row]
+            deleteDB.deleteValues(no: item.no)
+            caffeineList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            caffeinTable.reloadData()
+            countTotalMg()
+            
+        }
+    }
+    
 }

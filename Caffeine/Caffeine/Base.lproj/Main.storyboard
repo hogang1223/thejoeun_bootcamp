@@ -629,47 +629,41 @@
                                                     <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="간단한 메모를 남겨주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sJR-aj-d3z">
-                                                    <rect key="frame" x="20" y="49" width="279" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-lt-cga">
-                                                    <rect key="frame" x="315" y="48" width="49" height="39"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="tintColor" name="c60"/>
-                                                    <state key="normal" title="메모수정">
-                                                        <color key="titleColor" name="c100"/>
-                                                    </state>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Espresso 1 Shot (75mg)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xw5-iU-02p">
                                                     <rect key="frame" x="20" y="15" width="209" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user memo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVw-WX-b8Y">
+                                                    <rect key="frame" x="20" y="55" width="334" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBS-Qf-77r">
+                                                    <rect key="frame" x="271" y="15" width="83" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="sJR-aj-d3z" firstAttribute="leading" secondItem="xw5-iU-02p" secondAttribute="leading" id="0hv-eh-pgq"/>
-                                                <constraint firstItem="sJR-aj-d3z" firstAttribute="top" secondItem="xw5-iU-02p" secondAttribute="bottom" constant="13" id="8VD-9Z-ojB"/>
+                                                <constraint firstItem="EVw-WX-b8Y" firstAttribute="leading" secondItem="ijh-J6-0K0" secondAttribute="leadingMargin" id="2j5-f6-N5T"/>
                                                 <constraint firstItem="tm6-YD-y5V" firstAttribute="top" secondItem="ijh-J6-0K0" secondAttribute="topMargin" constant="4" id="Bya-lf-boX"/>
                                                 <constraint firstItem="xw5-iU-02p" firstAttribute="leading" secondItem="ijh-J6-0K0" secondAttribute="leadingMargin" id="DIf-5m-EGc"/>
+                                                <constraint firstItem="EVw-WX-b8Y" firstAttribute="trailing" secondItem="ijh-J6-0K0" secondAttribute="trailingMargin" id="Ec4-Vg-xaC"/>
                                                 <constraint firstItem="xw5-iU-02p" firstAttribute="top" secondItem="ijh-J6-0K0" secondAttribute="topMargin" constant="4" id="GeR-tK-Ddf"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="sJR-aj-d3z" secondAttribute="bottom" id="Kqu-tA-nrQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="uh5-lt-cga" secondAttribute="trailing" id="PGX-XQ-inO"/>
-                                                <constraint firstAttribute="bottom" secondItem="uh5-lt-cga" secondAttribute="bottom" constant="8" id="UDo-Cg-801"/>
-                                                <constraint firstItem="sJR-aj-d3z" firstAttribute="leading" secondItem="ijh-J6-0K0" secondAttribute="leadingMargin" id="deG-a6-TRH"/>
-                                                <constraint firstItem="uh5-lt-cga" firstAttribute="top" secondItem="ijh-J6-0K0" secondAttribute="top" constant="52" id="dqr-jW-FEn"/>
+                                                <constraint firstItem="EVw-WX-b8Y" firstAttribute="top" secondItem="ijh-J6-0K0" secondAttribute="topMargin" constant="44" id="KKR-uK-T3o"/>
                                                 <constraint firstAttribute="trailing" secondItem="tm6-YD-y5V" secondAttribute="trailing" constant="12" id="hq4-yt-yj6"/>
-                                                <constraint firstItem="sJR-aj-d3z" firstAttribute="top" secondItem="xw5-iU-02p" secondAttribute="bottom" constant="13" id="kHw-Pi-7Lc"/>
-                                                <constraint firstItem="uh5-lt-cga" firstAttribute="leading" secondItem="sJR-aj-d3z" secondAttribute="trailing" constant="12" id="wyg-9V-p58"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="EVw-WX-b8Y" secondAttribute="bottom" constant="8" id="nWa-SF-3Uu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="btnDelete" destination="uh5-lt-cga" id="eBZ-fq-uss"/>
-                                            <outlet property="lblCaffeine" destination="tm6-YD-y5V" id="DgY-RM-G2a"/>
-                                            <outlet property="lblItem" destination="xw5-iU-02p" id="jxw-Jp-a37"/>
-                                            <outlet property="tfUserMemo" destination="sJR-aj-d3z" id="EKV-7h-Dy6"/>
+                                            <outlet property="lblCaffeine" destination="OBS-Qf-77r" id="n4z-Bi-9VK"/>
+                                            <outlet property="lblItem" destination="xw5-iU-02p" id="r68-zF-Ebb"/>
+                                            <outlet property="lblMemo" destination="EVw-WX-b8Y" id="2Lz-tG-hO7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
