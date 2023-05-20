@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:gravity="center_horizontal"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="invisible"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="당신의 BMI 지수는 ?"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BMI란? 비만 판정하는 방법의 하나로 체중(kg)을 신장(m)의 제곱으로 나눈 값(체중(kg)/신장(m2))으로 체지방 축적을 잘 반영하기 때문에 비만도 판정에 많이 사용한다. "
+            android:gravity="center"
+            android:textSize="15dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BMI 측정하기"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="키 : "
+                android:textSize="20dp"
+                />
+        <EditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="당신의 키을르ㄹ 입력해주세요"
+                />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cm "
+                android:textSize="15dp"
+                />
+        <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="몸무게 : "
+                android:textSize="20dp"
+                />
+        <EditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="당신의 몸무게 입력해주세요"
+                />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kg "
+                android:textSize="15dp"
+                />
+Layout>
+
+    </LinearLayout>
+
+
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="BMI 계산기"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="40dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:padding="10dp"-->
+<!--        />-->
+<!--    -->
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/bmi"-->
+<!--        />-->
+<!--    <TextView-->
+<!--        android:layout_width="285dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="center"-->
+<!--        android:text="BMI란 비만 판정하는 방법의 하나로 체중(kg)을 신장(m)의 제곱으로 나눈 값으로 체지방 축적을 잘 반영하기 때문에 비만도 판정에 많이 사용한다."-->
+<!--        android:gravity="center_horizontal"-->
+<!--        />-->
+<!--    -->
+<!--    <LinearLayout-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center_horizontal">-->
+<!--        -->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="당신의 키를 입력해주세요!"/>-->
+<!--        <EditText-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            -->
+<!--        -->
+<!--    </LinearLayout>-->
+
+</FrameLayout>

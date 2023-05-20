@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+    <ProgressBar
+        android:id="@+id/pbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="3"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="선택을 시작하겠습니까?"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="#9F9F9F"
+        android:layout_marginBottom="10dp"
+        />
+    <CheckBox
+        android:id="@+id/cbStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="시작함"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearAnimal"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:visibility="invisible">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="좋아하는 애완동물은?"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#9F9F9F"
+            android:layout_marginBottom="10dp"
+            />
+        <RadioGroup
+            android:id="@+id/rgAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbDog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="강아지"
+                />
+
+            <RadioButton
+                android:id="@+id/rbDuck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="오리"
+                />
+
+            <RadioButton
+                android:id="@+id/rbCat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="고양이"
+                />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="선택 완료"
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/imgDog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/siba"
+                android:visibility="invisible"
+                />
+            <ImageView
+                android:id="@+id/imgDuck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/duck"
+                android:visibility="invisible"
+                />
+            <ImageView
+                android:id="@+id/imgCat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cat"
+                android:visibility="invisible"
+                />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

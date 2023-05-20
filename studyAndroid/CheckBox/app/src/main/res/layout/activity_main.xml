@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="당신의 취미는?"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_weight="1.5"
+        />
+    <CheckBox
+        android:id="@+id/cb_01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#5000ff00"
+        android:text="운동"
+        android:layout_weight="1"
+        />
+    <CheckBox
+        android:id="@+id/cb_02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="요리"
+        android:layout_weight="1"
+        />
+    <CheckBox
+        android:id="@+id/cb_03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#5000ff00"
+        android:text="독서"
+        android:layout_weight="1"
+        />
+    <CheckBox
+        android:id="@+id/cb_04"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="여행"
+        android:layout_weight="1"
+        />
+
+
+</LinearLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Android Studio를 사용하여 버튼 2개를 이용하여\n버튼별 이미지를 출력하는 app 작성"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+        <Button
+            android:id="@+id/btnSport1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sport1"
+            android:layout_margin="30dp"
+            />
+        <Button
+            android:id="@+id/btnSport2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sport2"
+            android:layout_margin="30dp"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgSport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+
+
+</LinearLayout>

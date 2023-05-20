@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hybrid_02</string>
+    <string name="hello">
+        <![CDATA[<font color="#9ee91d">hello %1$s</font> <font color="#878787">world! %2$s</font>]]>
+
+    </string>
+</resources>

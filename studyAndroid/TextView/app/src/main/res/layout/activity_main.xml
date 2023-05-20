@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Hello"-->
+<!--        android:textColor="#ff0000"-->
+<!--        android:textSize="20dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:background="@color/cardview_shadow_start_color"-->
+<!--        />-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="guys"-->
+<!--        android:textColor="#0000ff"-->
+<!--        android:textSize="20dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:background="#ffff00"-->
+<!--        />-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="nice to meet you"-->
+<!--        android:textColor="#00ff00"-->
+<!--        android:textSize="20dp"-->
+<!--        android:textStyle="bold"-->
+<!--        />-->
+
+    <TextView
+        android:layout_width="385dp"
+        android:layout_height="620dp"
+        android:fontFamily="sans-serif-medium"
+        android:rotation="60"
+        android:rotationX="26"
+        android:rotationY="-17"
+        android:text="@string/hello"
+        android:textColor="#03D3D3"
+        android:textSize="50dp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/anyoung"
+        android:textColor="#E1E1E1"
+        android:background="@color/purple_500"
+        android:textSize="30dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Good Morning"
+        android:textColor="#66BA66"
+        android:textSize="40dp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        />
+
+
+</LinearLayout>
