@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.springlec.add01.dao.Dao">
+	<select id="listDao" resultType="com.springlec.add01.dto.Dto" >
+		SELECT * FROM USERINFO ORDER BY SEQNO
+	</select>
+	
+	<select id="contentDao" resultType="com.springlec.add01.dto.Dto" >
+		SELECT * FROM USERINFO WHERE SEQNO = #{param1}
+	</select>
+	
+	<insert id="writeDao">
+		INSERT INTO USERINFO (NAME, TELNO, ADDRESS, EMAIL, RELATION) VALUES (#{param1}, #{param2}, #{param3},#{param4},#{param5});
+	</insert>
+	
+	<delete id="deleteDao">
+		DELETE FROM USERINFO WHERE SEQNO = #{param1}
+	</delete>
+	
+	<update id="modifyDao">
+		UPDATE USERINFO SET NAME = #{param1}, TELNO = #{param2}, ADDRESS = #{param3}, EMAIL = #{param4}, RELATION = #{param5} WHERE SEQNO = #{param6}
+	</update>
+	
+	<select id="listQuery" parameterType="String" resultType="com.springlec.add01.dto.Dto">
+		SELECT * FROM USERINFO WHERE ${param1} LIKE CONCAT('%', #{param2}, '%')
+	</select>
+	
+</mapper>
