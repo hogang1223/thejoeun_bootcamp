@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_fragment1"
+        android:enabled="true"
+        android:checked="true"
+        android:icon="@drawable/ic_baseline_photo_library_24"
+        android:title=""
+        />
+
+    <item
+        android:id="@+id/item_fragment2"
+        android:enabled="true"
+        android:checked="true"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title=""
+        />
+
+    <item
+        android:id="@+id/item_fragment3"
+        android:enabled="true"
+        android:checked="true"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title=""
+        />
+
+    <item
+        android:id="@+id/item_fragment4"
+        android:enabled="true"
+        android:checked="true"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title=""
+        />
+
+</menu>

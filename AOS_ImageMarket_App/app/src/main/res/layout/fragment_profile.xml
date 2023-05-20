@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/profile_linearlayout_mypage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        >
+
+        <TextView
+            android:id="@+id/profile_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이도희"
+            android:textSize="40dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/black"
+            />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_profile_arrow_forward_24"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            app:tint="@color/purple_500" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:elevation="5dp"
+        android:background="@drawable/layout_background_shadow"
+        android:padding="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/profile_layout_buy_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주문 내역"
+                android:textSize="15dp"
+                />
+            <TextView
+                android:id="@+id/profile_tv_buy_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/profile_layout_sell_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="판매 내역"
+                android:textSize="15dp"
+                />
+            <TextView
+                android:id="@+id/profile_tv_sell_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/profile_layout_like_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="추천 목록"
+                android:textSize="15dp"
+                />
+            <TextView
+                android:id="@+id/profile_tv_like_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/purple_500"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="5dp"
+        >
+        <TextView
+            android:id="@+id/profile_tv_img_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="판매 상품 목록"
+            android:textSize="20dp"
+            android:gravity="left|center"
+            android:paddingLeft="25dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/profile_tv_img_add"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="판매 상품 등록"
+            android:textSize="20dp"
+            android:gravity="left|center"
+            android:paddingLeft="25dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/profile_tv_sell_report"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="판매 현황"
+            android:textSize="20dp"
+            android:gravity="left|center"
+            android:paddingLeft="25dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/profile_tv_logout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="로그아웃"
+            android:textSize="20dp"
+            android:gravity="left|center"
+            android:paddingLeft="25dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/profile_tv_user_delete"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="회원 탈퇴"
+            android:textSize="20dp"
+            android:gravity="left|center"
+            android:paddingLeft="25dp"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+</LinearLayout>

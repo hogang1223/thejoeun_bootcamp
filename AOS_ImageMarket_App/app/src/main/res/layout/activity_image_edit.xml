@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activity.ImageEditActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이미지 정보 수정"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    />
+                <ImageView
+                    android:id="@+id/edit_ivbtn_back"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="30dp"
+                    app:tint="@color/black"
+                    />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#A8A8A8"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:gravity="center"
+                    >
+
+                    <ImageView
+                        android:id="@+id/edit_image"
+                        android:layout_width="370dp"
+                        android:layout_height="250dp"
+                        android:src="@mipmap/ic_launcher"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="40dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edit_name_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@android:color/white"
+                        app:errorEnabled="true"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_name_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="이름은 최대 50자 이내로 입력해주세요"
+                            android:maxLength="50"
+                            android:inputType="text"
+                            android:textSize="16dp"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingHorizontal="40dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edit_content_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@android:color/white"
+                        app:errorEnabled="true"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_content_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="설명은 최대 150자 이내로 입력해주세요"
+                            android:maxLength="150"
+                            android:scrollbars="vertical"
+                            android:maxLines="5"
+                            android:textSize="16dp"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingHorizontal="40dp"
+                    >
+
+                    <Spinner
+                        android:id="@+id/edit_spinner_format"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/spinner_background"
+                        android:theme="@style/SpinnerDivideStyle"
+                        android:spinnerMode="dropdown"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingHorizontal="40dp"
+                    >
+
+                    <Spinner
+                        android:id="@+id/edit_spinner_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/spinner_background"
+                        android:theme="@style/SpinnerDivideStyle"
+                        android:spinnerMode="dropdown"
+                        />
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/edit_card_view"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:cardBackgroundColor="@color/black"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="40dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:paddingHorizontal="10dp"
+                        >
+
+                        <EditText
+                            android:id="@+id/edit_tag_edit"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="9"
+                            android:hint="태그 입력 후, 플러스 버튼을 눌러주세요"
+                            android:textSize="15dp"
+                            android:background="@null"
+                            android:layout_marginHorizontal="10dp"
+                            android:inputType="text"
+                            />
+
+                        <ImageView
+                            android:id="@+id/edit_tag_plus"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_baseline_add_24"
+                            android:visibility="invisible"
+                            />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/edit_tag_chip_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="40dp"
+                    />
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingHorizontal="40dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edit_price_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@android:color/white"
+                        app:errorEnabled="true"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_price_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="가격은 숫자로만 입력해주세요"
+                            android:maxLength="100"
+                            android:inputType="number"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingHorizontal="40dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/edit_location_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@android:color/white"
+                        app:errorEnabled="true"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_location_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="랜드마크를 입력해주세요 (선택 사항)"
+                            android:maxLength="100"
+                            android:inputType="text"
+                            android:scrollbars="horizontal"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:paddingHorizontal="40dp"
+                    android:layout_marginBottom="16dp"
+                    >
+
+                    <Button
+                        android:id="@+id/edit_btn_back"
+                        android:layout_width="0px"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="취소"
+                        android:textColor="#845EC2"
+                        android:textStyle="bold"
+                        android:backgroundTint="#FFFFFF"
+                        android:layout_marginRight="10dp"
+                        />
+
+                    <Button
+                        android:id="@+id/edit_btn_ok"
+                        android:layout_width="0px"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="수정"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:backgroundTint="#845EC2"
+                        android:layout_marginLeft="10dp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

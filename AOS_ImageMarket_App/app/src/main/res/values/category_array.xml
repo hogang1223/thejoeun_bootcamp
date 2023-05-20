@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="category">
+
+        <item>이미지 카테고리 선택</item>
+        <item>사진</item>
+        <item>일러스트</item>
+        <item>캘리그라피</item>
+
+    </string-array>
+
+
+</resources>

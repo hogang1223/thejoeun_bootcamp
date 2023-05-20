@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MyPage">
+
+    <!--상단바-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        >
+        <ImageView
+            android:id="@+id/profile_iv_mypage_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            android:layout_marginLeft="30dp"
+            app:tint="@color/black"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:text="내정보"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginRight="55dp"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+    <!--밑줄 선-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#A8A8A8"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="15dp"
+                android:paddingBottom="20dp"
+                >
+                <TextView
+                    android:id="@+id/profile_tv_mypage_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이도희"
+                    android:textSize="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/black"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="님의 정보"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="5dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이메일"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <TextView
+                    android:id="@+id/profile_tv_mypage_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="abcd1234@naver.com"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="40dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="비밀번호"
+                    android:textSize="20dp"
+                    />
+                <EditText
+                    android:id="@+id/profile_et_mypage_pw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="*********"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="40dp"
+                    android:hint="비밀번호를 입력하세요."
+                    android:inputType="textPassword"
+                    />
+
+
+                <LinearLayout
+                    android:id="@+id/profile_layout_mypage_pw_chk"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="비밀번호 확인"
+                        android:textSize="20dp"
+                        />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <EditText
+                            android:id="@+id/profile_et_mypage_pw_chk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            android:hint="비밀번호를 한번 더 입력하세요."
+                            android:inputType="textPassword"
+                            />
+                        <TextView
+                            android:id="@+id/profile_tv_mypage_pw_save"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="저장하기"
+                            android:textColor="@color/purple_500"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center|right"
+                            android:layout_marginRight="10dp"
+                            />
+                    </FrameLayout>
+                    <TextView
+                        android:id="@+id/profile_tv_mypage_pw_msg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="비밀번호가 일치하지 않습니다."
+                        android:layout_marginLeft="5dp"
+                        android:textColor="#EF4545"
+                        android:textSize="15dp"
+                        android:layout_marginBottom="30dp"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이름"
+                    android:textSize="20dp"
+                    />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    >
+
+                    <EditText
+                        android:id="@+id/profile_et_mypage_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="이도희"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+
+                        android:hint="이름을 입력하세요."
+                        />
+
+                    <TextView
+                        android:id="@+id/profile_tv_mypage_name_save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="저장하기"
+                        android:textColor="@color/purple_500"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center|right"
+                        android:layout_marginRight="10dp"
+                        />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="전화번호"
+                    android:textSize="20dp"
+                    />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    >
+
+                    <EditText
+                        android:id="@+id/profile_et_mypage_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:inputType="phone"
+                        android:hint="전화번호를 입력하세요."
+                        />
+
+                    <TextView
+                        android:id="@+id/profile_tv_mypage_phone_save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="저장하기"
+                        android:textColor="@color/purple_500"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center|right"
+                        android:layout_marginRight="10dp"
+                        />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/profile_layout_mypage_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="25dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="9"
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="계좌정보"
+                            android:textSize="20dp"
+                            android:layout_marginBottom="10dp"
+                            />
+                        <TextView
+                            android:id="@+id/profile_tv_mypage_account"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            />
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_profile_arrow_forward_24"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        app:tint="@color/purple_500" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
